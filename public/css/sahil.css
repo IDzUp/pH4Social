@@ -1,0 +1,11 @@
+h1.media { background:url("../images/icon_media.png") left 3px no-repeat; padding-left:60px; height: 50px;}
+
+#center {
+    margin-left: 180px;
+}
+
+h1.users { background:url("../images/icon_users.png") left 3px no-repeat; padding-left:60px; height: 50px;}
+
+h1.event { background:url("../images/icon_clock.png") left 3px no-repeat; padding-left:60px; height: 50px;}
+
+h1.content { background:url("../images/icon_edit.png") left 3px no-repeat; padding-left:60px; height: 50px;}

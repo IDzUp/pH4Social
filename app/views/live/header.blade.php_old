@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Electronix Store</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+
+{{ HTML::style('css/styless.css'); }}
+<!--[if IE 6]>
+<link rel="stylesheet" type="text/css" href="iecss.css" />
+<![endif]-->
+<style>
+body {font-family:Arial, Helvetica, sans-serif; font-size:12px;}
+ 
+.fadein {
+position:relative; height:132px; width:500px; margin:0 auto;
+background: url("slideshow-bg.png") repeat-x scroll left top transparent;
+padding: 10px;
+}
+.fadein img {  height: 142px;
+    left: 10px;
+    position: absolute;
+    top: 0;
+    width: 505px; }
+</style>
+ 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script>
+$(function(){
+$('.fadein img:gt(0)').hide();
+setInterval(function(){$('.fadein :first-child').fadeOut().next('img').fadeIn().end().appendTo('.fadein');}, 2000);
+});
+</script>
+
+
+
+
+{{ HTML::script('js/jquery.js') }}
+<script language="javascript">
+$(document).ready(function ()
+        {
+            $("#sel1").change(function ()
+            {
+
+                var value = $('#sel1').val();
+                $.ajax({
+                    url: "find",
+                    type: "get",
+                   data: {'dataString': value},
+                  
+                    success: function(resp)
+                    {
+                       // document.getElementById('sel2').innerHTML = resp;
+                      window.location.reload();
+                    
+                    },
+                    error: function(e)
+                    {
+                        return false;
+                    }
+                });
+
+
+
+
+
+
+
+
+
+            });
+        });
+</script>  
+
+
+</head>
+<body>
+<div id="main_container">
+  <div class="top_bar">
+     
+
+      <div id="user_toolss"><span> <?php if(Auth::user()) { echo 'Welcome ';   } ?><?php if(Auth::user()){ echo $email = Auth::user()->email;}?><a href="#"> </a>   <!-- <a class="dropdown" href="#">Change Theme</a>  | --></span></div>
+  
+
+ 
+    <div class="top_search">
+      <div class="search_text"><a href="{{URL::to('site');}}">Advanced Search</a></div>
+       {{ Form:: open(array('url' => 'search' , 'method' => 'get')) }}
+      <input type="text" class="search_input" name="search" />
+      <input type="image" src="../images/search.gif" class="search_bt"/>
+        {{ Form:: close() }}
+    </div>
+    <div class="languages">
+      <div class="lang_text">Languages:</div>
+      <a href="{{URL::to('site');}}" class="lang"><img src="../images/en.gif" alt="" border="0" /></a> <a href="http://www.free-css.com/" class="lang"><img src="images/de.gif" alt="" border="0" /></a> </div>
+  </div>
+  <div id="header">
+    <div id="logo"> <a href="{{ URL::asset('') }}index.php/site"><img src="../images/logo.png" alt="" border="0" width="237" height="140" /></a> </div>
+    <div class="oferte_content">
+      <div class="top_divider"><img src="../images/header_divider.png" alt="" width="1" height="164" /></div>
+      <div class="oferta">
+
+
+        <!--<div class="oferta_content"> <img src="../images/laptop.png" width="94" height="92" alt="" border="0" class="oferta_img" />
+          <div class="oferta_details">
+            <div class="oferta_title">Samsung GX 2004 LM</div>
+            <div class="oferta_text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco </div>
+            <a href="details.html" class="details">details</a> </div>
+        </div>
+        <div class="oferta_pagination"> <span class="current">1</span> <a href="http://www.free-css.com/">2</a> <a href="http://www.free-css.com/">3</a> <a href="http://www.free-css.com/">4</a> <a href="http://www.free-css.com/">5</a> </div>
+     
+-->
+@yield('slider')
+
+      </div>
+      <div class="top_divider"><img src="../images/header_divider.png" alt="" width="1" height="164" /></div>
+    </div>
+    <!-- end of oferte_content-->
+  </div>
+  <div id="main_content">
+    <div id="menu_tab">
+      <div class="left_menu_corner"></div>
+      <ul class="menu">
+        <li><a href="{{ URL::asset('') }}index.php/site" class="nav1"> Home</a></li>
+        <li class="divider"></li>
+        <li><a href="{{URL::to('site');}}" class="nav2">Products</a></li>
+        <li class="divider"></li>
+        <li><a href="{{URL::to('specials');}}" class="nav3">Specials</a></li>
+        <li class="divider"></li>
+        <li><a href="{{URL::to('myaccount');}}" class="nav4">My account</a></li>
+        <li class="divider"></li>
+        <li><a href="{{ URL::asset('') }}index.php/<?php if(Auth::user()){ echo 'logouts';} else{echo 'signup';}?>" class="nav4"><?php if(Auth::user()){ echo 'Logout';} else{echo 'Sign Up';}?></a></li>
+        <li class="divider"></li>
+        <li><a href="{{URL::to('site');}}" class="nav5">Shipping</a></li>
+        <li class="divider"></li>
+        <li><a href="{{URL::to('site');}}" class="nav6">Contact Us</a></li>
+        <li class="divider"></li>
+        <li class="currencies">Currencies
+  
+          <select  name="sel1" id="sel1">
+            <option value="1">US Dollar</option>
+            <option value="2">Euro</option>
+          
+          </select>
+    
+        </li>
+    
+
+
+      </ul>
+      <div class="right_menu_corner"></div>
+    </div>
+    <!-- end of menu tab -->
+

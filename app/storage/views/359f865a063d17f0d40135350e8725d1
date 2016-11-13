@@ -1,0 +1,124 @@
+@layout(layouts.admin)
+
+<?php $__env->startSection('content'); ?>
+
+
+
+<?php echo HTML::script('jsfb/modernizr.custom.js');; ?>
+<div class="container-fluid"> 
+      <!-- Page Heading -->
+      <div class="row">
+        <div class="col-lg-12">
+          <h1 class="page-header"> Settings </h1>
+          <ol class="breadcrumb">
+            <li> <i class="fa fa-dashboard"></i> <a href="<?php echo asset('/index.php'); ?>/admin">Dashboard</a> </li>
+            
+
+
+        <li class="active"><span class="glyphicon glyphicon-user"></span> Settings </li>
+            
+
+
+ 
+
+
+          </ol>
+
+
+  
+        </div>
+      </div>
+
+
+
+
+
+
+       <!-- /.row -->
+      <div class="row">
+        <div class="col-lg-12">
+    <div class="panel panel-default">
+    <div class="panel-heading">
+              <h3 class="panel-title"><span class="glyphicon glyphicon-user"></span> Settings</h3>
+            </div>
+
+   
+
+      </div>
+
+
+ <?php echo Form:: open(array('url' => 'updatesetting' ,'method' =>'get','class' => 'login')); ?> <!--contact_request is a router from Route class-->
+  <?php if($errors->any()): ?>
+
+ <?php echo implode('', $errors->all('<div class="valid">:message</div>')); ?>
+<?php endif; ?>
+                <?php echo Form::token(); ?>
+
+    <div id="center" class="resgister_box">
+<!--<h1><span class="sign-up">Add Users</span> </h1>-->
+
+<form class="form-horizontal" role="form" >
+  <div class="form-group">
+    <label><?php echo Form:: label ('title', 'Title*' ); ?></label>
+     <input type="text" required="" name="title" value="<?php echo $set->title; ?>" class="form-control"/>
+  </div>
+   <div class="form-group">
+    <label> <?php echo Form:: label ('meta', 'Meta Tag' ); ?> </label>
+     <input type="text" name="meta" value="<?php echo $set->meta; ?>" class="form-control"/>
+  </div>
+  
+   <div class="form-group">
+    <label> <?php echo Form:: label ('copyright', 'Copyright*' ); ?>  </label>
+     <input type="text" required="" value="<?php echo $set->copyright; ?>" name="copyright" value="" class="form-control"/> 
+  </div>
+
+
+   
+
+
+
+      <div class="form-group">
+  
+
+          
+
+            <?php echo Form::submit('Update', array('class' => 'register_btn')); ?>
+      </div>
+
+
+</form>
+
+
+           </div>   
+            <?php echo Form:: close(); ?><br/>
+
+
+
+
+
+
+
+
+      
+        </div>
+      </div>
+      <!-- /.row --> 
+
+
+
+
+
+ 
+
+
+    
+    </div>
+    <!-- /.container-fluid --> 
+
+
+
+
+
+
+
+<?php $__env->stopSection(); ?>

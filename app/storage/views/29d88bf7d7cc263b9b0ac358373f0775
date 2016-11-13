@@ -1,0 +1,37 @@
+@layout(layouts.fb)
+
+<?php $__env->startSection('content'); ?>
+
+
+<div id="searchings">
+<h1><?php echo $userinfo->name; ?></h1>
+
+<img src="<?php echo Request::root();?>/../<?php echo $profileopen->path; ?>" width="50" height="50"/>
+
+
+<img src="<?php echo Request::root();?>/../<?php echo $profileopen->cover; ?>" width="700" height="100"/>
+<div id="posts">
+<?php foreach( $post as $hello): ?>
+
+<p><?php echo $hello->post; ?></p>
+
+<?php endforeach; ?>
+
+</div>
+</div>
+ <?php echo Form:: open(array('url' => 'friendrequest' , 'method' => 'post','id' => 'contactform','files' => 'true', 'enctype' => 'multipart/form-data')); ?> <!--contact_request is a router from Route class-->
+  <?php if($errors->any()): ?>
+
+ <?php echo implode('', $errors->all('<li>:message</li>')); ?>
+<?php endif; ?>
+    <?php echo Form::token(); ?>
+
+<input name="user" type="hidden" value="<?php echo Auth::user()->rand;; ?>"/>
+<input name="friendrequest" type="hidden" value="<?php echo $userinfo->rand; ?>"/>
+<input type="submit" value="AddFriend"/>
+
+
+</form>
+
+
+<?php $__env->stopSection(); ?>

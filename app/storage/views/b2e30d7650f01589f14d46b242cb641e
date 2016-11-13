@@ -1,0 +1,5 @@
+<img width="250" height="50" alt="" src="<?php echo asset('/'); ?>uploads/images/112014/logos.png">
+
+
+
+You have <a href="<?php echo asset('/'); ?>index.php/profile">1 notification</a>

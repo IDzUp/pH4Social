@@ -1,0 +1,4 @@
+
+
+<?php echo asset('/index.php'); ?>/resetpass/<?php echo $key ?>
+

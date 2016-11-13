@@ -1,0 +1,37 @@
+@layout(layouts.default)
+
+<?php $__env->startSection('content'); ?>
+
+
+ <?php echo Form:: open(array('url' => 'getlogin' , 'method' => 'get','class' => 'form-2')); ?> <!--contact_request is a router from Route class-->
+  <?php if($errors->any()): ?>
+
+ <?php echo implode('', $errors->all('<div class="alert-danger">:message</div>')); ?>
+<?php endif; ?>
+	<?php echo Form::token(); ?>
+
+	<div id="center">
+	<img width="250" height="50" src="../<?php echo $logo->path; ?>" alt="">
+	<ul>
+	<li>
+	<p> <?php echo Form:: label ('email', 'Email*' ); ?> </p>
+	<input type="text" name="email" required="">
+<!-- 	<?php echo Form:: text ('email'); ?> -->
+	</li>
+	<li>
+	<p> <?php echo Form:: label ('password', 'Password*' ); ?> </p>
+	<input type="password" name="password" required="">
+<!-- 	 <?php echo Form:: password ('password'); ?>   -->
+	</li>
+	<li>
+	<p class="clearfix" id="log">
+      <?php echo Form::submit('Login', array('class' => '')); ?>
+    </p> 
+	</li>
+	</ul>    
+	
+</div>
+          
+            <?php echo Form:: close(); ?><br/>
+
+<?php $__env->stopSection(); ?>

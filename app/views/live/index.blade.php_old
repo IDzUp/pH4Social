@@ -1,0 +1,147 @@
+@layout(layouts.live)
+
+@section('content')
+
+  @foreach( array_chunk( $viewevent->getCollection()->all(),3)  as $hellos)
+<div class="row">
+  @foreach( $hellos as $hello)
+      
+  <div class="prod_box">
+        <div class="top_prod_box"></div>
+        <div class="center_prod_box">
+          <div class="product_title"><a href="details/{{ $hello->id }}">  {{ $hello->name }} </a></div>
+          <div class="product_img"><a href="details/{{ $hello->id }}"><img src="../{{ $hello->path }}" width="120" height="90" alt="" border="0" /></a></div>
+          <div class="prod_price"><span class="reduce">350$</span> <span class="price"> {{ $hello->price }}{{ $currency->currency }} </span></div>
+        </div>
+        <div class="bottom_prod_box"></div>
+        <div class="prod_details_tab">
+
+<form action="details/addtocart/{{ $hello->id }}" method="get">
+<input type="hidden" name="name" value="{{ $hello->name }}">
+<input type="hidden" name="price" value="{{ $hello->price }}">
+
+  <input type="hidden" name="rand" value="<?php if(Auth::user()){ echo $rand = Auth::user()->rand;}?>">
+<input type="image" name="submit" border="0" width="20"
+src="../images/cart.gif"
+alt="">
+
+</form>
+
+       <a href="{{URL::to('site');}}" title="header=[Specials] body=[&nbsp;] fade=[on]"><img src="../images/favs.gif" alt="" border="0" class="left_bt" /></a> <a href="{{URL::to('site');}}" title="header=[Gifts] body=[&nbsp;] fade=[on]"><img src="../images/favorites.gif" alt="" border="0" class="left_bt" /></a> <a href="details/{{ $hello->id }}" class="prod_details">details</a> </div>
+      </div>
+
+@endforeach
+
+</div>
+
+@endforeach
+
+{{ $viewevent->links() }}
+@endsection
+
+
+
+
+
+@section('slider')
+
+
+      
+ <div class="fadein">
+
+<img src="../{{ $viewslider->path}} ">
+
+<img src="../{{ $viewslider->path1}} ">
+<img src="../{{ $viewslider->path2}} ">
+<img src="../{{ $viewslider->path3}} ">
+</div>
+
+
+
+
+
+
+
+
+@endsection
+
+
+
+
+
+
+
+
+
+
+@section('sidebar')
+
+  <div class="right_content">
+      <div class="shopping_cart">
+        <div class="cart_title">Shopping cart</div>
+        <div class="cart_details"> <?php 
+$i=0;
+if(Auth::user())
+{
+$sum=0; $i=0; 
+ foreach( $shopping as $key=>$hello)
+{
+  $sum+= $hello->price;
+
+$i++;
+
+
+}
+
+}
+
+
+
+
+
+
+?>
+
+<?php  echo $i; ?> items <br />
+          <span class="border_cart"></span> Total:
+          <?php $i=0; if(Auth::user())
+{ echo $sum; } 
+else
+{
+echo $i;
+
+}
+
+
+?><span class="price">
+
+
+
+       $</span> </div>
+        <div class="cart_icon"><a href="checkout" title="header=[Checkout] body=[&nbsp;] fade=[on]"><img src="../images/shoppingcart.png" alt="" width="48" height="48" border="0" /></a></div>
+      </div>
+      <div class="title_box">What’s new</div>
+      <div class="border_box">
+        <div class="product_title"><a href="{{URL::to('site');}}">Motorola 156 MX-VL</a></div>
+        <div class="product_img"><a href="{{URL::to('site');}}"><img src="../images/p2.gif" alt="" border="0" /></a></div>
+        <div class="prod_price"><span class="reduce">350$</span> <span class="price">270$</span></div>
+      </div>
+      <div class="title_box">Manufacturers</div>
+      <ul class="left_menu">
+        <li class="odd"><a href="{{URL::to('site');}}">Sony</a></li>
+        <li class="even"><a href="{{URL::to('site');}}">Samsung</a></li>
+        <li class="odd"><a href="{{URL::to('site');}}">Daewoo</a></li>
+        <li class="even"><a href="{{URL::to('site');}}">LG</a></li>
+        <li class="odd"><a href="{{URL::to('site');}}">Fujitsu Siemens</a></li>
+        <li class="even"><a href="{{URL::to('site');}}">Motorola</a></li>
+        <li class="odd"><a href="{{URL::to('site');}}">Phillips</a></li>
+        <li class="even"><a href="{{URL::to('site');}}">Beko</a></li>
+      </ul>
+      <div class="banner_adds"> <a href="{{URL::to('site');}}"><img src="../images/bann1.jpg" alt="" border="0" /></a> </div>
+    </div>
+
+
+
+
+
+@endsection

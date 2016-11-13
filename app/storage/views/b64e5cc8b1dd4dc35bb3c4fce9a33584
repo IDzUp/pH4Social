@@ -1,0 +1,16 @@
+@layout(layouts.live)
+
+<?php $__env->startSection('content'); ?>
+
+<div id="profile">
+
+
+</div>
+
+<?php $__env->stopSection(); ?>
+
+
+
+
+
+

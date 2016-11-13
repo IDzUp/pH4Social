@@ -1,0 +1,44 @@
+@layout(layouts.default)
+
+<?php $__env->startSection('content'); ?>
+
+
+
+
+
+ <?php echo Form:: open(array('url' => 'getregister' ,'method' =>'get','class' => 'form-2')); ?> <!--contact_request is a router from Route class-->
+  <?php if($errors->any()): ?>
+
+ <?php echo implode('', $errors->all('<li>:message</li>')); ?>
+<?php endif; ?>
+         		<?php echo Form::token(); ?>
+
+	<div id="center">
+<h1><span class="sign-up"><?php echo HTML::Link('login', 'Login'); ?></span> or <span class="log-in">Register </span></h1>
+ <p class="float">
+       
+       <?php echo Form:: label ('email', 'Email Name*' ); ?> 
+            <?php echo Form:: text ('email'); ?>  
+    </p>
+    <p class="float">
+   <?php echo Form:: label ('password', 'Password*' ); ?> 
+            <?php echo Form:: password ('password'); ?> 
+    </p>
+    <p class="clearfix">
+  
+           <?php echo HTML::Link('cancel', 'cancel'); ?>
+
+            <?php echo Form::submit('Register', array('class' => 'you css class for button')); ?>
+    </p> 
+
+
+            
+          </div>
+ 			 
+	
+			 
+ 
+ 	
+            <?php echo Form:: close(); ?><br/>
+
+<?php $__env->stopSection(); ?>

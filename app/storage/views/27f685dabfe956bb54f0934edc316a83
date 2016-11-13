@@ -1,0 +1,103 @@
+@layout(layouts.admin)
+
+<?php $__env->startSection('content'); ?>
+
+
+
+   <div class="grid_9">
+    <h1 class="newsletter">Contact Us</h1>
+    </div>
+    <!--RIGHT TEXT/CALENDAR-->
+    <div class="grid_6" id="eventbox"><a href="#" class="inline_calendar">You don't have any events for today! Yay!</a>
+    	<div class="hidden_calendar"></div>
+    </div>
+    <!--RIGHT TEXT/CALENDAR END-->
+    <div class="clear">
+    </div>
+    <!--  TITLE END  -->    
+    <!-- #PORTLETS START -->
+    <div id="portlets">
+    <!-- FIRST SORTABLE COLUMN START -->
+
+
+
+	<div id="box-table-a" class="CSS_Table_Example">
+			<table >
+				<tr> 
+					<td>
+						Id
+					</td>
+					<td >
+						Email
+					</td>
+					<td>
+						Name
+					</td>
+					<td >
+						Subject
+					</td>
+					<td>
+						Message
+					</td>
+					<td>
+						Action
+					</td>
+				</tr>
+				<?php foreach( $viewcontact as $hello): ?>
+				<tr>
+					<td >
+						
+						<?php echo $hello->id; ?>  
+					
+					</td>
+					<td >
+						
+						<?php echo $hello->email; ?>  
+					
+					</td>
+
+					<td >
+						
+						<?php echo $hello->name; ?>  
+					
+					</td>
+					<td >
+						
+						<?php echo $hello->subject; ?>  
+					
+					</td>
+
+					<td >
+						
+						<?php echo $hello->message; ?>  
+					
+					</td>
+					<td >
+						
+				 		
+						<?php echo HTML::link('/contact/edit/' . $hello->id, '',array('class="edit_icon"')); ?>
+
+
+			
+
+						<?php echo HTML::link('/contact/delete/' . $hello->id, '',array('class="delete_icon"')); ?>
+				
+					</td>
+			
+			
+				</tr>
+				
+		
+			
+					<?php endforeach; ?>
+			</table>
+		</div>
+
+
+
+</div>
+
+
+
+
+<?php $__env->stopSection(); ?>

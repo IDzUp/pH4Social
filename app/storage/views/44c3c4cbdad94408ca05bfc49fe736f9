@@ -1,0 +1,1684 @@
+@layout(layouts.fbprofile)
+
+<?php $__env->startSection('content'); ?>
+
+
+<section>
+<div id="help"></div>
+<style type="text/css">
+#help {
+ 
+    height: 30px;
+    left: 50%;
+    position: fixed;
+    width: 30px;
+    z-index: 999999;
+    display: none;
+    top:42%;
+
+}  
+
+</style>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="cover"> 
+
+
+
+<img src="<?php echo asset('/'); ?>/<?php if($proinfo){ echo $proinfo->cover;} elseif($userinfo->sex=='male'){ echo 'imagesfb/male_cover.jpg';}else { echo 'imagesfb/female_cover.jpg';} ?>" width="1170" height="334" alt=""  class="img-rounded"/>
+
+
+
+
+
+
+
+
+
+      </div>
+      <div class="addyour">
+        <ul>
+          <li>
+
+
+
+
+
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="user_sec">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-2 col-md-3 col-sm-3">
+        <div class="row">
+        <div class="bg_nav">
+          <div class="nav">
+            <div class="userphoto"> 
+        
+         
+<img src="<?php echo asset('/'); ?>/<?php if($proinfo){ echo $proinfo->path;} elseif($userinfo->sex=='male'){ echo 'imagesfb/male.jpg';}else { echo 'imagesfb/female.jpg';} ?>" alt="" class="img-circle" width="170" height="170"/>
+
+
+
+            </div>
+
+                        <div id="nameuser"><?php echo $userinfo->name; ?></div>
+            <ul>
+              <li>
+
+              </li>
+
+           
+              <li><a href="<?php echo asset('/index.php'); ?>/messages/<?php echo $userinfo->id; ?>"><span class="glyphicon glyphicon-tasks"></span> <?php echo trans ('greeting.Messages'); ?></a> </li>
+              <li><a href="<?php echo asset('/index.php/'); ?>/gallery/<?php echo $userinfo->id; ?>"><span class="glyphicon glyphicon-calendar"></span> <?php echo trans ('greeting.Gallery'); ?></a></li>
+              <li><a href="<?php echo asset('/index.php/'); ?>/about/<?php echo $userinfo->id; ?>"><span class="glyphicon glyphicon-calendar"></span>About</a></li>
+              <?php if($blocks=='yes')
+              {
+                ?>
+
+   <li><a href="<?php echo asset('/index.php/'); ?>/unblock/<?php echo $userinfo->id; ?>"><span class="glyphicon glyphicon-calendar"></span> UnBlock</a></li> 
+                <?php
+
+
+              }
+              else
+              {
+                ?>
+
+                <li><a href="<?php echo asset('/index.php/'); ?>/block/<?php echo $userinfo->id; ?>"><span class="glyphicon glyphicon-calendar"></span> Block</a></li> 
+            <?php
+              }
+              ?>
+             
+             <!--  <li><a href="#"><span class="glyphicon glyphicon-music"></span><?php echo trans ('greeting.Upload a Song'); ?> </a></li>
+              <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span><?php echo trans ('greeting.Create a Listing'); ?></a></li>
+              <li><a href="#"><span class="glyphicon glyphicon-star"></span> <?php echo trans ('greeting.Create a Page'); ?></a></li> -->
+            </ul>
+          </div>
+      </div>
+        </div>
+      </div>
+      <div class="col-lg-7 col-md-6 col-sm-9">
+
+<div class="border"> 
+   
+          
+  
+
+          <div class="col-lg-12">
+            <div class="pull-right padding2"> <span class="dropdown ">
+
+<?php 
+if($accept)
+{
+?>
+
+
+
+     <?php echo Form:: open(array('url' => 'acceptfriend' ,'method' =>'get','class' => 'form-2')); ?> <!--contact_request is a router from Route class-->
+  <?php if($errors->any()): ?>
+
+ <?php echo implode('', $errors->all('<div class="alert alert-danger" role="alert">:message</div>')); ?>
+<?php endif; ?>
+            <?php echo Form::token(); ?>
+    
+              <input type="hidden" name="mainuser" class="" id="" value="<?php echo $accept->user;; ?>">
+       
+               
+              <input type="hidden" name="otheruser" class="" id="" value="<?php echo $accept->friendrequest;; ?>">
+       
+           
+            <button class="pull-right accpet_btn" type="submit" >
+            <span class="glyphicon glyphicon-eye-open"></span>
+
+            Accept</button>
+          </form>
+
+
+<?php
+
+
+}
+
+
+
+elseif($add==0 && ($adds!=0 || $addss!=0))
+{?>
+
+
+
+<?php echo Form:: open(array('url' => 'unfriendrequest' , 'method' => 'post','id' => 'contactform','files' => 'true', 'enctype' => 'multipart/form-data')); ?> <!--contact_request is a router from Route class-->
+  <?php if($errors->any()): ?>
+
+ <?php echo implode('', $errors->all('<li>:message</li>')); ?>
+<?php endif; ?>
+    <?php echo Form::token(); ?>
+
+<input name="user" type="hidden" value="<?php echo Auth::user()->rand;; ?>"/>
+<input name="friendrequest" type="hidden" value="<?php echo $userinfo->rand; ?>"/>
+
+<?php $url='http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; 
+
+?>
+ <input type="hidden" value="<?php echo $url; ?>" name="urlid"/> 
+
+
+
+<button name="submit" id="submit" class="all_btn" type="submit">Unfriend </button>
+
+
+</form>
+
+<?php
+}
+
+
+elseif($add!=0)
+{?>
+
+
+
+  <?php echo Form:: open(array('url' => 'unfriendrequest' , 'method' => 'post','id' => 'contactform','files' => 'true', 'enctype' => 'multipart/form-data')); ?> <!--contact_request is a router from Route class-->
+  <?php if($errors->any()): ?>
+
+ <?php echo implode('', $errors->all('<li>:message</li>')); ?>
+<?php endif; ?>
+    <?php echo Form::token(); ?>
+
+<input name="user" type="hidden" value="<?php echo Auth::user()->rand;; ?>"/>
+<input name="friendrequest" type="hidden" value="<?php echo $userinfo->rand; ?>"/>
+
+<?php $url='http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; 
+
+?>
+ <input type="hidden" value="<?php echo $url; ?>" name="urlid"/> 
+
+
+
+<button name="submit" id="submit" class="all_btn" type="submit">Unfriend </button>
+
+
+</form>
+
+<?php
+}
+
+
+
+
+
+
+
+else
+{
+?>
+      <?php echo Form:: open(array('url' => 'friendrequest' , 'method' => 'post','id' => 'contactform','files' => 'true', 'enctype' => 'multipart/form-data')); ?> <!--contact_request is a router from Route class-->
+  <?php if($errors->any()): ?>
+
+ <?php echo implode('', $errors->all('<li>:message</li>')); ?>
+<?php endif; ?>
+    <?php echo Form::token(); ?>
+
+<input name="user" type="hidden" value="<?php echo Auth::user()->rand;; ?>"/>
+<input name="friendrequest" type="hidden" value="<?php echo $userinfo->rand; ?>"/>
+
+<?php $url='http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; 
+
+?>
+ <input type="hidden" value="<?php echo $url; ?>" name="urlid"/> 
+
+
+<button name="submit" id="submit" class="all_btn" type="submit">Add friend </button>
+
+
+</form>
+<?php
+}
+?>
+
+
+
+
+
+
+
+            
+             <br/>
+            </div>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <br/>
+        <span class="hr_bor"></span>
+
+    
+<script type="text/javascript" src="http://ajax.googleapis.com/
+ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function()
+{
+$(".likes").click(function()
+{
+var id=$(this).attr("id");
+var name=$(this).attr("name");
+//var dataString = 'id='+ id + '&name='+ name;
+
+//var dataString = 'id='+ id;
+var classs=$(this).attr("class");
+if(classs=='likes glyphicon glyphicon-thumbs-down' || classs=='glyphicon-thumbs-down likes glyphicon')
+{
+
+
+
+$(''+id+'').removeClass('glyphicon-thumbs-down').addClass('glyphicon-thumbs-up');
+
+}
+else
+{
+
+
+  $(''+id+'').removeClass('glyphicon-thumbs-up').addClass('glyphicon-thumbs-down');
+
+}
+
+ $.ajax({
+
+    type: "GET",
+    url: "<?php echo asset('/'); ?>/index.php/rating/"+name,
+    data: '',
+    dataType: 'json',
+    cache: false,
+    success: function(data)
+    {
+
+         for(i=0; i<Object.keys(data).length; i++)
+                {
+
+
+                      
+    var id='span#countlike'+data[i].idss;   
+
+
+    $(id).html(data[i].likes); 
+
+ 
+               
+                }
+  
+
+    }
+    });
+
+});
+
+
+});
+</script>
+  
+<script type="text/javascript">
+  
+function myFunction(id) {
+
+ 
+
+if(id=='')
+{
+alert('Required comment section');
+}
+else
+{
+  
+
+ $.ajax({
+
+    type: "GET",
+    url: "<?php echo asset('/'); ?>/index.php/postcomdelete/"+id,
+  //  data: { id: id, user: user, comment: comment, name: name},
+    dataType: 'json',
+    cache: false,
+    success: function(data)
+    {
+
+
+
+
+  var comment='#cc'+data[0].idss; 
+  $(comment).hide('slow');
+
+
+    }
+    });
+}
+
+
+}
+
+
+function savepost(id) {
+
+var inputval='input#pp'+id;
+var postval=$(''+inputval+'').val();
+
+if(postval=='')
+{
+alert('Required Input text field');
+}
+else
+{
+  
+
+ $.ajax({
+
+    type: "GET",
+    url: "<?php echo asset('/'); ?>/index.php/postupdate/"+id,
+    data: { value: postval},
+    dataType: 'json',
+    cache: false,
+    success: function(data)
+    {
+
+
+
+$('input#pp'+data[0].idss+'').replaceWith('<p id="edit'+data[0].idss+'">'+data[0].valuess+'</p>');
+$('button.ed'+data[0].idss+'').show("slow");
+$('button#sav'+data[0].idss+'').hide("slow");
+    }
+    });
+}
+
+
+}
+
+function savecom(id) {
+
+var inputval='input#cc'+id;
+var postval=$(''+inputval+'').val();
+
+if(postval=='')
+{
+alert('Required Input text field');
+}
+else
+{
+  
+
+ $.ajax({
+
+    type: "GET",
+    url: "<?php echo asset('/'); ?>/index.php/comupdate/"+id,
+    data: { value: postval},
+    dataType: 'json',
+    cache: false,
+    success: function(data)
+    {
+
+
+
+$('input#cc'+data[0].idss+'').replaceWith('<p id="ppp'+data[0].idss+'">'+data[0].valuess+'</p>');
+$('button.eds'+data[0].idss+'').show("slow");
+$('button#savcc'+data[0].idss+'').hide("slow");
+    }
+    });
+}
+
+
+}
+
+
+</script>
+<script type="text/javascript">
+$(document).ready(function()
+{
+
+
+ $(".fancybox").on("click", function(){
+    
+var id=$(this).attr("id");
+var divs='#post'+id;
+var left='#fleft'+id;
+var right='#rleft'+id;
+var img='a#'+id+' > img';
+var comment='#rleft'+id+' #ppcomment'+id;
+var close='.cl'+id;
+var btn='button#'+id;
+ //   $("#post11").css("display", "block");
+     $('body').css({
+            "background":"none repeat scroll 0 0 #000000",
+            
+                 "display":"table",
+              "height":"100% !important",
+                 "table-layout":"fixed",
+              "width":"100%",
+                "overflow":"hidden"
+     
+       });
+
+  $(''+btn+'').css({
+            "display":"none"
+       });
+
+
+    $(''+close+'').css({
+            "display":"block"
+       });
+
+ //   $("#post11").css("display", "block");
+
+      $(''+divs+'').css({
+    
+           "position":"fixed",
+            "top": "10%",
+            "left": "50%",
+            "width": "5%",
+            "height": "auto",
+            "z-index": "101",
+            "background-color":"#fff", 
+            "display":"block"
+
+
+       });
+
+        $('.back').css({
+    
+            "background-color":"#000"
+      
+       });
+
+    $(''+left+'').css({
+    
+            "float":"left",
+            "width": "50%",
+       "height": "506px",
+      "background":"none repeat scroll 0 0 #ebedf0",
+            "border-right": "1px solid #ccc",
+         "overflow": "scroll",
+            "overflow-x":"hidden",
+      
+
+       });
+
+  
+        $(''+right+'').css({
+    
+            "float":"left",
+            "height": "506px",
+            "overflow": "scroll",
+            "overflow-x":"hidden",
+            "width": "50%"
+         
+
+
+       });
+
+
+     $(''+img+'').css({
+    
+            "max-height":"300px"
+          
+       });
+
+       $('.message_text').css({
+    
+            "min-height":"300px"
+          
+       });
+
+           $(''+comment+'').css({
+    
+            "min-height":"379px"
+        
+
+       });
+
+
+
+    
+    
+    $(''+divs+'').animate({
+       'width' : '98%',
+       'left' : '1%'
+       }, 200, "swing" , function(){
+       $("#post11").animate({
+          'height' : '80%', 
+          'top' : '14%'
+       }, 200, "swing", function(){});
+
+
+      });
+
+
+
+  $(document).on("keydown", function(event){
+   if(event.keyCode === 27){
+
+      $(''+btn+'').css({
+            "display":"block"
+       });
+
+
+
+   // $(".modal-mask").css("display", "");
+
+          $('body').css({
+            "background":"",
+              "opacity":"",
+                 "display":"",
+              "height":"",
+                 "table-layout":"",
+              "width":"",
+              "overflow":""
+     
+       });
+
+
+
+       $(''+divs+'').css({
+            "position":"",
+            "top": "",
+            "left": "",
+            "width": "",
+            "height": "",
+            "z-index": "",
+            "background-color":"", 
+            "display":""
+       });
+
+        $(''+left+'').css({
+    
+                      "float":"",
+            "width": "",
+       "height": "",
+      "background":"",
+            "border-right": "",
+         "overflow": "",
+            "overflow-x":"",
+      
+
+       });
+
+        $(''+right+'').css({
+    
+            "float":"",
+            "height": "",
+            "overflow": "",
+            "width": "",
+            "overflow-x":"",
+         
+
+
+       });
+
+          $(''+img+'').css({
+    
+            "max-height":""
+          
+       });
+
+              $('.message_text').css({
+    
+            "min-height":""
+          
+       });
+
+            $(''+comment+'').css({
+    
+            "min-height":""
+        
+
+       });
+    }
+  });
+
+
+
+
+    });
+
+
+
+ $(".clx").on("click", function(){
+
+         $('body').css({
+            "background":"",
+              "opacity":"",
+                 "display":"",
+              "height":"",
+                 "table-layout":"",
+              "width":"",
+              "overflow":""
+     
+       });
+
+
+
+  var id=$(this).attr("name");
+
+var divs='#post'+id;
+var left='#fleft'+id;
+var right='#rleft'+id;
+var img='a#'+id+' > img';
+var comment='#rleft'+id+' #ppcomment'+id;
+var close='.cl'+id;
+var btn='button#'+id;
+    $(''+close+'').css({
+            "display":"none"
+       });
+
+
+
+      $(''+btn+'').css({
+            "display":"block"
+       });
+
+       $(''+divs+'').css({
+            "position":"",
+            "top": "",
+            "left": "",
+            "width": "",
+            "height": "",
+            "z-index": "",
+            "background-color":"", 
+            "display":""
+       });
+          $(''+left+'').css({
+    
+                            "float":"",
+            "width": "",
+       "height": "",
+      "background":"",
+            "border-right": "",
+         "overflow": "",
+            "overflow-x":"",
+      
+
+       });
+
+        $(''+right+'').css({
+    
+            "float":"",
+            "height": "",
+            "overflow": "",
+            "width": "",
+            "overflow-x":"",
+         
+
+
+       });
+
+          $(''+img+'').css({
+    
+            "max-height":""
+          
+       });
+
+              $('.message_text').css({
+    
+            "min-height":""
+          
+       });
+
+       $(''+comment+'').css({
+    
+            "min-height":""
+        
+
+       });
+
+
+    
+  });
+$( document ).on( "click",".clxs", function(e) {
+
+
+  var id=$(this).attr("name");
+
+
+var close='.clfcc'+id;
+
+var divs='.popupfcc'+id;
+
+    $(''+close+'').css({
+            "display":"none"
+       });
+
+
+   $(''+divs+'').css({
+    
+            "position":"",
+            "top": "",
+            "left": "",
+            "width": "",
+            "height": "",
+            "z-index": "",
+            "background-color":"", 
+            "display":"",
+            "text-align":"",
+            "max-height":"",
+            "overflow": "",
+            "overflow-x":""
+
+
+       });
+
+          $('body').css({
+            "background":"",
+            
+              "display":"",
+              "height":"",
+                 "table-layout":"",
+              "width":"",
+                "overflow":""
+     
+       });
+
+    
+  });
+
+
+ $( document ).on( "click",".fancyboxs", function(e) {
+    
+var id=$(this).attr("id");
+var close='.cl'+id;
+
+var divs='.popup'+id;
+
+
+    $(''+close+'').css({
+            "display":"block"
+       });
+
+     $(''+divs+'').css({
+    
+            "position":"fixed",
+            "top": "10%",
+            "left": "50%",
+            "width": "5%",
+            "height": "auto",
+            "z-index": "101",
+            "background-color":"#fff", 
+            "display":"block",
+            "text-align":"center",
+            "max-height":"550px",
+            "overflow": "scroll",
+            "overflow-x":"hidden"
+       });
+
+      
+
+        $('body').css({
+            "background":"none repeat scroll 0 0 #000000",
+            
+                 "display":"table",
+              "height":"100% !important",
+                 "table-layout":"fixed",
+              "width":"100%",
+                "overflow":"hidden"
+     
+       });
+
+
+     $(''+divs+'').animate({
+       'width' : '98%',
+       'left' : '1%'
+       }, 200, "swing" , function(){
+       $("#post11").animate({
+          'height' : '80%', 
+          'top' : '14%'
+       }, 200, "swing", function(){});
+
+
+      });
+
+
+  $(document).on("keydown", function(event){
+   if(event.keyCode === 27){
+   // $(".modal-mask").css("display", "");
+
+
+    $(''+close+'').css({
+            "display":"none"
+       });
+
+
+
+       $(''+divs+'').css({
+    
+            "position":"",
+            "top": "",
+            "left": "",
+            "width": "",
+            "height": "",
+            "z-index": "",
+            "background-color":"", 
+            "display":"",
+            "text-align":"",
+            "max-height":"",
+            "overflow": "",
+            "overflow-x":""
+
+
+       });
+
+          $('body').css({
+            "background":"",
+            
+                 "display":"",
+              "height":"",
+                 "table-layout":"",
+              "width":"",
+                "overflow":""
+     
+       });
+
+
+    }
+  });
+
+
+
+
+    });
+
+
+$(".comdel").click(function(e)
+{
+
+      
+var id=$(this).attr("id");
+
+if(id=='')
+{
+alert('Required comment section');
+}
+else
+{
+  
+
+ $.ajax({
+
+    type: "GET",
+    url: "<?php echo asset('/'); ?>/index.php/postcomdelete/"+id,
+  //  data: { id: id, user: user, comment: comment, name: name},
+    dataType: 'json',
+    cache: false,
+    success: function(data)
+    {
+
+
+
+
+  var comment='#cc'+data[0].idss; 
+  $(comment).hide('slow');
+
+
+    }
+    });
+}
+
+
+
+});
+
+
+$(".postdelete").click(function(e)
+{
+
+      
+var id=$(this).attr("id");
+
+if(id=='')
+{
+alert('Required comment section');
+}
+else
+{
+  
+
+ $.ajax({
+
+    type: "GET",
+    url: "<?php echo asset('/'); ?>/index.php/postdelete/"+id,
+  //  data: { id: id, user: user, comment: comment, name: name},
+    dataType: 'json',
+    cache: false,
+    success: function(data)
+    {
+
+
+
+
+  var comment='#post'+data[0].idss; 
+  $(comment).hide('slow');
+
+
+    }
+    });
+}
+
+
+
+});
+
+});
+</script>
+
+   <?php foreach( $post as $hello): ?>
+<?php
+if($hello['id']!='')
+{
+
+?>
+
+
+
+
+<style type="text/css">
+  
+label#imagess<?php echo $hello['id']; ?> {
+
+width: 16px;
+
+height: 14px;
+
+background: url('../../imagesfb/cameras.png') 0 0 no-repeat;
+
+border:none;
+
+margin: 13px 12px;
+
+font-weight:bold;
+ background-size: 16px 14px;
+
+}
+
+input#imagesss<?php echo $hello['id']; ?>{
+
+  position: absolute;
+  visibility: hidden;
+}
+
+label#imagessvideos<?php echo $hello['id']; ?> {
+
+width:16px;
+
+height: 14px;
+
+background: url('../../imagesfb/video1.png') 0 0 no-repeat;
+
+border:none;
+
+margin: 13px 10px;
+
+font-weight:bold;
+ background-size: 16px 14px;
+
+}
+
+input#imagessvideo<?php echo $hello['id']; ?>{
+
+  position: absolute;
+  visibility: hidden;
+}
+
+
+</style>
+
+<script type="text/javascript">
+  $(function () {
+
+
+    $("label.imgg<?php echo $hello['id']; ?>").data('default', $("label[class=imgg<?php echo $hello['id']; ?>]").text()).click(function () {
+        $(".imgg<?php echo $hello['id']; ?>").click()
+    });
+    $(".imggs<?php echo $hello['id']; ?>").on('change', function () {
+        var files = this.files;
+        if (!files.length) {
+            $("label[class=imgg<?php echo $hello['id']; ?>]").text($(".imggs<?php echo $hello['id']; ?>").data('default'));
+            return;
+        }
+    
+        document.getElementById("imagess<?php echo $hello['id']; ?>").style.backgroundImage = 'url(../../imagesfb/camerasred.png)'; 
+  
+    });
+
+
+    $("label.vdo<?php echo $hello['id']; ?>").data('default', $("label[class=vdo<?php echo $hello['id']; ?>]").text()).click(function () {
+        $(".vdo<?php echo $hello['id']; ?>").click()
+    });
+    $(".vdos<?php echo $hello['id']; ?>").on('change', function () {
+        var files = this.files;
+        if (!files.length) {
+            $("label[class=vdo<?php echo $hello['id']; ?>]").text($(".vdos<?php echo $hello['id']; ?>").data('default'));
+            return;
+        }
+    
+        document.getElementById("imagessvideos<?php echo $hello['id']; ?>").style.backgroundImage = 'url(../../imagesfb/video1red.png)'; 
+  
+    });
+
+
+
+
+
+
+
+
+
+
+});
+
+
+
+</script>
+
+
+
+
+
+
+<script type="text/javascript">
+$(document).ready(function()
+{
+
+
+  $("#comments<?php echo $hello['id']; ?>").on('submit',(function(e) {
+    e.preventDefault();
+$('#help').show();
+ $('#help').html('<img src="http://preloaders.net/preloaders/287/Filling%20broken%20ring.gif"> loading...');
+
+     var id = $("#post_id<?php echo $hello['id']; ?>").val();
+
+    $.ajax({
+      url: "../ajaxreq/"+id,     // Url to which the request is send
+      type: "POST",             // Type of request to be send, called as method
+      data:  new FormData(this),    // Data sent to server, a set of key/value pairs representing form fields and values 
+      contentType: false,           // The content type used when sending data to the server. Default is: "application/x-www-form-urlencoded"
+      dataType: 'json',
+      cache: false,         // To unable request pages to be cached
+      processData:false,        // To send DOMDocument or non processed data file it is set to false (i.e. data should not be in the form of string)
+      success: function(data)     // A function to be called if request succeeds
+        {
+
+$('#help').hide("slow");
+
+if(data[0].targetPath!=null)
+{
+
+var insert_id=data[0].insert_id; 
+
+var idss=data[0].idss; 
+var comment=data[0].comment; 
+var names=data[0].names; 
+var targetPath=data[0].targetPath;   
+var datas='<div id="cc'+insert_id+'" class="coment_text"><h3>'+names+'</h3>'+'<p id="ppp'+insert_id+'">'+comment+'</p><br><div class="popupfcc'+insert_id+'"><div style="display:none; float:right;" class="clfcc'+insert_id+'"><a class="clxs" name="'+insert_id+'" style="cursor:pointer;"><span class="glyphicon glyphicon-remove"></span></a></div> <div style="cursor:pointer;" id="fcc'+insert_id+'" class="fancyboxs"><img src="../../'+targetPath+'" style="max-width:100%;"></div></div><button id="'+insert_id+'" class="comedit eds'+insert_id+'"><span class="">edit</span></button><button class="comdel" id="<?php echo $hello["id"]; ?>" onclick="myFunction('+insert_id+')"><span class="glyphicon glyphicon-remove"></span></button></div>';
+$("#ppcomment<?php echo $hello['id']; ?>").append(datas);
+$("#comment<?php echo $hello['id']; ?>").val('');
+
+$("form#comments<?php echo $hello['id']; ?> input#imagesss<?php echo $hello['id']; ?>").val('');
+
+$("label#imagess<?php echo $hello['id']; ?>").css('background-image','url(../../imagesfb/cameras.png)');
+}
+else if(data[0].targetvideo!=null)
+{
+
+var insert_id=data[0].insert_id; 
+
+var idss=data[0].idss; 
+var comment=data[0].comment; 
+var names=data[0].names; 
+var targetvideo=data[0].targetvideo;   
+var datas='<div id="cc'+insert_id+'" class="coment_text"><h3>'+names+'</h3>'+'<p id="ppp'+insert_id+'">'+comment+'</p><br><video width="320" height="240" controls><source src="../../'+targetvideo+'" type="video/mp4"><source src="../../'+targetvideo+'" type="video/ogg"></video><button id="'+insert_id+'" class="comedit eds'+insert_id+'"><span class="">edit</span></button><button class="comdel" id="<?php echo $hello["id"]; ?>" onclick="myFunction('+insert_id+')"><span class="glyphicon glyphicon-remove"></span></button></div>';
+$("#ppcomment<?php echo $hello['id']; ?>").append(datas);
+$("#comment<?php echo $hello['id']; ?>").val('');
+
+
+$("form#comments<?php echo $hello['id']; ?> input#imagessvideo<?php echo $hello['id']; ?>").val('');
+
+
+$("label#imagessvideos<?php echo $hello['id']; ?>").css('background-image','url(../../imagesfb/video1.png)');
+}
+
+else
+{
+  var insert_id=data[0].insert_id; 
+
+var idss=data[0].idss; 
+var comment=data[0].comment; 
+var names=data[0].names;   
+var datas='<div id="cc'+insert_id+'" class="coment_text"><h3>'+names+'</h3>'+'<p id="ppp'+insert_id+'">'+comment+'</p><button id="'+insert_id+'" class="comedit eds'+insert_id+'"><span class="">edit</span></button><button class="comdel" id="<?php echo $hello["id"]; ?>" onclick="myFunction('+insert_id+')"><span class="glyphicon glyphicon-remove"></span></button></div>';
+$("#ppcomment<?php echo $hello['id']; ?>").append(datas);
+$("#comment<?php echo $hello['id']; ?>").val('');
+
+
+
+}
+
+
+
+
+
+
+       
+        }         
+     });
+  }));
+
+// Function to preview image
+  $(function() {
+        $("#file").change(function() {
+      $("#message").empty();         // To remove the previous error message
+      var file = this.files[0];
+      var imagefile = file.type;
+      var match= ["image/jpeg","image/png","image/jpg"];  
+      if(!((imagefile==match[0]) || (imagefile==match[1]) || (imagefile==match[2])))
+      {
+      $('#previewing').attr('src','noimage.png');
+      $("#message").html("<p id='error'>Please Select A valid Image File</p>"+"<h4>Note</h4>"+"<span id='error_message'>Only jpeg, jpg and png Images type allowed</span>");
+      return false;
+      }
+            else
+      {
+                var reader = new FileReader();  
+                reader.onload = imageIsLoaded;
+                reader.readAsDataURL(this.files[0]);
+            }   
+        });
+    });
+  function imageIsLoaded(e) { 
+    $("#file").css("color","green");
+        $('#image_preview').css("display", "block");
+        $('#previewing').attr('src', e.target.result);
+    $('#previewing').attr('width', '250px');
+    $('#previewing').attr('height', '230px');
+  };
+
+
+$(".comedit").click(function(e)
+{
+
+      
+var id=$(this).attr("id");
+
+
+var para = 'p#ppp'+id;
+
+var postval=$(para).text();
+
+
+if(id=='')
+{
+alert('Required comment section');
+}
+else
+{
+
+$(''+para+'').replaceWith( '<input type="text" name="cc'+id+'" id="cc'+id+'" value="'+postval+'"/><button id="savcc'+id+'" onclick="savecom('+id+');">save</button>' );
+$('button.eds'+id+'').hide("slow");
+   
+}
+
+
+
+});
+
+
+
+$(".postedit").click(function(e)
+{
+
+      
+var id=$(this).attr("id");
+
+
+
+
+
+var para = 'p#edit'+id;
+
+var postval=$(para).text();
+
+
+if(id=='')
+{
+alert('Required comment section');
+}
+else
+{
+
+$(''+para+'').replaceWith( '<input type="text" name="pp'+id+'" id="pp'+id+'" value="'+postval+'"/><button id="sav'+id+'" onclick="savepost('+id+');">save</button>' );
+$('button.ed'+id+'').hide("slow");
+   
+}
+
+
+
+});
+
+
+
+
+
+
+
+
+
+});
+</script>
+
+
+
+
+
+
+
+
+        <div class="back"></div>
+
+        <div class="message_box" id="post<?php echo $hello['id']; ?>">
+
+<div id="fleft<?php echo $hello['id']; ?>">
+
+          <div class="u-nformation"><img  alt="iamge" class="img-circle img_wid" src="<?php echo asset(''); ?>/<?php if($allimg) { foreach($allimg as $img){ if($img->user_rand== $hello['user_rand']) {  $mm=$img->thumb; echo $mm; break; } else { $mm=''; } } } if($mm==''){ foreach($alluser as $all) { if($all->rand==$hello['user_rand']) { if($all->sex=='male') { echo 'imagesfb/male.jpg'; } else { echo 'imagesfb/female.jpg'; } } }  } ?>">
+
+ <a href="<?php echo asset('index.php'); ?>/profileopen/<?php foreach($alluser as $img){ if($img->rand== $hello['user_rand']) { echo $img->id; }  } ?>"><?php foreach($alluser as $img){ if($img->rand== $hello['user_rand']) { echo $img->name; }  } ?></a> 
+        
+  <?php
+    if(Auth::user()->username=='admin')
+    {?>
+  <button id="<?php echo $hello['id']; ?>" class="postdelete pull-right"><span class="glyphicon glyphicon-remove"></span></button>
+         
+<?php
+    }?> 
+
+        
+
+
+                   </div>
+
+
+
+
+
+
+                          <?php if($hello['path'])
+        {?>
+        <div class="message_text">
+        <a  class="fancybox" id="<?php echo $hello['id']; ?>" style="cursor:pointer;" />
+         <img src="<?php echo asset('/'); ?>/<?php echo $hello['path']; ?>" style="max-width:100%;"/></a>
+          </div>
+
+<?php
+        }?>
+          <div class="message_text1">
+
+            <p id="edit<?php echo $hello['id']; ?>"><?php echo $hello['post']; ?> </p>
+  <?php
+ if(Auth::user()->username=='admin')
+    {?>
+
+ <button id="<?php echo $hello['id']; ?>" class="postedit ed<?php echo $hello['id']; ?>"><span class=""><?php echo trans ('greeting.edit'); ?></span></button>
+    
+
+<?php
+    }?> 
+          
+
+          </div>
+          <div class="comment_box"> <span class="date_text"></span>
+            <div class="like">
+              <ul>
+                <li><span class="glyphicon glyphicon-comment"></span></li>
+                  <li><span id="countlike<?php echo $hello['id']; ?>"><?php echo $hello['like']; ?></span></li>
+             <li><span>
+                   <a style="cursor:pointer;" class="likes glyphicon glyphicon-thumbs-down" id="a<?php echo $hello['id']; ?>" name="<?php echo $hello['id']; ?>"></a> 
+
+                 </span>
+
+
+                 </li>
+  
+               <!--  <li><span class="glyphicon glyphicon-share-alt"></span></li> -->
+         <!--        <li><span class="glyphicon glyphicon-flag"></span></li>
+                <li><span class="glyphicon glyphicon-fullscreen"></span></li> -->
+              </ul>
+            </div>
+            
+          </div>
+
+
+</div>
+
+<div id="rleft<?php echo $hello['id']; ?>"> 
+
+<div class="cl<?php echo $hello['id']; ?>" style="display:none; float:right;"><a style="cursor:pointer;" name="<?php echo $hello['id']; ?>" class="clx"><span class="glyphicon glyphicon-remove"></span></a></div>    
+<div class="message_text" id="ppcomment<?php echo $hello['id']; ?>">
+<?php foreach( $postcomment as $hellos): ?>
+
+<?php
+if($hellos->post_id==$hello['id'])
+{?>
+<div id="cc<?php echo $hellos->id; ?>" class="coment_text">
+   <h3><?php foreach( $userss as $hh): ?>
+<?php
+if($hh->rand==$hellos->user)
+{?>
+   <?php echo $hh->name; ?>
+   <?php
+ }
+ ?>
+  <?php endforeach; ?>
+    </h3>
+    <p id="ppp<?php echo $hellos->id; ?>"><?php echo $hellos->comment; ?> </p>
+
+
+<?php if($hellos->path!=null)
+{
+  ?>
+<br>
+<div class="popupfcc<?php echo $hellos->id; ?>">
+<div class="clfcc<?php echo $hellos->id; ?>" style="display:none; float:right;"><a style="cursor:pointer;" name="<?php echo $hellos->id; ?>" class="clxs"><span class="glyphicon glyphicon-remove"></span></a></div> 
+<div class="fancyboxs" id="fcc<?php echo $hellos->id; ?>" style="cursor:pointer;">
+<img src="<?php echo asset('/'); ?>/<?php echo $hellos->path; ?> "  style="max-width:100%;"/>
+</div>
+</div>
+
+
+<?php
+}
+
+
+?>
+
+<?php if($hellos->imagessvideo!=null)
+{
+  ?>
+<br>
+
+<!-- <object style="max-width:100%;">
+
+<param name="movie" value="<?php echo asset('/'); ?><?php echo $hellos->imagessvideo; ?>">
+
+<embed src="<?php echo asset('/'); ?><?php echo $hellos->imagessvideo; ?>" style="max-width:100%;">
+
+</embed>
+
+</object> -->
+
+<video width="320" height="240" controls>
+  <source src="<?php echo asset('/'); ?><?php echo $hellos->imagessvideo; ?>" type="video/mp4">
+  <source src="<?php echo asset('/'); ?><?php echo $hellos->imagessvideo; ?>" type="video/ogg">
+ 
+</video> 
+
+<?php
+}
+?>
+
+
+
+
+    <?php
+ if(Auth::user()->rand==$hellos->user || Auth::user()->username=='admin')
+    {?>
+
+<button id="<?php echo $hellos->id; ?>" class="comedit eds<?php echo $hellos->id; ?>"><span class=""><?php echo trans ('greeting.edit'); ?></span></button>
+
+<button id="<?php echo $hellos->id; ?>" class="comdel"><span class="glyphicon glyphicon-remove"></span></button>
+
+<?php
+    }?> 
+      </div>
+
+
+<?php
+}?>
+         
+<?php endforeach; ?>
+        </div>
+<div class="comment_box">
+
+
+<form name="comments" id="comments<?php echo $hello['id']; ?>" method="post" enctype="multipart/form-data" >
+  <?php echo Form::token(); ?>
+
+<textarea style="width:98%; max-width:98%;" name="comment"  onkeydown="if (event.keyCode == 13) document.getElementById('submitbtn<?php echo $hello['id']; ?>').click()" required="" id="comment<?php echo $hello['id']; ?>" value="" placeholder="comment"></textarea>
+
+<input type="hidden" name="user" id="user<?php echo $hello['id']; ?>" value="<?php  echo Auth::user()->rand;?>"/>
+<input type="hidden" id="post_id<?php echo $hello['id']; ?>" name="post_id" value="<?php echo $hello['id']; ?>"/>
+<input type="hidden" name="name" id="name<?php echo $hello['id']; ?>" value="<?php  echo Auth::user()->name;?>"/>
+
+
+<label style="cursor:pointer;" id="imagess<?php echo $hello['id']; ?>" class="imgg<?php echo $hello['id']; ?>"><input class="imggs<?php echo $hello['id']; ?>" id="imagesss<?php echo $hello['id']; ?>" name="imagesss"  type="file"></label>
+
+
+<label style="cursor:pointer;" id="imagessvideos<?php echo $hello['id']; ?>" class="vdo<?php echo $hello['id']; ?>"><input class="vdos<?php echo $hello['id']; ?>" id="imagessvideo<?php echo $hello['id']; ?>" name="imagessvideo"  type="file"></label>
+            
+
+<button  id="submitbtn<?php echo $hello['id']; ?>" type="submit" class="buttonss<?php echo $hello['id']; ?> btn send_btn pull-right"><?php echo trans ('greeting.Send'); ?></button>
+</form>
+
+
+
+
+</div>
+
+
+
+
+
+        </div>
+
+</div>
+
+<?php
+
+}
+?>
+
+<?php endforeach; ?>
+
+
+
+
+
+
+
+
+
+      </div>
+
+
+
+       
+      <div class="col-lg-3 col-md-3 col-sm-12">
+      <div class="thumbnail add_box">
+            <h2>Advertise Here</h2>
+        </div>
+        <div class="thumbnail add_box">
+            <h2>Advertise Here</h2>
+        </div>
+       <!--  <div class="border">
+          <div class="u-event">Upcoming Events </div>
+          <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="form-group padding">
+              <div class='input-group date' id='datetimepicker1'>
+                <input type='text' class="form-control" />
+                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span> </span> </div>
+              <div class="input-group padding">
+                <input type="text" class="form-control">
+                <span class="input-group-addon glyphicon glyphicon-map-marker"></span> </div>
+              <div class="padding">
+                <button class="all_btn" type="submit">Create Event</button>
+              </div>
+              <div class="padding"> <span>No birthdays coming up.</span> </div>
+            </div>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="border margin">
+          <div class="u-event">Upcoming Events </div>
+          <div class="col-lg-12 col-md-12 col-sm-12 padding2 border-bottom"> <img src="../imagesfb/man.jpg" class="img-circle img-custom img_wid pull-left" alt="iamge">
+            <div class="pull-left add-frnd"> <a href="#">eslam</a><br />
+              <span>Add to Friend - <a href="#">Hide</a></span> </div>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12 padding2 border-bottom"> <img src="../imagesfb/man.jpg" class="img-circle img-custom  img_wid pull-left" alt="iamge">
+            <div class="pull-left add-frnd"> <a href="#">eslam</a><br />
+              <span>Add to Friend - <a href="#">Hide</a></span> </div>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12 padding2">
+            <button class="all_btn" type="submit">View All</button>
+          </div>
+          <div class="clear"></div>
+        </div> -->
+      </div> 
+
+
+
+    </div>
+  </div>
+   <style>
+label#imagess {
+
+width: 16px;
+
+height: 14px;
+
+background: url('../../imagesfb/cameras.png') 0 0 no-repeat;
+
+border:none;
+
+margin: 13px 12px;
+
+font-weight:bold;
+ background-size: 16px 14px;
+
+}
+
+input#imagesss{
+
+  position: absolute;
+  visibility: hidden;
+}
+
+
+
+label#imagessvideo {
+
+width:16px;
+
+height: 14px;
+
+background: url('../../imagesfb/video1.png') 0 0 no-repeat;
+
+border:none;
+
+margin: 13px 10px;
+
+font-weight:bold;
+ background-size: 16px 14px;
+
+}
+
+input#imagessvideo{
+
+  position: absolute;
+  visibility: hidden;
+}
+
+
+label#coverimage {
+
+width: 196px;
+
+height: 35px;
+
+background: url('../imagesfb/photo_text.jpg') 0 0 no-repeat;
+
+border:none;
+
+padding: 0 4px 8px 0;
+
+font-weight:bold;
+background-size: 195px 47px;
+
+cursor: pointer;
+
+}
+
+label#coverimage:hover {
+
+width: 196px;
+
+height: 35px;
+
+cursor: pointer;
+
+background: url('../imagesfb/photo_text_hover.jpg') 0 0 no-repeat;
+
+border:none;
+
+padding: 0 4px 8px 0;
+
+font-weight:bold;
+ background-size: 195px 47px;
+
+}
+
+
+input#coverimage{
+
+  position: absolute;
+  visibility: hidden;
+}
+
+label#coversimage {
+
+width: 100%;
+
+height: 35px;
+
+background: url('../imagesfb/add_cover.jpg') 0 0 no-repeat;
+
+border:none;
+
+padding: 0 4px 8px 0;
+
+font-weight:bold;
+ background-size: 100% 100%;
+
+}
+
+label#coversimage:hover {
+
+width: 100%;
+
+height: 35px;
+
+background: url('../imagesfb/add_cover_hover.jpg') 0 0 no-repeat;
+
+border:none;
+
+padding: 0 4px 8px 0;
+
+font-weight:bold;
+background-size: 100% 100%;
+
+cursor: pointer;
+
+}
+
+input#coversimage{
+
+  position: absolute;
+  visibility: hidden;
+}
+
+</style>
+</section>
+<?php $__env->stopSection(); ?>

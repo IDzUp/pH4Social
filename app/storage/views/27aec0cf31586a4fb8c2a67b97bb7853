@@ -1,0 +1,132 @@
+@layout(layouts.admin)
+
+<?php $__env->startSection('content'); ?>
+
+<div class="container-fluid"> 
+      <!-- Page Heading -->
+      <div class="row">
+        <div class="col-lg-12">
+          <h1 class="page-header"> Contact List </h1>
+          <ol class="breadcrumb">
+            <li> <i class="fa fa-dashboard"></i> <a href="<?php echo asset('/index.php'); ?>/admin">Dashboard</a> </li>
+            <li> <i class="fa fa-dashboard"></i> <a href="<?php echo asset('/index.php'); ?>/contact">Add Contact</a> </li>
+            <li class="active"> <span class="glyphicon glyphicon-user"></span> Contact List </li>
+          </ol>
+		  <div class="pull-right">
+		  
+		  <?php echo Form:: open(array('url' => 'searchcontact' , 'method' => 'get','class' => 'navbar-form navbar-left')); ?> <!--contact_request is a router from Route class-->
+  <?php if($errors->any()): ?>
+
+ <?php echo implode('', $errors->all('<li>:message</li>')); ?>
+<?php endif; ?>
+    <?php echo Form::token(); ?>
+ 
+  <div class="form-group">
+    <input type="text" name="searchuser"  class="form-control"/>
+  </div>
+  <button type="submit" class="register_btn">Search</button>
+            <?php echo Form:: close(); ?>
+  </div>
+        </div>
+      </div>
+      <!-- /.row -->
+      <div class="row">
+        <div class="col-lg-12">
+		<div class="panel panel-default">
+		<div class="panel-heading">
+              <h3 class="panel-title"><span class="glyphicon glyphicon-user"></span> Contact List</h3>
+            </div>
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Email</th>
+                  <th>Name </th>
+                  <th>Subject</th>
+		
+					<th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+		<?php foreach( $viewcontact as $hello): ?>
+				<tr>
+					<td >
+						
+						<?php echo $hello->id; ?>  
+					
+					</td>
+					<td >
+						
+						<?php echo $hello->email; ?>  
+					
+					</td>
+
+					<td >
+						
+						<?php echo $hello->name; ?>  
+					
+					</td>
+					<td >
+						
+						<?php echo $hello->subject; ?>  
+					
+					</td>
+
+					<td >
+						
+						<?php echo $hello->message; ?>  
+					
+					</td>
+					<td >
+						
+				 		
+						<?php echo HTML::link('/contact/edit/' . $hello->id, '',array('class="glyphicon glyphicon-pencil"')); ?>
+
+
+			
+
+						<?php echo HTML::link('/contact/delete/' . $hello->id, '',array('class="glyphicon glyphicon-remove"')); ?>
+				
+					</td>
+			
+			
+				</tr>
+				
+		
+			
+					<?php endforeach; ?>
+				
+
+
+	
+		
+
+
+	
+  
+   
+              </tbody>
+            </table>
+          </div>
+		  
+		  </div>
+		  
+        </div>
+      </div>
+      <!-- /.row --> 
+    </div>
+    <!-- /.container-fluid --> 
+
+
+
+
+
+
+
+
+
+
+
+
+<?php $__env->stopSection(); ?>

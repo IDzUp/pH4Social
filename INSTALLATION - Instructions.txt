@@ -1,0 +1,30 @@
+----- First off, thank you so much for buying pH4Social - Hope you will enjoy your new social networking website! -----
+If you have any questions, please create a ticket through your client area -> http://hizup.net/clients
+
+
+----- Steps to install pH4Social -----
+
+1 - Upload all files to your server (with a FTP client for example, (e.g., FileZilla or WinSCP).
+
+2- Open the config database file with an editor text -> /app/config/database.php
+
+3- Change the details in that file and save it.
+
+4- Also open the App file -> /app/config/app.php
+
+5- Change the URL in that file and save it.
+
+6- Import the /Resource/install.sql file through your PHPMyAdmin Section.
+
+7- Last step, if you want to install pH4Social on a sub folder (e.g., www.mysite.com/mysocialsite/) please remove the ".htaccess" file and rename the "for_sub_folder.htaccess" by ".htaccess" then open it and edit it by following the instruction inside the file.
+
+8- Enjoy!
+
+-- Admin Login --
+
+URL: http://your-site.com/la-admin/
+Email: demo@demo.com
+Password: 123456789
+
+
+P.S. When your site is live, for security and copyright reason, please remove this file and the /Resource/ folder.

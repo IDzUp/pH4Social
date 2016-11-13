@@ -1,0 +1,174 @@
+@layout(layouts.admin)
+
+<?php $__env->startSection('content'); ?>
+
+
+
+   <div class="grid_9">
+    <h1 class="newsletter">View Menu</h1>
+    </div>
+    <!--RIGHT TEXT/CALENDAR-->
+    <div class="grid_6" id="eventbox"><a href="#" class="inline_calendar">You don't have any events for today! Yay!</a>
+    	<div class="hidden_calendar"></div>
+    </div>
+    <!--RIGHT TEXT/CALENDAR END-->
+    <div class="clear">
+    </div>
+    <!--  TITLE END  -->    
+    <!-- #PORTLETS START -->
+    <div id="portlets">
+    <!-- FIRST SORTABLE COLUMN START -->
+
+
+
+	<div id="box-table-a" class="CSS_Table_Example">
+			<table >
+				<tr> 
+					<td >
+						
+						Category
+					
+					</td>
+
+					<td>
+						Id
+					</td>
+					<td >
+						Title
+					</td>
+					<td >
+						Link
+					</td>
+					
+					<td>
+						Action
+					</td>
+				</tr>
+				<?php foreach( $viewmenu as $hello): ?>
+				<tr>
+
+
+
+					<tr>
+						<td >
+						
+						Main Menu
+					
+					</td>
+
+					<td >
+						
+						<?php echo $hello->id; ?>  
+					
+					</td>
+					<td >
+						
+						<?php echo $hello->menu; ?>  
+					
+					</td>
+
+						<td >
+						
+						<?php echo $hello->link; ?>  
+					
+					</td>
+
+					
+					<td >
+						
+				 		
+						<?php echo HTML::link('/menu/edit/' . $hello->id, '',array('class="edit_icon"')); ?>
+
+
+			
+
+						<?php echo HTML::link('/menu/delete/' . $hello->id, '',array('class="delete_icon"')); ?>
+				
+					</td>
+			
+
+
+					<td >
+						
+				 		
+
+						<?php echo HTML::link('/menu/submenu/' . $hello->id, 'Add sub menu'); ?>
+				
+					</td>
+
+					</tr>
+
+				<?php foreach( $submenu as $hellos): ?>
+					<tr>
+						
+						
+<?php if($hellos->menu==$hello->id)
+{
+?>
+
+
+<td >
+						
+						Sub Menu
+					
+						</td>
+
+						<td >
+						
+						<?php echo $hellos->id; ?>  
+					
+					</td>
+					<td >
+						
+						<?php echo $hellos->submenu; ?>  
+					
+					</td>
+
+				<td >
+						
+						<?php echo $hellos->link; ?>  
+					
+					</td>
+
+					<td >
+						
+				 		
+						<?php echo HTML::link('/submenu/edit/' . $hellos->id, '',array('class="edit_icon"')); ?>
+
+
+			
+
+						<?php echo HTML::link('/submenu/delete/' . $hellos->id, '',array('class="delete_icon"')); ?>
+				
+					</td>
+
+
+
+<?php
+}
+
+	
+	?>					
+
+
+
+
+
+					</tr>
+				<?php endforeach; ?>
+				</tr>
+				
+		
+			
+					<?php endforeach; ?>
+			</table>
+		</div>
+
+
+
+</div>
+
+
+
+
+<?php $__env->stopSection(); ?>

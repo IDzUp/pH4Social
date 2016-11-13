@@ -1,0 +1,60 @@
+@layout(layouts.admin)
+
+@section('content')
+
+
+
+   <div class="grid_9">
+    <h1 class="newsletter">My account</h1>
+    </div>
+
+    <div id="portlets">
+    <!-- FIRST SORTABLE COLUMN START -->
+
+
+  <div  class="cover">
+    	
+    	
+ {{ Form:: open(array('url' => 'myaccount/save' , 'method' => 'get','id' => 'contactform')) }} <!--contact_request is a router from Route class-->
+
+    			<p class="contact"><label for="name">Name</label></p> 
+    			<input id="name" name="name" placeholder="First and last name" value="<?php foreach($myaccount as $hello)
+                {
+                 
+                echo $hello->name;
+
+                }
+                ?>
+               " required="" tabindex="1" type="text"> 
+    			 
+    			<p class="contact"><label for="email">Email</label></p> 
+    			<input id="email" name="email" placeholder="example@domain.com" value="<?php foreach($myaccount as $hello)
+                {
+                 
+                echo $hello->email;
+
+                }
+                ?>" required="" tabindex="2" type="text"> 
+                
+                <p class="contact"><label for="Subject">City</label></p> 
+    			<input id="subject" name="city" placeholder="Subject" value="<?php foreach($myaccount as $hello)
+                {
+                 
+                echo $hello->city;
+
+                }
+                ?>"required="" tabindex="2" type="text"> 
+    			 
+    	
+   
+    			<input name="submit" id="submit" tabindex="5" value="save" type="submit"> 	 
+      {{ Form:: close() }}<br/>
+     </div> 
+
+
+
+</div>
+
+
+
+@endsection

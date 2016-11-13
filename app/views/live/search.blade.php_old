@@ -1,0 +1,27 @@
+@layout(layouts.live)
+
+@section('content')
+
+  @foreach( $search as $hello)
+      
+  <div class="prod_box">
+        <div class="top_prod_box"></div>
+        <div class="center_prod_box">
+          <div class="product_title"><a href="details/{{ $hello->id }}">  {{ $hello->name }} </a></div>
+          <div class="product_img"><a href="details/{{ $hello->id }}"><img src="../{{ $hello->path }}" width="120" height="90" alt="" border="0" /></a></div>
+          <div class="prod_price"><span class="reduce">350$</span> <span class="price"> {{ $hello->price }}{{ $currency->currency }} </span></div>
+        </div>
+        <div class="bottom_prod_box"></div>
+        <div class="prod_details_tab"> <a href="http://www.free-css.com/" title="header=[Add to cart] body=[&nbsp;] fade=[on]"><img src="../images/cart.gif" alt="" border="0" class="left_bt" /></a> <a href="http://www.free-css.com/" title="header=[Specials] body=[&nbsp;] fade=[on]"><img src="../images/favs.gif" alt="" border="0" class="left_bt" /></a> <a href="http://www.free-css.com/" title="header=[Gifts] body=[&nbsp;] fade=[on]"><img src="../images/favorites.gif" alt="" border="0" class="left_bt" /></a> <a href="details/{{ $hello->id }}" class="prod_details">details</a> </div>
+      </div>
+
+
+@endforeach
+
+
+
+
+
+
+@endsection
+

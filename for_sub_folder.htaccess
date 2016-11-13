@@ -1,0 +1,18 @@
+## .htaccess file if your site is installed on a sub folder.
+## Please change "YOUR-SUB-FOLDER" (twice in the file) by the name of the folder where your site is installed.
+## For example, if your site is installed on "www.mysite.com/mysocialsite/", you have to change "YOUR-SUB-FOLDER" by "mysocialsite"
+
+<IfModule mod_rewrite.c>
+        RewriteEngine On
+        RewriteBase /
+
+        # Removes index.php from ExpressionEngine URLs
+        RewriteCond %{THE_REQUEST} ^GET.*index\.php [NC]
+        RewriteCond %{REQUEST_URI} !/system/.* [NC]
+        RewriteRule (.*?)index\.php/*(.*) /YOUR-SUB-FOLDER/$1$2 [R=301,NE,L]
+
+        # Directs all EE web requests through the site index file
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteCond %{REQUEST_FILENAME} !-d
+        RewriteRule ^(.*)$ /YOUR-SUB-FOLDER/index.php/$1 [L]
+</IfModule>

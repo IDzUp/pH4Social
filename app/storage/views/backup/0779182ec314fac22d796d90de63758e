@@ -1,0 +1,89 @@
+@layout(layouts.admin)
+
+<?php $__env->startSection('content'); ?>
+
+
+
+
+
+
+	<div class="CSS_Table_Example" style="width:900px;height:150px;margin-left:68px;">
+			<table >
+				<tr> 
+					<td>
+						Id
+					</td>
+					<td >
+						Email
+					</td>
+					<td>
+						Name
+					</td>
+					<td >
+						Subject
+					</td>
+					<td>
+						Message
+					</td>
+					<td>
+						Action
+					</td>
+				</tr>
+				<?php foreach( $viewcontact as $hello): ?>
+				<tr>
+					<td >
+						
+						<?php echo $hello->id; ?>  
+					
+					</td>
+					<td >
+						
+						<?php echo $hello->email; ?>  
+					
+					</td>
+
+					<td >
+						
+						<?php echo $hello->name; ?>  
+					
+					</td>
+					<td >
+						
+						<?php echo $hello->subject; ?>  
+					
+					</td>
+
+					<td >
+						
+						<?php echo $hello->message; ?>  
+					
+					</td>
+					<td >
+						
+				 		
+						<?php echo HTML::link('/contact/edit/' . $hello->id, 'Edits'); ?>
+
+
+			
+
+						<?php echo HTML::link('/contact/delete/' . $hello->id, 'Deletes'); ?>
+				
+					</td>
+			
+			
+				</tr>
+				
+		
+			
+					<?php endforeach; ?>
+			</table>
+		</div>
+
+
+
+
+
+
+
+
+<?php $__env->stopSection(); ?>

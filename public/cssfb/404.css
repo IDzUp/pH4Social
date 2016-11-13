@@ -1,0 +1,18 @@
+body
+{
+  background: url(../imagesfb/design-error-message-240.jpg) no-repeat ;
+  webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-attachment:fixed;
+}
+h1 {
+  background: hsla(0,0%,0%,.75);
+  bottom: 100px;
+  color: #b59788;
+  font: 2em/1 Sancreek, sans-serif;
+  left: 0;
+  padding: .5em 2em .5em 1em;
+  position: absolute;
+}

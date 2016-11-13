@@ -1,0 +1,44 @@
+@layout(layouts.default)
+
+<?php $__env->startSection('content'); ?>
+
+
+
+
+<h1>  Editing </h1>
+
+
+
+ 			<?php echo Form:: open(array('url' => 'my/update', 'method' => 'put')); ?> <!--contact_request is a router from Route class-->
+ 			
+ 				<?php echo Form::token(); ?>
+         
+            <?php echo Form:: label ('first_name', 'First Name*' ); ?> 
+            <?php echo Form:: text ('first_name', $author->name ); ?>  <br/>
+ 	
+ 			 <?php echo Form:: label ('id', 'id Name*' ); ?> 
+            <?php echo Form:: text ('id', $author->id ); ?>  <br/>
+          
+
+
+            <?php echo Form::reset('Clear', array('class' => 'you css class for button')); ?><br/>
+            <?php echo Form::submit('Update', array('class' => 'you css class for button')); ?><br/><br/>
+ 
+            
+
+            <?php echo Form:: close(); ?><br/>
+
+
+
+ <?php echo Form:: open(array('url' => 'my/delete', 'method' => 'delete')); ?>
+
+<?php echo Form::hidden('id',$author->id); ?>  <br/>
+
+
+ <?php echo Form::submit('Delete', array('class' => 'you css class for button')); ?><br/><br/>
+
+     <?php echo Form:: close(); ?><br/>
+
+
+
+<?php $__env->stopSection(); ?>

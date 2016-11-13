@@ -1,0 +1,245 @@
+@layout(layouts.live)
+
+@section('content')
+
+
+
+<style type="text/css">
+
+/*
+This was made by João Sardinha
+Visit me at http://johnsardine.com/
+
+The table style doesnt contain images, it contains gradients for browsers who support them as well as round corners and drop shadows.
+
+It has been tested in all major browsers.
+
+This table style is based on Simple Little Table By Orman Clark,
+you can download a PSD version of this at his website, PremiumPixels.
+http://www.premiumpixels.com/simple-little-table-psd/
+
+PLEASE CONTINUE READING AS THIS CONTAINS IMPORTANT NOTES
+
+*/
+
+/*
+Im reseting this style for optimal view using Eric Meyer's CSS Reset - http://meyerweb.com/eric/tools/css/reset/
+------------------------------------------------------------------ */
+
+
+ol, ul { list-style: none; }
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
+:focus { outline: 0; }
+del { text-decoration: line-through; }
+table {border-spacing: 0; } /* IMPORTANT, I REMOVED border-collapse: collapse; FROM THIS LINE IN ORDER TO MAKE THE OUTER BORDER RADIUS WORK */
+
+/*------------------------------------------------------------------ */
+
+/*This is not important*/
+
+a:link {
+  color: #666;
+  font-weight: bold;
+  text-decoration:none;
+}
+a:visited {
+  color: #666;
+  font-weight:bold;
+  text-decoration:none;
+}
+a:active,
+a:hover {
+  color: #bd5a35;
+  text-decoration:underline;
+}
+
+
+/*
+Table Style - This is what you want
+------------------------------------------------------------------ */
+table a:link {
+  color: #666;
+  font-weight: bold;
+  text-decoration:none;
+}
+table a:visited {
+  color: #999999;
+  font-weight:bold;
+  text-decoration:none;
+}
+table a:active,
+table a:hover {
+  color: #bd5a35;
+  text-decoration:underline;
+}
+table {
+  font-family:Arial, Helvetica, sans-serif;
+  color:#666;
+  font-size:12px;
+  text-shadow: 1px 1px 0px #fff;
+  background:#eaebec;
+  margin:20px;
+  border:#ccc 1px solid;
+
+  -moz-border-radius:3px;
+  -webkit-border-radius:3px;
+  border-radius:3px;
+
+  -moz-box-shadow: 0 1px 2px #d1d1d1;
+  -webkit-box-shadow: 0 1px 2px #d1d1d1;
+  box-shadow: 0 1px 2px #d1d1d1;
+}
+table th {
+  padding:21px 25px 22px 25px;
+  border-top:1px solid #fafafa;
+  border-bottom:1px solid #e0e0e0;
+
+  background: #ededed;
+  background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#ebebeb));
+  background: -moz-linear-gradient(top,  #ededed,  #ebebeb);
+}
+table th:first-child{
+  text-align: left;
+  padding-left:20px;
+}
+table tr:first-child th:first-child{
+  -moz-border-radius-topleft:3px;
+  -webkit-border-top-left-radius:3px;
+  border-top-left-radius:3px;
+}
+table tr:first-child th:last-child{
+  -moz-border-radius-topright:3px;
+  -webkit-border-top-right-radius:3px;
+  border-top-right-radius:3px;
+}
+table tr{
+  text-align: center;
+  padding-left:20px;
+}
+table tr td:first-child{
+  text-align: left;
+  padding-left:20px;
+  border-left: 0;
+}
+table tr td {
+  padding:18px;
+  border-top: 1px solid #ffffff;
+  border-bottom:1px solid #e0e0e0;
+  border-left: 1px solid #e0e0e0;
+  
+  background: #fafafa;
+  background: -webkit-gradient(linear, left top, left bottom, from(#fbfbfb), to(#fafafa));
+  background: -moz-linear-gradient(top,  #fbfbfb,  #fafafa);
+}
+table tr.even td{
+  background: #f6f6f6;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#f6f6f6));
+  background: -moz-linear-gradient(top,  #f8f8f8,  #f6f6f6);
+}
+table tr:last-child td{
+  border-bottom:0;
+}
+table tr:last-child td:first-child{
+  -moz-border-radius-bottomleft:3px;
+  -webkit-border-bottom-left-radius:3px;
+  border-bottom-left-radius:3px;
+}
+table tr:last-child td:last-child{
+  -moz-border-radius-bottomright:3px;
+  -webkit-border-bottom-right-radius:3px;
+  border-bottom-right-radius:3px;
+}
+table tr:hover td{
+  background: #f2f2f2;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#f0f0f0));
+  background: -moz-linear-gradient(top,  #f2f2f2,  #f0f0f0);  
+}
+
+</style>
+
+
+</head>
+
+<body>
+<h1> Summary of the product</h1>
+<table cellspacing='0'> <!-- cellspacing='0' is important, must stay -->
+  <tr><th>Product Name</th><th>Price</th><th>Quantity</th><th>total</th><th>Action</th></tr><!-- Table Header -->
+   <?php $sum=0; $i=0; $cus=0;
+ foreach( $checkout as $key=>$hello)
+{
+
+  $sum+= $hello->price;
+  $cus=Auth::user()->rand;
+// $cus=$hello->customer_id;
+
+ echo "<tr><td>"; echo $hello->product; echo "</td><td>"; echo $hello->price; echo "</td><td>1</td>";
+echo "<td>";
+
+echo $hello->price*1;
+echo "</td>";
+
+echo "<td>";
+
+echo "<a class='delete_icon'  href='shopping/delete/$hello->id'></a>";
+echo "</td></tr>";
+$i++;
+
+
+}
+
+
+?>
+
+
+   
+    <tr><th>Sub-Total</th><th></th><th></th><th>{{$sum}}</th><th>
+
+
+
+
+<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_cart">
+<input type="hidden" name="upload" value="1">
+<input type="hidden" name="business" value="sahil_kaushal-facilitator@esferasoft.com">
+<input type="hidden" name="currency_code" value="US">
+<input type="hidden" value="http://192.168.1.10/esfera/es3/laravel/laravel-master/public/index.php/paypal/delete/{{$cus}}" name="return">
+
+<input type="hidden" name="address_override" value="1">
+
+<input type="hidden" name="first_name" value="{{Auth::user()->email}}">
+<!--
+<input type="hidden" name="last_name" value="Doe">
+<input type="hidden" name="address1" value="345 Lark Ave">
+<input type="hidden" name="city" value="San Jose">
+<input type="hidden" name="state" value="CA">
+<input type="hidden" name="zip" value="95121">
+<input type="hidden" name="country" value="US">-->
+<?php 
+
+$i=1;
+
+foreach( $checkout as $key=>$hello)
+{
+
+echo "<input type='hidden' name='item_name_$i' value='$hello->product'>";
+echo "<input type='hidden' name='amount_$i' value='$hello->price'>";
+echo "<input type='hidden' name='item_number_$i' value='MEM32507725'>";
+echo "<input type='hidden' name='quantity_$i' value='1'>";
+
+$i++;
+}
+
+
+?>
+
+<input type="image" src="http://www.paypal.com/en_US/i/btn/x-click-but01.gif" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
+</form>
+</th></tr>
+</table>
+
+
+
+
+
+@endsection

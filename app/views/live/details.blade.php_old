@@ -1,0 +1,119 @@
+@layout(layouts.live)
+
+@section('content')
+
+
+
+<div>
+
+  <ul class="tabs">
+    <li><a href="#tab-1">Info</a></li>
+    <li><a href="#tab-2">Shipping</a></li>
+    <li><a href="#tab-3">Returns</a></li>
+  </ul>
+  
+
+
+</div>
+
+
+<div class="eStore-product-fancy4 eStore-fancy-wrapper">
+  <div class="eStore-fancy4-header">
+    <div class="eStore-fancy4-header-left">
+      <span><a href="http://www.tipsandtricks-hq.com/ecommerce/wordpress-estore-plugin-demo-175" >
+        <strong>{{ $viewdetails->name }}</strong></a></span></div>
+        <div class="eStore-fancy4-header-right">
+          <span class="eStore_price_label">Price: </span><span class="eStore_price_value">{{ $currency->currency }}{{ $viewdetails->price }}</span>
+        </div></div><div class="eStore-fancy4-footer">
+        <div class="eStore-fancy4-thumb"><div id="lightbox"><a href="http://images.tipsandtricks-hq.com/amazing-photos/group1/tips_background_image4.jpg"  rel="lightbox[Fancy Display Test]" title="Fancy Display Test">
+          <img src="{{asset('')}}/{{$viewdetails->path}}" alt="Fancy Display Test" /></a></div><a href="http://www.tipsandtricks-hq.com/ecommerce/wordpress-estore-plugin-demo-175" ><strong><i>View Details</i></strong></a></div>
+          <div class="eStore-fancy4-product-description">Some test description of the product to show how this description field looks like. You can insert plain HTML in this field too. Some more description of the product goes here. Damn! This product display looks good.<br /><br />
+ 
+<form action="addtocart/{{$viewdetails->id}}" method="get">
+<input type="hidden" name="name" value="{{ $viewdetails->name }}">
+<input type="hidden" name="price" value="{{ $viewdetails->price }}">
+  <input type="hidden" name="rand" value="<?php if(Auth::user()){ echo $rand = Auth::user()->rand;}?>">
+<input type="image" name="submit" border="0" width="120"
+src="http://localhost/laravel/laravel-master/public/images/add-to-cart.jpg"
+alt="">
+</form>
+
+
+
+<!--
+<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_xclick">
+<input type="hidden" name="business" value="sahil_kaushal-facilitator@esferasoft.com">
+<input type="hidden" name="item_name"
+value="{{ $viewdetails->name }}">
+<input type="hidden" name="item_number" value="MEM32507725">
+<input type="hidden" name="amount" value="{{ $viewdetails->price }}">
+<input type="hidden" name="tax" value="1">
+<input type="hidden" name="quantity" value="1">
+<input type="hidden" name="no_note" value="1">
+<input type="hidden" name="currency_code" value="USD">
+
+
+<input type="hidden" name="address_override" value="1">
+
+<input type="hidden" name="first_name" value="John">
+<input type="hidden" name="last_name" value="Doe">
+<input type="hidden" name="address1" value="345 Lark Ave">
+<input type="hidden" name="city" value="San Jose">
+<input type="hidden" name="state" value="CA">
+<input type="hidden" name="zip" value="95121">
+<input type="hidden" name="country" value="US">
+<input type="image" name="submit" border="0" width="100"
+src="http://localhost/laravel/laravel-master/public/images/add-to-cart.jpg"
+alt="PayPal - The safer, easier way to pay online">
+</form>-->
+<!-- <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="RF2U42KZAXBBG">
+
+<input type="hidden" name="business" value="sahil_kaushal-facilitator@esferasoft.com">
+<input type="hidden" name="currency_code" value="USD">
+<input type="hidden" name="item_name" value="{{ $viewdetails->name }}">
+<input type="hidden" name="amount" value="{{ $viewdetails->price }}">
+
+
+
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+
+-->
+
+
+       <div class="eStore_item_added_msg eStore_item_added_msg-21">
+       </div></div></div></div>
+<div id="comment">
+
+<h2>Comments</h2>
+</div>
+@foreach($comment as $hello)
+<ul class="archives">
+<li>
+{{$hello->comment}}
+</li>
+
+</ul>
+
+
+@endforeach
+
+
+<form action="comment/{{$viewdetails->id}}" method="get"> <!--contact_request is a router from Route class-->
+
+
+
+          <p class="contact"><label for="comment">Your Message</label></p> 
+          <textarea name="comment" id="comment" tabindex="4"></textarea> <br>
+          <input name="submit" id="submit" tabindex="5" value="Send Message" type="submit">    
+      {{ Form:: close() }}<br/>
+ 
+
+@endsection
+
+

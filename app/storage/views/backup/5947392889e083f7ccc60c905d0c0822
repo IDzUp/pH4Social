@@ -1,0 +1,110 @@
+@layout(layouts.admin)
+
+<?php $__env->startSection('content'); ?>
+
+
+
+   <div class="grid_9">
+    <h1 class="newsletter">Orders</h1>
+    </div>
+    <!--RIGHT TEXT/CALENDAR-->
+    <div class="grid_6" id="eventbox"><a href="#" class="inline_calendar">You don't have any events for today! Yay!</a>
+    	<div class="hidden_calendar"></div>
+    </div>
+    <!--RIGHT TEXT/CALENDAR END-->
+    <div class="clear">
+    </div>
+    <!--  TITLE END  -->    
+    <!-- #PORTLETS START -->
+    <div id="portlets">
+    <!-- FIRST SORTABLE COLUMN START -->
+
+
+
+	<div id="box-table-a" class="CSS_Table_Example">
+			<table >
+				<tr> 
+					<td>
+						Id
+					</td>
+					<td >
+						Product name
+					</td>
+					<td >
+						User email address
+					</td>
+					<td>
+						Price
+					</td>
+					
+					<td>
+						Action
+					</td>
+				</tr>
+				<?php foreach( $vieworders as $hello): ?>
+				<tr>
+					<td >
+						
+						<?php echo $hello->id; ?>  
+					
+					</td>
+					<td >
+						
+						<?php echo $hello->product; ?>  
+					
+					</td>
+
+					<td >
+						
+						
+	<?php 
+	foreach( $users as $helloss)
+	{
+		if($helloss->rand==$hello->rand)
+		{
+
+		echo $helloss->email;
+
+		}
+
+	}
+	?>
+
+		
+					</td>
+
+					<td >
+						
+						<?php echo $hello->price; ?>  
+					
+					</td>
+					
+					<td >
+						
+				 		
+						<!--<?php echo HTML::link('/contact/edit/' . $hello->id, '',array('class="edit_icon"')); ?>
+
+
+			-->
+
+						<?php echo HTML::link('/orders/delete/' . $hello->id, '',array('class="delete_icon"')); ?>
+				
+					</td>
+			
+			
+				</tr>
+				
+		
+			
+					<?php endforeach; ?>
+			</table>
+		</div>
+
+
+
+</div>
+
+
+
+
+<?php $__env->stopSection(); ?>

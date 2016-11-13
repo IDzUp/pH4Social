@@ -1,0 +1,120 @@
+@layout(layouts.default)
+
+@section('content')
+
+<?php
+
+function generateRandomString($length = 10) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, strlen($characters) - 1)];
+    }
+    return $randomString;
+}
+
+?>
+
+ {{ Form:: open(array('url' => 'getregisters' ,'method' =>'get','class' => 'form-2')) }} <!--contact_request is a router from Route class-->
+  @if($errors->any())
+
+ {{ implode('', $errors->all('<li>:message</li>'))  }}
+@endif
+         		{{ Form::token() }}
+
+	<div id="center">
+<h1><span class="sign-up">{{ HTML::Link('logins', 'Login')}}</span> or <span class="log-in">Register </span></h1>
+ <table>
+  <tr>
+
+    <td>
+ {{ Form:: label ('name', 'User Name*' )}} 
+    </td>
+
+    <td>
+  {{ Form:: text ('name')}}  
+    </td>
+
+  </tr>
+    
+
+
+     <tr>
+
+    <td>
+  {{ Form:: label ('city', 'City Name*' )}} 
+    </td>
+
+    <td>
+     {{ Form:: text ('city')}} 
+    </td>
+
+  </tr>
+          
+
+
+  <tr>
+
+    <td>
+   {{ Form:: label ('email', 'Email Name*' )}} 
+    </td>
+
+    <td>
+       {{ Form:: text ('email')}} 
+    </td>
+
+  </tr>
+           
+        
+       
+        <tr>
+
+    <td>
+   {{ Form:: label ('password', 'Password*' )}} 
+    </td>
+
+    <td>
+       {{ Form:: password ('password')}} 
+    </td>
+
+  </tr> 
+     
+          
+    
+  
+
+     <tr>
+
+    <td>
+    {{ Form:: label ('password', 'Password Confirmation*' )}} 
+    </td>
+
+    <td>
+       {{ Form:: password ('password_confirmation')}} 
+    </td>
+
+  </tr> 
+  
+
+  <input type="hidden" value="<?php echo $random=generateRandomString(); ?>" name="rand">
+ 
+        
+  
+ <tr>
+  <td>
+ 
+        {{ Form::submit('Register', array('class' => 'subb')) }}
+  
+ </td>
+</tr>
+</table>
+            
+          </div>
+ 			 
+	
+			 
+ 
+ 	
+            {{ Form:: close() }}<br/>
+
+@endsection

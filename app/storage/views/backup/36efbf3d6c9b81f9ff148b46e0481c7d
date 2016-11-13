@@ -1,0 +1,33 @@
+@layout(layouts.admin)
+
+<?php $__env->startSection('content'); ?>
+
+
+
+
+<?php echo HTML::style('css/contact.css');; ?>
+
+  <div  class="cover">
+    		<h2 class="image">Image upload</h2>
+    	
+ <?php echo Form:: open(array('url' => 'media/save' , 'method' => 'post','id' => 'contactform','files' => 'true', 'enctype' => 'multipart/form-data')); ?> <!--contact_request is a router from Route class-->
+  <?php if($errors->any()): ?>
+
+ <?php echo implode('', $errors->all('<li>:message</li>')); ?>
+<?php endif; ?>
+    <?php echo Form::token(); ?>
+    	
+    			<input id="image" name="image" placeholder="Image" required="" tabindex="1" type="file"> 
+    			 
+    	
+    			<input name="submit" id="submit" tabindex="5" value="submit" type="submit"> 	 
+      <?php echo Form:: close(); ?><br/>
+     </div> 
+
+
+
+
+
+
+
+<?php $__env->stopSection(); ?>

@@ -1,0 +1,245 @@
+@layout(layouts.fbhome)
+
+<?php $__env->startSection('content'); ?>
+
+
+<script type="text/javascript">
+
+
+
+$(document).ready(function()
+{
+
+
+$(".gallerydelete").click(function(e)
+{
+
+      
+var id=$(this).attr("id");
+
+if(id=='')
+{
+alert('Required comment section');
+}
+else
+{
+  
+
+ $.ajax({
+
+    type: "GET",
+    url: "<?php echo asset('/'); ?>/index.php/gallerydelete/"+id,
+  //  data: { id: id, user: user, comment: comment, name: name},
+    dataType: 'json',
+    cache: false,
+    success: function(data)
+    {
+
+
+
+
+  var comment='#gal'+data[0].idss; 
+  $(comment).hide('slow');
+
+
+    }
+    });
+}
+
+
+
+});
+
+});
+</script>
+
+
+<style type="text/css">
+ 
+label#coverimage {
+
+width: 196px;
+
+height: 35px;
+
+background: url('../imagesfb/photo_text.jpg') 0 0 no-repeat;
+
+border:none;
+
+padding: 0 4px 8px 0;
+
+font-weight:bold;
+ background-size: 195px 47px;
+
+}
+
+input#coverimage{
+
+  position: absolute;
+  visibility: hidden;
+}
+ 
+
+</style>
+
+
+         
+
+
+<section class="friendlist_sec">
+<div class="container">
+    <div class="row">
+   <h2><span class="glyphicon glyphicon-camera"></span> Gallery</h2>
+  </div>
+  </div>
+  <div class="container">
+    <div class="row">
+  
+ 
+       
+    <?php echo Form:: open(array('url' => 'gallery/save' , 'method' => 'post','name' => 'my_form','id' => 'my_form','files' => 'true', 'enctype' => 'multipart/form-data')); ?> <!--contact_request is a router from Route class-->
+  <?php if($errors->any()): ?>
+
+ <?php echo implode('', $errors->all('<li>:message</li>')); ?>
+<?php endif; ?>
+    <?php echo Form::token(); ?>
+
+
+      <label id="" class="search_btn"> 
+      Upload Photo
+       <input id="coverimage" name="image" required="" tabindex="1" type="file" onchange="document.getElementById('submit').click();"> 
+      </label>
+          
+      <input id="rand" name="rand" type="hidden" value="<?php echo $email = Auth::user()->rand;?>">  
+
+      <input name="submit" id="submit" tabindex="5" value="submit" type="submit" style="display:none;">    
+      <?php echo Form:: close(); ?>  
+            
+
+
+    <?php echo Form:: open(array('url' => 'galleryvideo/save' , 'method' => 'post','name' => 'my_form','id' => 'my_form','files' => 'true', 'enctype' => 'multipart/form-data')); ?> <!--contact_request is a router from Route class-->
+  <?php if($errors->any()): ?>
+
+ <?php echo implode('', $errors->all('<li>:message</li>')); ?>
+<?php endif; ?>
+    <?php echo Form::token(); ?>
+
+
+      <label id="" class="search_btn">
+            Upload Video
+       <input id="coverimage" name="image" required="" tabindex="1" type="file" onchange="document.getElementById('submit1').click();"> 
+      </label>
+          
+      <input id="rand" name="rand" type="hidden" value="<?php echo $email = Auth::user()->rand;?>">  
+
+      <input name="submit" id="submit1" tabindex="5" value="submit" type="submit" style="display:none;">    
+      <?php echo Form:: close(); ?>  
+
+   <div class="clear"></div>
+      <div class="col-sm-9 col-sm-8 col-md-9">
+     <div class="row">
+
+
+
+     <?php foreach( $gallery as $hello): ?>
+     <?php
+     if($hello->path!='')
+     {?>
+    <div class="col-sm-6 col-md-3" id="gal<?php echo $hello->id; ?>">
+
+      <button id="<?php echo $hello->id; ?>" class="gallerydelete"><span class="glyphicon glyphicon-remove"></span></button>
+    <a href="#" class="thumbnail">
+           <img src="<?php echo asset('/'); ?>/<?php echo $hello->path; ?>"/>
+        </a>
+        
+ 
+
+       </div> 
+    <?php
+     }
+     ?>
+
+     
+     <?php endforeach; ?>
+
+
+   <?php foreach( $gallery as $hello): ?>
+    
+      <?php
+     if($hello->imagessvideo!='')
+     {?>
+
+   <div class="col-sm-6 col-md-3" id="gal<?php echo $hello->id; ?>">
+
+      <button id="<?php echo $hello->id; ?>" class="gallerydelete"><span class="glyphicon glyphicon-remove"></span></button>
+    <a href="#" class="thumbnail">
+
+        
+<!-- 
+<object type="">
+
+<param name="movie" value="<?php echo asset('/'); ?><?php echo $hello->imagessvideo; ?>">
+ <param name="autoplay" value="false">
+<embed src="<?php echo asset('/'); ?><?php echo $hello->imagessvideo; ?>">
+
+</embed>
+
+</object> -->
+
+<video width="320" height="240" controls>
+  <source src="<?php echo asset('/'); ?><?php echo $hello->imagessvideo; ?>" type="video/mp4">
+  <source src="<?php echo asset('/'); ?><?php echo $hello->imagessvideo; ?>" type="video/webm">
+  <source src="<?php echo asset('/'); ?><?php echo $hello->imagessvideo; ?>" type="video/ogg">
+ 
+</video> 
+
+        </a>
+        
+ 
+
+       </div> 
+
+
+
+
+
+    <?php
+     }
+     ?>
+
+
+
+     <?php endforeach; ?>
+      
+
+
+
+
+      
+  
+    </div>
+      </div>
+      <div class="col-sm-4 col-md-3 col-xs-12">
+     <div class="thumbnail add_box">
+        <h2>Advertise Here</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php $__env->stopSection(); ?>

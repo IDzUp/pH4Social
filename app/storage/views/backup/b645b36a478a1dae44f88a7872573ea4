@@ -1,0 +1,82 @@
+@layout(layouts.admin)
+
+<?php $__env->startSection('content'); ?>
+
+
+
+
+
+
+	<div class="CSS_Table_Example" style="width:900px;height:150px;margin-left:68px;">
+			<table >
+				<tr> 
+					<td>
+						Id
+					</td>
+					<td >
+						Image
+					</td>
+					<td>
+						Created By
+					</td>
+					<td >
+						Updated By
+					</td>
+					
+					<td>
+						Action
+					</td>
+				</tr>
+				<?php foreach( $viewmedia as $hello): ?>
+				<tr>
+					<td >
+						
+						<?php echo $hello->id; ?>  
+					
+					</td>
+					<td >
+						<img src="../<?php echo $hello->path; ?>">
+					 
+					
+					</td>
+
+					<td >
+						
+						<?php echo $hello->created_at; ?>  
+					
+					</td>
+					<td >
+						
+						<?php echo $hello->updated_at; ?>  
+					
+					</td>
+
+					<td >
+						
+				 		
+						<?php echo HTML::link('/viewmedia/edit/' . $hello->id, 'Edits'); ?>
+
+
+			
+
+						<?php echo HTML::link('/viewmedia/delete/' . $hello->id, 'Deletes'); ?>
+				
+					</td>
+			
+			
+				</tr>
+				
+		
+			
+					<?php endforeach; ?>
+			</table>
+		</div>
+
+
+
+
+
+
+
+
+<?php $__env->stopSection(); ?>

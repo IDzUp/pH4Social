@@ -1,0 +1,903 @@
+@charset "iso-8859-1";
+@import url(../../base/css/general.css);
+/*------------------*/
+
+/*
+
+    * html  -  for IE only
+
+*/
+
+    body
+    {
+        margin:0px;
+        padding:0px;
+        font-family:Verdana, Arial, Helvetica, sans-serif;
+        font-size:10px;
+        color:#4B4F52;
+        background-color:#E0C0C0;
+        background-image:url(../images/body_bg.gif);
+        background-position:top;
+        background-repeat:repeat-x;
+        margin-bottom:20px;
+
+
+
+    }
+    a img
+    {
+        border:none;
+    }
+    form, p
+    {
+        margin:0px;
+        padding:0px;
+    }
+    img
+    {
+        margin:0px;
+        padding:0px;
+    }
+
+    input, textarea, select
+    {
+        font-family:Verdana, Arial, Helvetica, sans-serif;
+        font-size:10px;
+        font-weight:normal;
+        color:#3F3F3F;
+        vertical-align:middle;
+        padding:0px 0px;
+    }
+    input.no, textarea.no, select.no
+    {
+        font-family:Verdana, Arial, Helvetica, sans-serif;
+        font-size:10px;
+        font-weight:normal;
+        color:#3F3F3F;
+        vertical-align:middle;
+        padding:2px 0px;
+    }
+
+    select.select_years
+    {
+    }
+    input.input_years_readonly
+    {
+    }
+    select.select_num
+    {
+    }
+    input.select_input_num_readonly
+    {
+    }
+    input.input_text_edit
+    {
+    }
+    input.input_textarea_counter
+    {
+        text-align:center;
+    }
+    textarea.textarea_edit
+    {
+    }
+    input.input_type_password
+    {
+    }
+    select.select_prof
+    {
+        width:200px;
+    }
+    input.input_select_prof_readonly
+    {
+    }
+    select.select_set_membership
+    {
+        white-space:nowrap
+    }
+    select.select_multiple
+    {
+    }
+
+    div.thumbnail_block
+    {
+        position:relative;
+        border:1px solid #9B9A9A;
+        text-align:center;
+        overflow:hidden;
+        padding:0px;
+        background-color:#EDECEC;
+        background-position:center;
+        background-repeat:no-repeat;
+    }
+    div#main
+    {
+        position:relative;
+        width:770px;
+        margin-left:auto;
+        margin-right:auto;
+        border:0px solid red;
+    }
+    div#header
+    {
+        position:relative;
+        background-image:url(../images/header_bg.jpg);
+        background-repeat:no-repeat;
+        background-position:100% 0;
+        height:127px;
+        overflow:hidden;
+    }
+    div#header img#logo
+    {
+        position:absolute;
+        top:45px;
+        left:0px;
+    }
+    div#switch_lang_block
+    {
+        position:absolute;
+        top:2px;
+        left:0px;
+    }
+
+    div#switch_skin_block
+    {
+        position:absolute;
+        top:20px;
+        left:0px;
+    }
+
+/*#################################################################*/
+    div.login_section_block
+    {
+        position:absolute;
+        top:10px;
+        right:65px;
+        border:0px solid red;
+        display:table;
+    }
+    div.login_section_block table
+    {
+        margin:0px;
+        padding:0px;
+    }
+    div.login_section_block table tr td.text
+    {
+        text-align:right;
+        padding-right:10px;
+        color:#fff;
+    }
+    div.login_section_block table tr td.input input
+    {
+        text-align:left;
+        padding-right:10px;
+        border:1px solid #4B4F52;
+        width:88px;
+    }
+    div.login_section_block table tr td a
+    {
+        color:#FFFFFF;
+    }
+    div.login_section_block table tr td input.login_submit
+    {
+        border:1px solid #4B4F52;
+        background-color:#4B4F52;
+        color:#fff;
+        padding:0px 4px;
+    }
+    div.logged_section_block
+    {
+        position:absolute;
+        top:40px;
+        right:65px;
+        width:150px;
+        border:0px solid red;
+    }
+    div.logged_section_block span
+    {
+        position:relative;
+        margin:0px 3px;
+    }
+/*#################################################################*/
+    div#TopMenuBlock
+    {
+        position:relative;
+        height:57px;
+        border:1px solid #ABAFB2;
+        border-bottom:none;
+        background-image:url(../images/topmenublock_bg.gif);
+        background-repeat:repeat-x;
+/*        margin-bottom:15px;*/
+    }
+    div#top_menu_items
+    {
+        position:relative;
+        margin-left:2px;
+    }
+    div#top_menu_items div
+    {
+        position:relative;
+        float:left;
+        height:57px;
+        line-height:57px;
+        vertical-align:middle;
+        font-size:14px;
+        font-weight:bold;
+        color:#FFFFFF;
+        text-align:center;
+        width:94px;
+        text-transform:uppercase;
+        font-family:'Trebuchet MC', Verdana, Arial, Helvetica, sans-serif;
+    }
+    div#top_menu_items div.divider
+    {
+        width:6px;
+        background-image:url(../images/top_menu_divider.gif);
+        background-repeat:no-repeat;
+        background-position:center;
+    }
+    div#top_menu_items div.active
+    {
+        background-image:url(../images/topmenuitem_active.gif);
+        background-repeat:no-repeat;
+        background-position:top center;
+    }
+    div#top_menu_items div.over
+    {
+        background-image:url(../images/topmenuitem_over.gif);
+        background-repeat:no-repeat;
+        background-position:top center;
+    }
+    div#top_girl
+    {
+        position:absolute;
+        top:-118px;
+        right:-125px;
+    }
+/*#################################################################*/
+    div#banners_block
+    {
+        position:relative;
+        height:15px;
+    }
+    div#banner_left
+    {
+        position:absolute;
+        top:15px;
+        left:0px;
+    }
+    div#banner_right
+    {
+        position:absolute;
+        top:15px;
+        right:0px;
+    }
+/*#################################################################*/
+    div#generalContent
+    {
+        position:relative;
+        min-height:460px;
+        height:auto;
+        border:1px solid #7A8084;
+        border-top:none;
+        background-color:#CBCFD1;
+    }
+* html div#generalContent
+    {
+        height:460px;
+    }
+    div#generalLeftCol, div#generalRightCol
+    {
+        position:relative;
+        float:left;
+        border:0px solid red;
+        margin:0px;
+        padding:0px;
+    }
+    div#generalLeftCol
+    {
+
+        width:190px;
+
+    }
+    div#generalLeftCol div.designBoxFirst
+    {
+        border-left:none;
+    }
+    div#generalRightCol
+    {
+        width:578px;
+    }
+    div#page_header_block
+    {
+        position:relative;
+        height:175px;
+        background-color:#EDE7E8;
+        background-image:url(../images/generalrightcol_bg.gif);
+        background-repeat:repeat-x;
+    }
+    div#page_header_block img
+    {
+        position:absolute;
+        top:0px;
+        left:0px;
+    }
+/*#################################################################*/
+    div#promo_text_block
+    {
+        position:relative;
+        top:50px;
+        width:315px;
+        height:auto;
+        text-align:center;
+        left:250px;
+        border:0px solid red;
+        font-weight:bold;
+        font-size:18px;
+    }
+    div.promo_member_info
+    {
+        position:absolute;
+        top:20px;
+        right:20px;
+        width:310px;
+        height:100px;
+        border:0px solid red;
+    }
+    div.promo_member_info_line
+    {
+        position:relative;
+        border:0px solid red;
+        height:16px;
+    }
+    div.promo_member_info_line div
+    {
+        position:relative;
+        float:left;
+        line-height:18px;
+        vertical-align:middle;
+    }
+    div.promo_member_info_line div.text
+    {
+        border:0px solid green;
+        width:100px;
+        font-weight:bold;
+    }
+    div.promo_member_info_line div.value
+    {
+        border:0px solid blue;
+        width:auto;
+    }
+/*#################################################################*/
+
+
+    div#page_content_block
+    {
+        position:relative;
+        padding:10px;
+    }
+/*#################################################################*/
+    div.header_text_block
+    {
+        position:relative;
+    }
+/*#################################################################*/
+    div.designBoxFirst
+    {
+        position:relative;
+        border:1px solid #4B4F52;
+        margin-bottom:10px;
+        background-color:#EDE7E8;
+        overflow:hidden;
+    }
+    div.designBoxFirst div.caption
+    {
+        position:relative;
+        height:30px;
+        background-image:url(../images/designBoxFirst_caption_bg.gif);
+        background-repeat:repeat-x;
+    }
+    div.designBoxFirst div.caption img
+    {
+        position:absolute;
+        top:0px;
+        left:0px;
+    }
+* html div.designBoxFirst div.caption img
+    {
+        top:1px;
+    }
+
+    div.designBoxFirst div.caption div.title
+    {
+        position:absolute;
+        top:6px;
+        left:30px;
+        color:#FFFFFF;
+        font-size:14px;
+        text-transform:uppercase;
+    }
+    div.designBoxFirst div.container
+    {
+        position:relative;
+        overflow:hidden;
+        background-color:#EDE7E8;
+        border-top:1px solid #F2EEEF;
+        padding:5px;
+    }
+/*#################################################################*/
+/*#################################################################*/
+    div.design_box_border
+    {
+        position:relative;
+        border:1px solid #9B9A9A;
+        padding:2px;
+        margin-bottom:10px;
+    }
+    div.design_box_border div.header
+    {
+        position:relative;
+        border:1px solid #9B9A9A;
+        background-color:#E4E4E4;
+        height:25px;
+        line-height:25px;
+        vertical-align:middle;
+        font-weight:bold;
+        padding:0px 10px;
+        text-align:left;
+        margin-bottom:1px;
+    }
+    div.design_box_border div.keeper
+    {
+        position:relative;
+        background-color:#EDE7E8;
+        text-align:center;
+        padding:10px;
+    }
+/*#################################################################*/
+/*#################################################################*/
+
+    div#bottom_girl_holder
+    {
+        position:relative;
+        border:0px solid red;
+        margin-bottom:10px;
+    }
+    div#bottom_girl_holder img
+    {
+        position:absolute;
+        top:-353px;
+        left:-151px;
+    }
+    div#bottom_menu_block
+    {
+        position:relative;
+        text-align:center;
+        margin-bottom:10px;
+        font-size:10px;
+    }
+    div#bottom_banner
+    {
+        position:relative;
+        margin-bottom:10px;
+    }
+    div#bottom_menu_block span
+    {
+        margin:0px;
+    }
+/*#################################################################*/
+    div.rate_block /* ### in design.inc.php function DesignProgress() ### */
+    {
+        position:relative;
+        margin-left:auto;
+        margin-right:auto;
+        margin-bottom:2px;
+    }
+    div.rate_text /* ### in design.inc.php function DesignProgress() ### */
+    {
+        position:relative;
+        text-align:left;
+    }
+    div.rate_scale /* ### in design.inc.php function DesignProgress() ### */
+    {
+        position:relative;
+        height:10px;
+        font-size:1px;
+        line-height:10px;
+        border:1px solid #9DA0A1;
+        background-image:url(../images/icons/scale_bg.gif);
+        margin:0px;
+        padding:0px;
+        text-align:left;
+    }
+/*##############################################################*/
+    div.im_invite_container
+    {
+        position: absolute;
+        z-index: 90;
+        width: 288px;
+        height: 188px;
+        border: 6px solid silver;
+        background-color: #FFFFFF;
+    }
+    div.im_invite_image
+    {
+        position: absolute;
+        width: 110px;
+        height: 110px;
+        border: 1px solid black;
+        left: 10px;
+        top: 10px;
+        text-align: center;
+    }
+    div.im_invite_image img
+    {
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+    div.im_invite_caption
+    {
+        position: absolute;
+        left: 134px;
+        top: 16px;
+        width: 140px;
+        font-family: Verdana;
+        font-size: 12px;
+        font-weight: normal;
+    }
+    div.im_invite_nickname
+    {
+        position: absolute;
+        left: 134px;
+        top: 40px;
+        width: 140px;
+        font-family: Verdana;
+        font-size: 12px;
+        font-weight: bold;
+    }
+    div.im_invite_message
+    {
+        position: absolute;
+        left: 134px;
+        top: 64px;
+        width: 140px;
+        height: 80px;
+        font-family: Verdana;
+        font-size: 11px;
+        font-weight: normal;
+        font-style: italic;
+    }
+    div.im_invite_accept_button
+    {
+        position: absolute;
+        left: 186px;
+        top: 156px;
+        width: 86px;
+    }
+    div.im_invite_decline_button
+    {
+        position: absolute;
+        left: 80px;
+        top: 156px;
+        width: 86px;
+    }
+    input.im_invite_button
+    {
+        background-color: #7EAAD7;
+        color: #FFFFFF;
+        font-size: 12px;
+        font-family: Arial;
+        border: 1px solid silver;
+        height: 22px;
+    }
+/*##############################################################*/
+/*##############################################################*/
+    div.no_result, div.action
+    {
+        position:relative;
+        border:1px solid #A0C238;
+        padding:1px;
+        margin:10px 0px;
+        width:80%;
+        margin-left:auto;
+        margin-right:auto;
+    }
+    div.no_result div, div.action div
+    {
+        position:relative;
+        background-color:#709812;
+        vertical-align:middle;
+        font-weight:bold;
+        color:#fff;
+        text-align:center;
+        margin:0px;
+        padding:0px;
+        line-height:20px;
+    }
+    div.err
+    {
+        position:relative;
+        border:1px solid #FF412D;
+        padding:1px;
+        margin:10px 0px;
+        width:80%;
+        margin-left:auto;
+        margin-right:auto;
+    }
+    div.err div
+    {
+        position:relative;
+        background-color:#FF412D;
+        vertical-align:middle;
+        font-weight:bold;
+        color:#fff;
+        text-align:center;
+        line-height:20px;
+    }
+/* Do  not delete
+    div.action
+    {
+        position:relative;
+        border:1px solid #A0C238;
+        padding:1px;
+        margin:10px 0px;
+        width:80%;
+        margin-left:auto;
+        margin-right:auto;
+    }
+    div.action div
+    {
+        position:relative;
+        background-color:#709812;
+        vertical-align:middle;
+        font-weight:bold;
+        color:#fff;
+        text-align:center;
+    }
+*/
+* html div.no_result div, * html div.action div, * html div.err div
+    {
+        line-height:normal;
+        padding:3px 0px;
+    }
+/*##############################################################*/
+/*##############################################################*/
+    div#boonex_banners
+    {
+        position:relative;
+        border:0px solid red;
+        height:77px;
+        width:783px;
+        margin-left:auto;
+        margin-right:auto;
+    }
+/*
+    div#boonex_text_link
+    {
+        position:absolute;
+        top:0px;
+        border:1px solid #999999;
+        height:77px;
+        left:0px;
+        width:270px;
+    }
+    div#boonex_text_link div#img
+        {
+        position:absolute;
+        top:7px;
+        left:3px;
+        border:0px solid red;
+    }
+    div#boonex_text_link div
+    {
+        position:absolute;
+        top:30px;
+        left:70px;
+        text-align:left;
+    }
+*/
+    div#boonex_image_link
+    {
+        position:absolute;
+        top:0px;
+        right:0px;
+        height:77px;
+        width:488px;
+/*        background-color:#FFFFFF;*/
+        border:1px solid #999999;
+        background-image:url(../images/boonex_ad_bg.gif);
+        background-repeat:no-repeat;
+        background-position:center;
+    }
+    div#boonex_image_link table td
+    {
+        width:488px;
+        height:77px;
+    }
+/*##############################################################*/
+    div#switch_lang
+    {
+        position:absolute;
+        top:4px;
+        right:10px;
+    }
+/*##############################################################*/
+    div.menu_item_line
+    {
+        position:relative;
+    }
+    div.menu_item_line div.link
+    {
+        position:relative;
+        text-align:left;
+        padding-left:30px;
+        font-size:12px;
+        text-transform:capitalize;
+        font-weight:bold;
+        line-height:20px;
+        height:20px;
+        vertical-align:middle;
+        border:0px solid red;
+    }
+    div.menu_item_line div.menu_item_image
+    {
+        position:relative;
+        text-align:center;
+        margin:0px;
+        padding:0px;
+        height:6px;
+        line-height:4px;
+        vertical-align:top;
+
+        border:0px solid green;
+    }
+    div.menu_item_line div.menu_item_image img
+    {
+        position:relative;
+        margin:0px;
+        padding:0px;
+        height:4px;
+    }
+/*##############################################################*/
+    div.err ul
+    {
+        text-align:left;
+        margin:0px;
+    }
+/*##############################################################*/
+    div.pollBlock
+    {
+        position:relative;
+        overflow:hidden;
+        top:0px;
+        left:0px;
+        height:154px;
+        width:260px;
+        border:1px solid #979797;
+        text-align:left;
+        background-color:#fff;
+        margin-left:auto;
+        margin-right:auto;
+    }
+    div.pollCaption
+    {
+        position:relative;
+        margin:2px;
+        padding:0px 5px;
+        overflow:hidden;
+        height:20px;
+        line-height:20px;
+        vertical-align:middle;
+
+        font-weight:bold;
+        border:solid 0px #00cc00;
+
+        background-image:url(../images/box_border_header_bg.gif);
+        background-repeat:repeat-x;
+        background-position:center;
+
+    }
+    div.pollAnswerBlock
+    {
+        position:relative;
+        margin:2px;
+        overflow:hidden;
+        height:100px;
+        border:solid 0px #cc0000;
+        text-align:left;
+    }
+    div.pollUp
+    {
+        position:absolute;
+        right:5px;
+        top:5px;
+    }
+    div.pollDown
+    {
+        position:absolute;
+        right:5px;
+        bottom:5px;
+    }
+    div.pollQuestionBlock
+    {
+        position:absolute;
+        width:230px;
+        padding:2px;
+        overflow:hidden;
+        border:solid 0px green;
+    }
+    div.pollSubmitBlock
+    {
+        position:relative;
+        margin:2px;
+        overflow:hidden;
+        height:20px;
+        border:solid 0px #0000cc;
+        text-align:center;
+    }
+    .pollContainer
+    {
+        position:relative;
+        margin-top:2px;
+        padding:10px;
+        /*background-color:#f6f6ff;*/
+        border:0px solid red;
+    }
+
+    .createPollSection
+    {
+        position:relative;
+        padding:10px;
+        /*background-color:#F0F0FF;*/
+        border:0px solid red;
+    }
+
+    .controlsDiv
+    {
+        position:relative;
+        clear:both;
+        margin:0px;
+        /*background-color:#ffffff;*/
+        border:0px solid red;
+    }
+
+    .innerControlBlock
+    {
+        position:relative;
+        float:right;
+        width:200px;
+        border:0px solid red;
+    }
+
+    .controlsHeader
+    {
+        padding: 0px 2px;
+        font-weight:bold;
+    }
+
+    .deleteDiv
+    {
+        padding: 2px 0px 0px 2px;
+
+    }
+/*##############################################################*/
+    div.playerAdminLink
+    {
+        position:relative;
+          text-align:left;
+         margin-bottom:15px;
+     }
+/* #################################################################### */
+    .logInRegistrationText
+    {
+        margin:5px;
+    }
+    div.member_submenu
+    {
+        position:relative;
+        overflow:hidden;
+        margin-left:35px;
+        margin-bottom:2px;
+        line-height:18px;
+        vertical-align:middle;
+        font-weight:bold;
+    }

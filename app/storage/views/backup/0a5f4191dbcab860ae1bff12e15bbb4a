@@ -1,0 +1,18 @@
+@layout(layouts.default)
+
+<?php $__env->startSection('content'); ?>
+
+
+
+
+
+
+
+<li><?php echo $title; ?>   </li>
+
+
+
+
+
+
+<?php $__env->stopSection(); ?>

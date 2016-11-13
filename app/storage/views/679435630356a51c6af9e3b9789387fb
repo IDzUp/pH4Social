@@ -1,0 +1,78 @@
+@layout(layouts.live)
+
+<?php $__env->startSection('content'); ?>
+
+
+  
+  <section>
+    <div class="container">
+      <div class="row">
+   
+        <div class="col-sm-9">
+          <div class="blog-post-area">
+            <h2 class="title text-center">Latest From our Blog</h2>
+ <?php foreach( array_chunk( $blog->getCollection()->all(),3)  as $hellos): ?>
+<div class="row">
+<?php foreach ($hellos as $hello)
+{
+  ?>
+
+
+            <div class="single-blog-post">
+              <h3><?php echo $hello->title; ?></h3>
+              <div class="post-meta">
+                <ul>
+                  <li><i class="fa fa-user"></i><?php echo $hello->name; ?></li>
+                 
+                  <li><i class="fa fa-calendar"></i><?php echo $hello->created_at; ?></li>
+                </ul>
+                <span>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-half-o"></i>
+                </span>
+              </div>
+              <a href="">
+                <img src="../<?php echo $hello->path; ?>" alt="">
+              </a>
+              <p><?php echo $hello->contents; ?></p>
+              <a  class="btn btn-primary" href="">Read More</a>
+            </div>
+<?php
+
+}
+
+?>
+</div>
+
+<?php endforeach; ?>
+
+<?php echo $blog->links(); ?>
+
+     
+           <!--
+            <div class="pagination-area">
+              <ul class="pagination">
+                <li><a href="" class="active">1</a></li>
+                <li><a href="">2</a></li>
+                <li><a href="">3</a></li>
+                <li><a href=""><i class="fa fa-angle-double-right"></i></a></li>
+              </ul>
+            </div>
+-->
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+
+<?php $__env->stopSection(); ?>
+
+

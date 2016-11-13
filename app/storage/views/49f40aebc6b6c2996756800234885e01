@@ -1,0 +1,16 @@
+@layout(layoutss.fb)
+
+<?php $__env->startSection('content'); ?>
+
+<div id="profile">
+
+
+</div>
+
+<?php $__env->stopSection(); ?>
+
+
+
+
+
+

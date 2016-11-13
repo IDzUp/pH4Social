@@ -1,0 +1,14 @@
+@layout(layouts.default)
+
+<?php $__env->startSection('content'); ?>
+
+
+<?php if($errors->has()): ?>
+
+<?php echo $errors->first('first_name',':message'); ?>
+<?php endif; ?>
+
+
+
+
+<?php $__env->stopSection(); ?>
