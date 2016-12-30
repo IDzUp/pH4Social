@@ -186,7 +186,7 @@ class ContactController extends BaseController
                 //return Redirect::to('viewcontact')->with('msg','Successfully Created');
             }
         } else {
-            return Redirect::to('contactform')->withInput()->withErrors($v);
+            return Redirect::to('contactform')->withInput()->withErrors($validator);
         }
     }
 
