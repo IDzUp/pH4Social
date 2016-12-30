@@ -1,725 +1,417 @@
 <?php
 
-class ContactController extends BaseController {
-
-    /*
-    |--------------------------------------------------------------------------
-    | Default Home Controller
-    |--------------------------------------------------------------------------
-    |
-    | You may wish to use controllers instead of, or in addition to, Closure
-    | based routes. That's great! Here is an example controller method to
-    | get you started. To route to this controller, just add the route:
-    |
-    |    Route::get('/', 'HomeController@showWelcome');
-    |
-    */
-
-
-
+class ContactController extends BaseController
+{
     public $restful = true;
 
     public $layout='layouts.adminnew';
 
     public function contact()
     {
-
-
- if(!Auth::check())
-        {
-
+        if (!Auth::check()) {
             return Redirect::to('/la-admin');
         }
 
- $rands = DB::table('users')
-                     ->where('rand', Auth::user()->rand)
-                     ->first();
-    $plan=$rands->plan;
+        $rands = DB::table('users')
+            ->where('rand', Auth::user()->rand)
+            ->first();
+        $plan = $rands->plan;
 
-    $plans = DB::table('membershipplan')
-                     ->where('name', $plan)
-                     ->first();
+        $plans = DB::table('membershipplan')
+            ->where('name', $plan)
+            ->first();
 
-      if($plans->removeadmin=='on' || $plans->removesuperadmin=='on' || $plans->users=='on')
-    {
-
-
-
-    $view= View::make('contact.indexs');
-    $this->layout->with('logo', Logo::find(1));
-    $this->layout->content=$view;
-
-
-    }
-        else
-    {
-//return Redirect::route('notaccess');
-App::abort(404);
+        if ($plans->removeadmin=='on' || $plans->removesuperadmin=='on' || $plans->users=='on') {
+            $view= View::make('contact.indexs');
+            $this->layout->with('logo', Logo::find(1));
+            $this->layout->content = $view;
+        } else {
+            //return Redirect::route('notaccess');
+            App::abort(404);
+        }
     }
 
 
-    }
-
-
-public function emails()
+    public function emails()
     {
-
-
- if(!Auth::check())
-        {
-
+        if (!Auth::check()) {
             return Redirect::to('/la-admin');
         }
 
-     $rands = DB::table('users')
-                     ->where('rand', Auth::user()->rand)
-                     ->first();
-    $plan=$rands->plan;
+        $rands = DB::table('users')
+            ->where('rand', Auth::user()->rand)
+            ->first();
 
-    $plans = DB::table('membershipplan')
-                     ->where('name', $plan)
-                     ->first();
+        $plan = $rands->plan;
+        $plans = DB::table('membershipplan')
+            ->where('name', $plan)
+            ->first();
 
-     if($plans->removeadmin=='on' || $plans->removesuperadmin=='on' || $plans->users=='on')
-    {
-
-
-
-    $view= View::make('contact.emails');
-    $this->layout->with('logo', Logo::find(1));
-    $this->layout->content=$view;
-
-
-    }
-        else
-    {
-//return Redirect::route('notaccess');
-App::abort(404);
+         if ($plans->removeadmin=='on' || $plans->removesuperadmin=='on' || $plans->users=='on') {
+            $view= View::make('contact.emails');
+            $this->layout->with('logo', Logo::find(1));
+            $this->layout->content = $view;
+        } else {
+            //return Redirect::route('notaccess');
+            App::abort(404);
+        }
     }
 
-
-    }
-
-
-
-
-public function confirmmail()
+    public function confirmmail()
     {
-
-
- if(!Auth::check())
-        {
-
+        if (!Auth::check()) {
             return Redirect::to('/la-admin');
         }
 
-     $rands = DB::table('users')
-                     ->where('rand', Auth::user()->rand)
-                     ->first();
-    $plan=$rands->plan;
+        $rands = DB::table('users')
+            ->where('rand', Auth::user()->rand)
+            ->first();
+        $plan = $rands->plan;
+        $plans = DB::table('membershipplan')
+            ->where('name', $plan)
+            ->first();
 
-    $plans = DB::table('membershipplan')
-                     ->where('name', $plan)
-                     ->first();
+        if ($plans->removeadmin=='on' || $plans->removesuperadmin=='on' || $plans->users=='on') {
+            $confirmmail = DB::table('confirmmail')
+                ->where('id', 1)
+                ->first();
 
-     if($plans->removeadmin=='on' || $plans->removesuperadmin=='on' || $plans->users=='on')
-    {
-
-    $confirmmail = DB::table('confirmmail')
-                     ->where('id', 1)
-                     ->first();
-
-
-
-    $view= View::make('contact.confirmmail')->with('confirmmail', $confirmmail);
-    $this->layout->with('logo', Logo::find(1));
-    $this->layout->content=$view;
-
-
-    }
-        else
-    {
-//return Redirect::route('notaccess');
-App::abort(404);
+            $view = View::make('contact.confirmmail')->with('confirmmail', $confirmmail);
+            $this->layout->with('logo', Logo::find(1));
+            $this->layout->content = $view;
+        } else {
+            //return Redirect::route('notaccess');
+            App::abort(404);
+        }
     }
 
-
-    }
-
-
-public function contemplate()
+    public function contemplate()
     {
-
-
- if(!Auth::check())
-        {
-
+        if (!Auth::check()) {
             return Redirect::to('/la-admin');
         }
 
-     $rands = DB::table('users')
-                     ->where('rand', Auth::user()->rand)
-                     ->first();
-    $plan=$rands->plan;
+        $rands = DB::table('users')
+            ->where('rand', Auth::user()->rand)
+            ->first();
+        $plan = $rands->plan;
+        $plans = DB::table('membershipplan')
+            ->where('name', $plan)
+            ->first();
 
-    $plans = DB::table('membershipplan')
-                     ->where('name', $plan)
-                     ->first();
+        if ($plans->removeadmin=='on' || $plans->removesuperadmin=='on' || $plans->users=='on') {
+            $contemplate = DB::table('contemplate')
+                ->where('id', 1)
+                ->first();
 
-    if($plans->removeadmin=='on' || $plans->removesuperadmin=='on' || $plans->users=='on')
-    {
-
-    $contemplate = DB::table('contemplate')
-                     ->where('id', 1)
-                     ->first();
-
-
-
-    $view= View::make('contact.contemplate')->with('contemplate', $contemplate);
-    $this->layout->with('logo', Logo::find(1));
-    $this->layout->content=$view;
-
-
-    }
-        else
-    {
-//return Redirect::route('notaccess');
-App::abort(404);
-    }
-
-
+            $view = View::make('contact.contemplate')->with('contemplate', $contemplate);
+            $this->layout->with('logo', Logo::find(1));
+            $this->layout->content = $view;
+        } else {
+            //return Redirect::route('notaccess');
+            App::abort(404);
+        }
     }
 
     public function notitemplate()
     {
-
-
- if(!Auth::check())
-        {
-
+        if (!Auth::check()) {
             return Redirect::to('/la-admin');
         }
 
-     $rands = DB::table('users')
-                     ->where('rand', Auth::user()->rand)
-                     ->first();
-    $plan=$rands->plan;
+        $rands = DB::table('users')
+            ->where('rand', Auth::user()->rand)
+            ->first();
+        $plan = $rands->plan;
+        $plans = DB::table('membershipplan')
+            ->where('name', $plan)
+            ->first();
 
-    $plans = DB::table('membershipplan')
-                     ->where('name', $plan)
-                     ->first();
+        if ($plans->removeadmin=='on' || $plans->removesuperadmin=='on' || $plans->users=='on') {
+            $notitemplate = DB::table('notitemplate')
+                ->where('id', 1)
+                ->first();
 
-    if($plans->removeadmin=='on' || $plans->removesuperadmin=='on' || $plans->users=='on')
-    {
-
-    $notitemplate = DB::table('notitemplate')
-                     ->where('id', 1)
-                     ->first();
-
-
-
-    $view= View::make('contact.notitemplate')->with('notitemplate', $notitemplate);
-    $this->layout->with('logo', Logo::find(1));
-    $this->layout->content=$view;
-
-
+            $view = View::make('contact.notitemplate')->with('notitemplate', $notitemplate);
+            $this->layout->with('logo', Logo::find(1));
+            $this->layout->content = $view;
+        } else {
+            //return Redirect::route('notaccess');
+            App::abort(404);
+        }
     }
-        else
-    {
-//return Redirect::route('notaccess');
-App::abort(404);
-    }
-
-
-    }
-
-
-
-
 
     public function savecontact()
     {
+        $input = Input::all();
+        $rules = array('email' => 'required|email','name' => 'required|max:25','subject' => 'required|max:25','comment' => 'required');
 
+        $validator = Validator::make($input,$rules);
 
-$input = Input::all();
-$rules = array('email' => 'required|email','name' => 'required|max:25','subject' => 'required|max:25','comment' => 'required');
+        if ($validator->passes()) {
+            $user = new Contact();
+            $user->name = strip_tags(Input:: get('name'));
+            $user->email = $input['email'];
+            $user->subject = strip_tags(Input:: get('subject'));
+            $user->message = strip_tags(Input:: get('comment'));
 
-$v= Validator::make($input,$rules);
+            $user->save();
 
-if($v->passes())
-{
+            $confirmmail = DB::table('contemplate')
+                ->where('id',1)
+                ->first();
 
+            $user->froms = $confirmmail->from;
+            $user->subject = $confirmmail->subject;
 
-    $user= new Contact();
-    $user->name = strip_tags(Input:: get('name'));
-    $user->email = $input['email'];
-    $user->subject = strip_tags(Input:: get('subject'));
-    $user->message = strip_tags(Input:: get('comment'));
+            $data = array('content' => $confirmmail->comment,'email' => 'sahil_kaushal@esferasoft.com', 'first_name' => $user->name, 'from' => 'sahil_kaushal@esferasoft.com', 'from_name' => 'Meh' );
 
-    $user->save();
+            Mail::send('contact.test', $data, function($message) use ($user) {
+                $message->to($user->email, $user->name)->from( $user->froms, $user->froms)
+                    ->subject($user->subject);
+            });
 
+            $test = $input['test'];
+            if ($test == 1)
+            {
+                Session::flash('success', "Successfully Sent");
+                return Redirect::back();
 
-    $confirmmail = DB::table('contemplate')
-                     ->where('id',1)
-                     ->first();
+                // return Redirect::route('contactform');
+            } else {
+                //return Redirect::route('viewcontact');
 
-    $user->froms=$confirmmail->from;
-
-    $user->subject=$confirmmail->subject;
-
-    $data = array('content' => $confirmmail->comment,'email' => 'sahil_kaushal@esferasoft.com', 'first_name' => $user->name, 'from' => 'sahil_kaushal@esferasoft.com', 'from_name' => 'Meh' );
-
-
-Mail::send('contact.test', $data, function($message) use ($user)
-{
-  $message->to($user->email, $user->name)->from( $user->froms, $user->froms)
-          ->subject($user->subject);
-});
-
-
-
-    $test=$input['test'];
-    if($test==1)
-    {
-
-Session::flash('success', "Successfully Sent");
-return Redirect::back();
-
-    //    return Redirect::route('contactform');
-    }
-    else {
-
-            //return Redirect::route('viewcontact');
-
-Session::flash('success', "Successfully Sent");
-return Redirect::back();
-        //return Redirect::to('viewcontact')->with('msg','Successfully Created');
-    }
-
-}
-else
-{
-
-        return Redirect::to('contactform')->withInput()->withErrors($v);
-}
-
-
-
-
-
+                Session::flash('success', 'Successfully Sent');
+                return Redirect::back();
+                //return Redirect::to('viewcontact')->with('msg','Successfully Created');
+            }
+        } else {
+            return Redirect::to('contactform')->withInput()->withErrors($v);
+        }
     }
 
     public function emailsend()
     {
-
-
-
- if(!Auth::check())
-        {
-
+        if (!Auth::check()) {
             return Redirect::to('/la-admin');
         }
 
-     $rands = DB::table('users')
-                     ->where('rand', Auth::user()->rand)
-                     ->first();
-    $plan=$rands->plan;
+        $rands = DB::table('users')
+            ->where('rand', Auth::user()->rand)
+            ->first();
 
-    $plans = DB::table('membershipplan')
-                     ->where('name', $plan)
-                     ->first();
+        $plan = $rands->plan;
 
-     if($plans->removeadmin=='on' || $plans->removesuperadmin=='on' || $plans->users=='on')
-    {
+        $plans = DB::table('membershipplan')
+            ->where('name', $plan)
+            ->first();
 
+        if ($plans->removeadmin=='on' || $plans->removesuperadmin=='on' || $plans->users=='on') {
+            $input = Input::all();
 
+            $user= new Emails;
+            $user->email = $input['email'];
+            $user->from = $input['from'];
+            $user->subject = strip_tags(Input:: get('subject'));
+            $user->comment = Input:: get('comment');
+            $user->save();
+            $data = array( 'subject' => $user->subject, 'comment' => $user->comment, 'from' => '', 'from_name' => 'Meh' );
 
-$input = Input::all();
+            Mail::send('contact.editemail', $data, function($comment) use ($user) {
+                $comment->to($user->email, $user->subject)->from($user->from, $user->from)->subject($user->subject);
+            });
 
-
-    $user= new Emails();
-    $user->email = $input['email'];
-
-    $user->from = $input['from'];
-
-    $user->subject = strip_tags(Input:: get('subject'));
-
-    $user->comment = Input:: get('comment');
-
-    $user->save();
-$data = array( 'subject' => $user->subject, 'comment' => $user->comment, 'from' => '', 'from_name' => 'Meh' );
-
-
-Mail::send('contact.editemail', $data, function($comment) use ($user)
-{
-
-
-  $comment->to($user->email, $user->subject)->from($user->from, $user->from)
-          ->subject($user->subject);
-});
-
-
-
-
-
-
-Session::flash('success', "Successfully Sent");
-return Redirect::back();
-
-
-
-
-    }
-        else
-    {
-//return Redirect::route('notaccess');
-App::abort(404);
-    }
-
-
-
-
-
-
-
-
-
-
+            Session::flash('success', 'Successfully Sent');
+            return Redirect::back();
+        } else {
+            //return Redirect::route('notaccess');
+            App::abort(404);
+        }
     }
 
     public function confirmmailsend()
     {
-
-
-
- if(!Auth::check())
-        {
-
+        if (!Auth::check()) {
             return Redirect::to('/la-admin');
         }
 
-     $rands = DB::table('users')
-                     ->where('rand', Auth::user()->rand)
-                     ->first();
-    $plan=$rands->plan;
+        $rands = DB::table('users')
+            ->where('rand', Auth::user()->rand)
+             ->first();
+        $plan = $rands->plan;
 
-    $plans = DB::table('membershipplan')
-                     ->where('name', $plan)
-                     ->first();
+        $plans = DB::table('membershipplan')
+            ->where('name', $plan)
+            ->first();
 
-     if($plans->removeadmin=='on' || $plans->removesuperadmin=='on' || $plans->users=='on')
-    {
+        if ($plans->removeadmin=='on' || $plans->removesuperadmin=='on' || $plans->users=='on') {
+            $input = Input::all();
 
+            $entry = array(
+                'comment' => Input:: get('comment'),
+                'from' => Input:: get('from'),
+                'subject' => Input:: get('subject')
+            );
 
+            Confirmmail::where('id', '=', 1)->update($entry);
 
-    $input = Input::all();
-
-
-
-        $entry = array(
-
-            'comment' => Input:: get('comment'),
-            'from' => Input:: get('from'),
-            'subject' => Input:: get('subject')
-
-        );
-
-         Confirmmail::where('id', '=', 1)->update($entry);
-
-
-
-
-Session::flash('success', "Update Successfully");
-return Redirect::back();
-
-
-
-
-    }
-        else
-    {
-//return Redirect::route('notaccess');
-App::abort(404);
+            Session::flash('success', "Update Successfully");
+            return Redirect::back();
+        } else {
+            //return Redirect::route('notaccess');
+            App::abort(404);
+        }
     }
 
-
-
-    }
-
-public function notitemplatesend()
+    public function notitemplatesend()
     {
-
-
-
- if(!Auth::check())
-        {
-
+        if (!Auth::check()) {
             return Redirect::to('/la-admin');
         }
 
-     $rands = DB::table('users')
-                     ->where('rand', Auth::user()->rand)
-                     ->first();
-    $plan=$rands->plan;
+        $rands = DB::table('users')
+            ->where('rand', Auth::user()->rand)
+            ->first();
 
-    $plans = DB::table('membershipplan')
-                     ->where('name', $plan)
-                     ->first();
+        $plan = $rands->plan;
+        $plans = DB::table('membershipplan')
+            ->where('name', $plan)
+            ->first();
 
-     if($plans->removeadmin=='on' || $plans->removesuperadmin=='on' || $plans->users=='on')
-    {
+         if ($plans->removeadmin=='on' || $plans->removesuperadmin=='on' || $plans->users=='on') {
+             $input = Input::all();
 
+            $entry = array(
+                'comment' => Input:: get('comment'),
+                'from' => Input:: get('from'),
+                'subject' => Input:: get('subject')
+            );
 
+            Notitemplate::where('id', '=', 1)->update($entry);
 
-    $input = Input::all();
-
-
-
-        $entry = array(
-
-            'comment' => Input:: get('comment'),
-            'from' => Input:: get('from'),
-            'subject' => Input:: get('subject')
-
-
-        );
-
-         Notitemplate::where('id', '=', 1)->update($entry);
-
-
-
-
-Session::flash('success', "Update Successfully");
-return Redirect::back();
-
-
-
-
+            Session::flash('success', 'Update Successfully');
+            return Redirect::back();
+        } else {
+            //return Redirect::route('notaccess');
+            App::abort(404);
+        }
     }
-        else
-    {
-//return Redirect::route('notaccess');
-App::abort(404);
-    }
-
-
-
-    }
-
-
-
 
     public function contemplatesend()
     {
-
-
-
- if(!Auth::check())
-        {
-
+        if (!Auth::check()) {
             return Redirect::to('/la-admin');
         }
 
-     $rands = DB::table('users')
-                     ->where('rand', Auth::user()->rand)
-                     ->first();
-    $plan=$rands->plan;
+        $rands = DB::table('users')
+            ->where('rand', Auth::user()->rand)
+            ->first();
 
-    $plans = DB::table('membershipplan')
-                     ->where('name', $plan)
-                     ->first();
+        $plan = $rands->plan;
 
-     if($plans->removeadmin=='on' || $plans->removesuperadmin=='on' || $plans->users=='on')
-    {
+        $plans = DB::table('membershipplan')
+            ->where('name', $plan)
+            ->first();
 
+        if ($plans->removeadmin=='on' || $plans->removesuperadmin=='on' || $plans->users=='on') {
+            $input = Input::all();
 
+            $entry = array(
+                'comment' => Input:: get('comment'),
+                'subject' => Input:: get('subject'),
+                'from' => Input:: get('from')
+            );
 
-    $input = Input::all();
+            Contemplate::where('id', '=', 1)->update($entry);
 
-
-
-        $entry = array(
-
-            'comment' => Input:: get('comment'),
-            'subject' => Input:: get('subject'),
-            'from' => Input:: get('from')
-
-        );
-
-         Contemplate::where('id', '=', 1)->update($entry);
-
-
-
-
-Session::flash('success', "Update Successfully");
-return Redirect::back();
-
-
-
-
-    }
-        else
-    {
-//return Redirect::route('notaccess');
-App::abort(404);
+            Session::flash('success', 'Update Successfully');
+            return Redirect::back();
+        } else {
+            //return Redirect::route('notaccess');
+            App::abort(404);
+        }
     }
 
-
-
-    }
-
-
-        public function allemail()
+    public function allemail()
     {
-
-     if(!Auth::check())
-        {
-
+        if (!Auth::check()) {
             return Redirect::to('/la-admin');
         }
 
- $rands = DB::table('users')
-                     ->where('rand', Auth::user()->rand)
-                     ->first();
-    $plan=$rands->plan;
+        $rands = DB::table('users')
+            ->where('rand', Auth::user()->rand)
+            ->first();
 
-    $plans = DB::table('membershipplan')
-                     ->where('name', $plan)
-                     ->first();
+        $plan = $rands->plan;
 
-      if($plans->removeadmin=='on' || $plans->removesuperadmin=='on' || $plans->users=='on')
-    {
+        $plans = DB::table('membershipplan')
+            ->where('name', $plan)
+            ->first();
 
-
-
-    $view= View::make('contact.allemail')->with('allemail', Emails::all());
-    $this->layout->with('colors', Settings::All());
-    $this->layout->with('logo', Logo::find(1));
-    $this->layout->content=$view;
-    }
-    else
-    {
-//return Redirect::route('notaccess');
-App::abort(404);
+        if ($plans->removeadmin=='on' || $plans->removesuperadmin=='on' || $plans->users=='on') {
+            $view= View::make('contact.allemail')->with('allemail', Emails::all());
+            $this->layout->with('colors', Settings::All());
+            $this->layout->with('logo', Logo::find(1));
+            $this->layout->content = $view;
+        } else {
+            //return Redirect::route('notaccess');
+            App::abort(404);
+        }
     }
 
-
-
-
-    }
-
-
-
-
-public function updatecon()
+    public function updatecon()
     {
-
-
-
-        //$id=Input::get($id);
-
-
-         $id = Input::get('id');
-
-
-
-
+        $id = Input::get('id');
         $entry = array(
-
             'email' => Input::get('email'),
-              'name' => Input::get('name'),
-
+            'name' => Input::get('name'),
             'subject' => Input::get('subject'),
-              'message' => Input::get('message')
-
-
+            'message' => Input::get('message')
         );
 
- Contact::where('id', $id)->update($entry);
+        Contact::where('id', $id)->update($entry);
 
-        //Author::update
-
-
-
-     //     return Redirect::route('viewcontact');
-return Redirect::to('viewcontact')->with('msg','Successfully Updated');
-
-
-
+        return Redirect::to('viewcontact')->with('msg', 'Successfully Updated');
     }
 
-
-public function contactdelete($id)
+    public function contactdelete($id)
     {
-
         Contact::find($id)->delete();
 
-    //    return Redirect::route('viewcontact');
-            return Redirect::to('viewcontact')->with('msg','Successfully Deleted');
-
+        return Redirect::to('viewcontact')->with('msg','Successfully Deleted');
     }
 
-public function maildelete($id)
+    public function maildelete($id)
     {
-
         Emails::find($id)->delete();
 
-    //    return Redirect::route('viewcontact');
-            return Redirect::to('allemail')->with('msg','Successfully Deleted');
-
+        return Redirect::to('allemail')->with('msg','Successfully Deleted');
     }
 
-public function mailopen($id)
+    public function mailopen($id)
     {
-
-
-
-        if(!Auth::check())
-        {
-
+        if (!Auth::check()) {
             return Redirect::to('/la-admin');
         }
 
+        $rands = DB::table('users')
+            ->where('rand', Auth::user()->rand)
+            ->first();
 
+        $plan = $rands->plan;
 
+        $plans = DB::table('membershipplan')
+            ->where('name', $plan)
+            ->first();
 
-     $rands = DB::table('users')
-                     ->where('rand', Auth::user()->rand)
-                     ->first();
-    $plan=$rands->plan;
-
-    $plans = DB::table('membershipplan')
-                     ->where('name', $plan)
-                     ->first();
-
-     if($plans->removeadmin=='on' || $plans->removesuperadmin=='on' || $plans->users=='on')
-    {
-
-
-
-$view= View::make('contact.viewemail')->with('viewemail', Emails::find($id));
-    $this->layout->with('logo', Logo::find(1));
-$this->layout->content=$view;
-
+        if ($plans->removeadmin=='on' || $plans->removesuperadmin=='on' || $plans->users=='on')
+        {
+            $view = View::make('contact.viewemail')->with('viewemail', Emails::find($id));
+            $this->layout->with('logo', Logo::find(1));
+            $this->layout->content = $view;
+        } else {
+            //return Redirect::route('notaccess');
+            App::abort(404);
+        }
     }
-    else
-    {
-//return Redirect::route('notaccess');
-App::abort(404);
-    }
-
-
-
-
-    }
-
-
-
-
-
-
-
 }
-
-
-?>
