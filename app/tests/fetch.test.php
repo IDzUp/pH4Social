@@ -1,6 +1,7 @@
 <?php
 
-class Fetch_Test extends PHPUnit_Framework_TestCase {
+class Fetch_Test extends PHPUnit_Framework_TestCase
+{
 
     /**
      * Creates the application.

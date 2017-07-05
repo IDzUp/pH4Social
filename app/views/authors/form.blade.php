@@ -3,10 +3,10 @@
 @section('content')
 
 
-@if($errors->has())
+    @if($errors->has())
 
-{{ $errors->first('first_name',':message')}}
-@endif
+        {{ $errors->first('first_name',':message')}}
+    @endif
 
 
 

@@ -1,6 +1,3 @@
-
-
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -10,9 +7,9 @@
         @import url(//fonts.googleapis.com/css?family=Lato:700);
 
         body {
-            margin:0;
-            font-family:'Lato', sans-serif;
-            text-align:center;
+            margin: 0;
+            font-family: 'Lato', sans-serif;
+            text-align: center;
             color: #999;
         }
 
@@ -27,7 +24,7 @@
         }
 
         a, a:visited {
-            text-decoration:none;
+            text-decoration: none;
         }
 
         h1 {
@@ -37,41 +34,39 @@
     </style>
 
 
-{{ HTML::style('css/style.css'); }}
+    {{ HTML::style('css/style.css'); }}
 </head>
 <body>
-    <div id="test">
+<div id="test">
 
 
-                    <div id="wel">
-                WELCOME TO Social Networking
-
-                </div>
-
-
-
-    <!--     <ul class="nav nav-list">
-
-            @if(Auth::user())
-            <li class="new-hedaer"> {{ ucwords(Auth::user()->username) }} </li>
-                <li>{{ HTML::Link('post','Add Post')}} </li>
-                    <li> {{ HTML::Link('users', 'View users')}} </li>
-                    <li> {{ HTML::Link('logout', 'Logout')}}
-                    @else
-
-                    <div id="wel">
-                 {{ HTML::Link('login', 'WELCOME TO LARAVEL')}}
-                     <div id="text"> Click "welcome to laravel" to continue... </div>
-                </div>
-                @endif
-        </ul>
- -->
+    <div id="wel">
+        WELCOME TO Social Networking
 
     </div>
 
 
-            @yield('content')
+<!--     <ul class="nav nav-list">
 
+            @if(Auth::user())
+    <li class="new-hedaer"> {{ ucwords(Auth::user()->username) }} </li>
+                <li>{{ HTML::Link('post','Add Post')}} </li>
+                    <li> {{ HTML::Link('users', 'View users')}} </li>
+                    <li> {{ HTML::Link('logout', 'Logout')}}
+@else
+
+    <div id="wel">
+ {{ HTML::Link('login', 'WELCOME TO LARAVEL')}}
+            <div id="text"> Click "welcome to laravel" to continue... </div>
+       </div>
+       @endif
+        </ul>
+ -->
+
+</div>
+
+
+@yield('content')
 
 
 </body>

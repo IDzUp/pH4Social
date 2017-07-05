@@ -3,35 +3,35 @@
 @section('content')
 
 
- {{ Form:: open(array('url' => 'getlogin' , 'method' => 'get','class' => 'form-2')) }} <!--contact_request is a router from Route class-->
-  @if($errors->any())
+    {{ Form:: open(array('url' => 'getlogin' , 'method' => 'get','class' => 'form-2')) }} <!--contact_request is a router from Route class-->
+    @if($errors->any())
 
- {{ implode('', $errors->all('<div class="alert-danger">:message</div>'))  }}
-@endif
+        {{ implode('', $errors->all('<div class="alert-danger">:message</div>'))  }}
+    @endif
     {{ Form::token() }}
 
     <div id="center">
-    <img width="250" height="50" src="{{ asset('/') }}public/<?php echo $logo->path; ?>" alt="">
-    <ul>
-    <li>
-    <p> {{ Form:: label ('email', 'Email*' )}} </p>
-    <input type="text" name="email" required="">
-<!--     {{ Form:: text ('email')}} -->
-    </li>
-    <li>
-    <p> {{ Form:: label ('password', 'Password*' )}} </p>
-    <input type="password" name="password" required="">
-<!--      {{ Form:: password ('password')}}   -->
-    </li>
-    <li>
-    <p class="clearfix" id="log">
-      {{ Form::submit('Login', array('class' => '')) }}
-    </p>
-    </li>
-    </ul>
+        <img width="250" height="50" src="{{ asset('/') }}public/<?php echo $logo->path; ?>" alt="">
+        <ul>
+            <li>
+                <p> {{ Form:: label ('email', 'Email*' )}} </p>
+                <input type="text" name="email" required="">
+            <!--     {{ Form:: text ('email')}} -->
+            </li>
+            <li>
+                <p> {{ Form:: label ('password', 'Password*' )}} </p>
+                <input type="password" name="password" required="">
+            <!--      {{ Form:: password ('password')}} -->
+            </li>
+            <li>
+                <p class="clearfix" id="log">
+                    {{ Form::submit('Login', array('class' => '')) }}
+                </p>
+            </li>
+        </ul>
 
-</div>
+    </div>
 
-            {{ Form:: close() }}<br/>
+    {{ Form:: close() }}<br/>
 
 @endsection

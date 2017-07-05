@@ -28,7 +28,7 @@ return array(
     'Inbox' => 'صندوق',
     'Settings' => 'تنظیمات',
     'Messages' => 'پیام',
-    'Logout' =>  'خروج',
+    'Logout' => 'خروج',
     'Friends List' => 'فهرست دوستان',
     'Gallery' => 'گالری',
     'Upload a Song' => 'آپلود آهنگ',
@@ -41,9 +41,6 @@ return array(
     'Upcoming Events' => 'رویدادهای نزدیک',
     'Chat Messenger' => 'چت و مسنجر',
     'Reply' => 'پاسخ'
-
-
-
 
 
 );

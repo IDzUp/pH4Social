@@ -28,7 +28,7 @@ return array(
     'Inbox' => 'กล่องขาเข้า',
     'Settings' => 'การตั้งค่า',
     'Messages' => 'ข้อความ',
-    'Logout' =>  'ออกจากระบบ',
+    'Logout' => 'ออกจากระบบ',
     'Friends List' => 'รายชื่อเพื่อน',
     'Gallery' => 'เฉลียง',
     'Upload a Song' => 'อัปโหลดเพลง',
@@ -41,9 +41,6 @@ return array(
     'Upcoming Events' => 'เหตุการณ์ที่จะเกิดขึ้น',
     'Chat Messenger' => 'พูดคุยสาร',
     'Reply' => 'ตอบ'
-
-
-
 
 
 );

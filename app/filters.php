@@ -12,14 +12,11 @@
 */
 
 
-
-App::after(function($request, $response)
-{
-    $response->headers->set('Cache-Control','nocache, no-store, max-age=0, must-revalidate');
-    $response->headers->set('Pragma','no-cache');
-    $response->headers->set('Expires','Fri, 01 Jan 1990 00:00:00 GMT');
+App::after(function ($request, $response) {
+    $response->headers->set('Cache-Control', 'nocache, no-store, max-age=0, must-revalidate');
+    $response->headers->set('Pragma', 'no-cache');
+    $response->headers->set('Expires', 'Fri, 01 Jan 1990 00:00:00 GMT');
 });
-
 
 
 /*
@@ -33,17 +30,12 @@ App::after(function($request, $response)
 |
 */
 
-Route::filter('auth', function()
-{
+Route::filter('auth', function () {
 
-    if (Auth::guest())
-    {
-        if (Request::ajax())
-        {
+    if (Auth::guest()) {
+        if (Request::ajax()) {
             return Response::make('Unauthorized', 401);
-        }
-        else
-        {
+        } else {
             return Redirect::guest('login');
             //    return Redirect::guest('users/signin');
         }
@@ -51,8 +43,7 @@ Route::filter('auth', function()
 });
 
 
-Route::filter('auth.basic', function()
-{
+Route::filter('auth.basic', function () {
 
     return Auth::basic();
 });
@@ -68,12 +59,10 @@ Route::filter('auth.basic', function()
 |
 */
 
-Route::filter('guest', function()
-{
+Route::filter('guest', function () {
 
     if (Auth::check()) return Redirect::to('/');
 });
-
 
 
 /*
@@ -87,12 +76,10 @@ Route::filter('guest', function()
 |
 */
 
-Route::filter('csrf', function()
-{
+Route::filter('csrf', function () {
 
-    if (Session::token() != Input::get('_token'))
-    {
+    if (Session::token() != Input::get('_token')) {
         //throw new Illuminate\Session\TokenMismatchException;
-         return Redirect::to('home');
+        return Redirect::to('home');
     }
 });

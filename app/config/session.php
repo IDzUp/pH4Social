@@ -29,7 +29,7 @@ return array(
     |
     */
 
-    'lifetime' => 24*60*60,
+    'lifetime' => 24 * 60 * 60,
 
     'expire_on_close' => true,
 
@@ -44,7 +44,7 @@ return array(
     |
     */
 
-    'files' => storage_path().'/sessions',
+    'files' => storage_path() . '/sessions',
 
     /*
     |--------------------------------------------------------------------------

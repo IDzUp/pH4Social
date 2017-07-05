@@ -5,12 +5,12 @@
 
 
 
-   <div class="grid_9">
-    <h1 class="content">Content Pages</h1>
+    <div class="grid_9">
+        <h1 class="content">Content Pages</h1>
     </div>
     <!--RIGHT TEXT/CALENDAR-->
     <div class="grid_6" id="eventbox"><a href="{{URL::to('viewpages');}}" class="inline_calendar">View Pages</a>
-      <div class="hidden_calendar"></div>
+        <div class="hidden_calendar"></div>
     </div>
     <!--RIGHT TEXT/CALENDAR END-->
     <div class="clear">
@@ -18,33 +18,30 @@
     <!--  TITLE END  -->
     <!-- #PORTLETS START -->
     <div id="portlets">
-    <!-- FIRST SORTABLE COLUMN START -->
+        <!-- FIRST SORTABLE COLUMN START -->
 
-{{ HTML::style('css/contact.css'); }}
-
-
-  <div  class="cover">
+        {{ HTML::style('css/contact.css'); }}
 
 
-{{ Form:: open(array('url' => 'content/contentsave' , 'method' => 'get','id' => 'contactform')) }} <!--contact_request is a router from Route class-->
-
-          <p class="contact"><label for="name">Title</label></p>
-          <input id="name" name="name"  required=""  type="text">
+        <div class="cover">
 
 
-          <p class="contact"><label for="comment">Content</label></p>
-          <textarea name="comment" id="comment" > </textarea><br>
+        {{ Form:: open(array('url' => 'content/contentsave' , 'method' => 'get','id' => 'contactform')) }} <!--contact_request is a router from Route class-->
+
+            <p class="contact"><label for="name">Title</label></p>
+            <input id="name" name="name" required="" type="text">
 
 
+            <p class="contact"><label for="comment">Content</label></p>
+            <textarea name="comment" id="comment"> </textarea><br>
 
 
-          <input name="submit" id="submit" value="Submit" type="submit">
-      {{ Form:: close() }}<br/>
-     </div>
+            <input name="submit" id="submit" value="Submit" type="submit">
+            {{ Form:: close() }}<br/>
+        </div>
 
 
-
-</div>
+    </div>
 
 
 

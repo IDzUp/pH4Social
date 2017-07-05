@@ -1,6 +1,7 @@
 <?php
 
-class FooTest extends TestCase {
+class FooTest extends TestCase
+{
 
     public function testSomethingIsTrue()
     {

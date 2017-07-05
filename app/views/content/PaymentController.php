@@ -1,8 +1,10 @@
 <?php
 
-class PaymentController extends BaseController {
+class PaymentController extends BaseController
+{
 
-    public function Index(){
+    public function Index()
+    {
 
         //grap the credentials . be sute to set your acct1.ClientId and acct1.ClientSecret on sdk_config.ini
 
@@ -68,8 +70,8 @@ class PaymentController extends BaseController {
 
         // ### Redirect buyer to paypal
         // Retrieve buyer approval url from the `payment` object.
-        foreach($payment->getLinks() as $link) {
-            if($link->getRel() == 'approval_url') {
+        foreach ($payment->getLinks() as $link) {
+            if ($link->getRel() == 'approval_url') {
                 $redirectUrl = $link->getHref();
             }
         }
@@ -77,41 +79,43 @@ class PaymentController extends BaseController {
         // in the session. In a real world app, please store the
         // payment id in a database.
         $_SESSION['paymentId'] = $payment->getId();
-            if(isset($redirectUrl)) {
-                header("Location: $redirectUrl");
-                exit;
-            }
+        if (isset($redirectUrl)) {
+            header("Location: $redirectUrl");
+            exit;
+        }
     }
 
-    public function ExecutePaymentSuccess(){
+    public function ExecutePaymentSuccess()
+    {
 
-    // ### Api Context
-    // Pass in a `ApiContext` object to authenticate
-    // the call and to send a unique request id
-    // (that ensures idempotency). The SDK generates
-    // a request id if you do not pass one explicitly.
-    $apiContext = Paypalpayment:: ApiContext($cred);
+        // ### Api Context
+        // Pass in a `ApiContext` object to authenticate
+        // the call and to send a unique request id
+        // (that ensures idempotency). The SDK generates
+        // a request id if you do not pass one explicitly.
+        $apiContext = Paypalpayment:: ApiContext($cred);
 
-    // Get the payment Object by passing paymentId
-    // payment id was previously stored in session
-    $paymentId = $_SESSION['paymentId'];
-    $payment = Paypalpayment::getPayment($paymentId);
+        // Get the payment Object by passing paymentId
+        // payment id was previously stored in session
+        $paymentId = $_SESSION['paymentId'];
+        $payment = Paypalpayment::getPayment($paymentId);
 
-    // PaymentExecution object includes information necessary
-    // to execute a PayPal account payment.
-    // The payer_id is added to the request query parameters
-    // when the user is redirected from paypal back to your site
-    $execution = Paypalpayment:: PaymentExecution();
-    $execution->setPayer_id($_GET['PayerID']);
+        // PaymentExecution object includes information necessary
+        // to execute a PayPal account payment.
+        // The payer_id is added to the request query parameters
+        // when the user is redirected from paypal back to your site
+        $execution = Paypalpayment:: PaymentExecution();
+        $execution->setPayer_id($_GET['PayerID']);
 
-    //Execute the payment
-    $payment->execute($execution, $apiContext);
+        //Execute the payment
+        $payment->execute($execution, $apiContext);
 
-    echo "<pre>";
-    var_dump($payment->toArray());
+        echo "<pre>";
+        var_dump($payment->toArray());
     }
 
-    public function ExecutePaymentCancel(){
+    public function ExecutePaymentCancel()
+    {
         return "User cancelled payment.";
     }
 

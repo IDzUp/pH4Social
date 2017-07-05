@@ -28,7 +28,7 @@ return array(
     'Inbox' => 'сандаче',
     'Settings' => 'Подесувања',
     'Messages' => 'сообщения',
-    'Logout' =>  'Одјави',
+    'Logout' => 'Одјави',
     'Friends List' => 'листа на пријатели',
     'Gallery' => 'галерия',
     'Upload a Song' => 'Испратите песна',
@@ -41,9 +41,6 @@ return array(
     'Upcoming Events' => 'Престојни настани',
     'Chat Messenger' => 'Чет Messenger',
     'Reply' => 'отвечать'
-
-
-
 
 
 );

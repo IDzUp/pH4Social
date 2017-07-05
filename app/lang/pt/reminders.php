@@ -14,12 +14,12 @@ return array(
     */
     "password" => "A palavra-passe deverá conter pelo menos seis carateres e ser igual à confirmação.",
 
-    "user"     => "Não existe nenhum utilizador com o endereço de correio eletrónico indicado.",
+    "user" => "Não existe nenhum utilizador com o endereço de correio eletrónico indicado.",
 
-    "token"    => "Este código de recuperação da palavra-passe é inválido.",
+    "token" => "Este código de recuperação da palavra-passe é inválido.",
 
-    "sent"     => "O lembrete para a palavra-passe foi enviado!",
+    "sent" => "O lembrete para a palavra-passe foi enviado!",
 
-    "reset"    => "Password has been reset!",
+    "reset" => "Password has been reset!",
 
 );

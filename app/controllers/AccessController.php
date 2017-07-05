@@ -4,7 +4,7 @@ class AccessController extends BaseController
 {
     public $restful = true;
 
-    public $layout='layouts.access';
+    public $layout = 'layouts.access';
 
     public function notaccess()
     {

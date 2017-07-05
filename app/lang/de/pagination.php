@@ -15,6 +15,6 @@ return array(
 
     'previous' => '&laquo; zurück',
 
-    'next'     => 'weiter &raquo;',
+    'next' => 'weiter &raquo;',
 
 );

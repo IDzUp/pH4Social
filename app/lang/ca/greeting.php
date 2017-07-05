@@ -28,7 +28,7 @@ return array(
     'Inbox' => 'safata d entrada',
     'Settings' => 'Ajustaments',
     'Messages' => 'Missatges',
-    'Logout' =>  'Tancar sessió',
+    'Logout' => 'Tancar sessió',
     'Friends List' => 'llista d Amics',
     'Gallery' => 'Galeria',
     'Upload a Song' => 'Puja una cançó',
@@ -41,9 +41,6 @@ return array(
     'Upcoming Events' => 'Propers esdeveniments',
     'Chat Messenger' => 'xateja Missatger',
     'Reply' => 'Respondre'
-
-
-
 
 
 );

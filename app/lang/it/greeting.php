@@ -28,7 +28,7 @@ return array(
     'Inbox' => 'Posta in arrivo',
     'Settings' => 'Impostazioni',
     'Messages' => 'Messaggi',
-    'Logout' =>  'Logout',
+    'Logout' => 'Logout',
     'Friends List' => 'Lista Amici',
     'Gallery' => 'Galleria',
     'Upload a Song' => 'Carica una canzone',
@@ -41,9 +41,6 @@ return array(
     'Upcoming Events' => 'Prossimi Eventi',
     'Chat Messenger' => 'Chat Messenger',
     'Reply' => 'Rispondere'
-
-
-
 
 
 );

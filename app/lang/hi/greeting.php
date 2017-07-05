@@ -28,7 +28,7 @@ return array(
     'Inbox' => 'इनबॉक्स',
     'Settings' => 'सेटिंग्स',
     'Messages' => 'संदेश',
-    'Logout' =>  'लॉगआउट',
+    'Logout' => 'लॉगआउट',
     'Friends List' => 'मित्र सूची',
     'Gallery' => 'गैलरी',
     'Upload a Song' => 'एक गाना अपलोड',
@@ -41,9 +41,6 @@ return array(
     'Upcoming Events' => 'आगामी घटनाएँ',
     'Chat Messenger' => 'मैसेंजर चैट करें',
     'Reply' => 'उत्तर'
-
-
-
 
 
 );

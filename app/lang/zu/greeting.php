@@ -28,7 +28,7 @@ return array(
     'Inbox' => 'ibhokisi lokungenayo',
     'Settings' => 'izilungiselelo',
     'Messages' => 'Messages',
-    'Logout' =>  'Phuma',
+    'Logout' => 'Phuma',
     'Friends List' => 'Friends List',
     'Gallery' => 'gallery',
     'Upload a Song' => 'Layisha a Song',
@@ -41,9 +41,6 @@ return array(
     'Upcoming Events' => 'Imicimbi ezayo',
     'Chat Messenger' => 'xoxa Messenger',
     'Reply' => 'Phendula'
-
-
-
 
 
 );

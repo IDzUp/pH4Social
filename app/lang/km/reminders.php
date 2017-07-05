@@ -21,6 +21,6 @@ return array(
 
     "sent" => "ពាក្យសម្ងាត់ដែលបានរំលឹកបានផ្ញើរួចរាល់!",
 
-    "reset"    => "Password has been reset!",
+    "reset" => "Password has been reset!",
 
 );

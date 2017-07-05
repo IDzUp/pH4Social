@@ -5,13 +5,13 @@
 
 
 
-<div class="eStore-product-fancy4 eStore-fancy-wrapper">
+    <div class="eStore-product-fancy4 eStore-fancy-wrapper">
 
-<h1>{{$specials->title}}</h1>
+        <h1>{{$specials->title}}</h1>
 
-<p>{{$specials->content}}</p>
+        <p>{{$specials->content}}</p>
 
- </div>
+    </div>
 
 
 

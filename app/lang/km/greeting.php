@@ -28,7 +28,7 @@ return array(
     'Inbox' => 'ប្រអប់ទទួល',
     'Settings' => 'ការកំណត់',
     'Messages' => 'សារ',
-    'Logout' =>  'ចេញ',
+    'Logout' => 'ចេញ',
     'Friends List' => 'បញ្ជីឈ្មោះមិត្តភក្តិ',
     'Gallery' => 'វិចិត្រសាល',
     'Upload a Song' => 'បញ្ចូលចម្រៀងមួយ',
@@ -41,9 +41,6 @@ return array(
     'Upcoming Events' => 'ព្រឹត្តិការណ៍ជិតមកដល់',
     'Chat Messenger' => 'កម្មវិធីផ្ញើសារជជែកកំសាន្ត',
     'Reply' => 'ឆ្លើយតប'
-
-
-
 
 
 );

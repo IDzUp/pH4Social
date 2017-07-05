@@ -2,18 +2,18 @@
 
 @section('content')
 
- <section class="title_page">
-<div class="container">
-    <div class="row">
-     <h2> <span class="glyphicon glyphicon-leaf"></span> {{$pages->title}}</h2>
-</div>
-</div>
-</section>
-{{$pages->content}}
+    <section class="title_page">
+        <div class="container">
+            <div class="row">
+                <h2><span class="glyphicon glyphicon-leaf"></span> {{$pages->title}}</h2>
+            </div>
+        </div>
+    </section>
+    {{$pages->content}}
 
 
 
-<!-- <section class="about_sec">
+    <!-- <section class="about_sec">
   <div class="container">
     <div class="row">
       <div class="col-sm-12 col-sm-12 col-md-12">

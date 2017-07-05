@@ -4,7 +4,7 @@
 
 
     <div class="grid_9">
-    <h1 class="newsletter">Editing Contact Us</h1>
+        <h1 class="newsletter">Editing Contact Us</h1>
     </div>
     <!--RIGHT TEXT/CALENDAR-->
     <div class="grid_6" id="eventbox"><a href="#" class="inline_calendar">You don't have any events for today! Yay!</a>
@@ -16,64 +16,51 @@
     <!--  TITLE END  -->
     <!-- #PORTLETS START -->
     <div id="portlets">
-    <!-- FIRST SORTABLE COLUMN START -->
+        <!-- FIRST SORTABLE COLUMN START -->
 
 
+        <div class="editing">
 
 
-<div class="editing">
+        {{ Form:: open(array('url' => 'updatecontent' , 'method' => 'put')) }} <!--contact_request is a router from Route class-->
+            @if($errors->any())
+
+                {{ implode('', $errors->all('<li>:message</li>'))  }}
+            @endif
+            {{ Form::token() }}
+
+            <div id="center">
+                <!--<h1><span class="log-in"><span class="sign-up">Editing Contact us</span></h1>-->
+                <p class="float">
 
 
+                    {{ Form::hidden('id',$contentedit->id)}}
+                </p>
+                <p class="float">
 
- {{ Form:: open(array('url' => 'updatecontent' , 'method' => 'put')) }} <!--contact_request is a router from Route class-->
-  @if($errors->any())
+                    {{ Form:: label ('name', 'Name*' )}}
+                    {{ Form:: text ('name',    $contentedit->title  )}}
+                </p>
 
- {{ implode('', $errors->all('<li>:message</li>'))  }}
-@endif
-    {{ Form::token() }}
+                <p class="float">
 
-    <div id="center">
-<!--<h1><span class="log-in"><span class="sign-up">Editing Contact us</span></h1>-->
- <p class="float">
-
-
-
-
-
-            {{ Form::hidden('id',$contentedit->id)}}
-    </p>
-    <p class="float">
-
-    {{ Form:: label ('name', 'Name*' )}}
-            {{ Form:: text ('name',    $contentedit->title  )}}
-    </p>
-
-    <p class="float">
-
-    {{ Form:: label ('message', 'Message Box' )}}
-            {{ Form:: textarea ('message',    $contentedit->content  )}}
-    </p>
+                    {{ Form:: label ('message', 'Message Box' )}}
+                    {{ Form:: textarea ('message',    $contentedit->content  )}}
+                </p>
 
 
-            {{ Form::submit('Submit') }}
+                {{ Form::submit('Submit') }}
 
 
-
-
-
-
-
-
-        </div>
-
+            </div>
 
 
             {{ Form:: close() }}<br/>
 
-           </div>
+        </div>
 
 
-           </div>
+    </div>
 
 
 

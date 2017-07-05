@@ -51,10 +51,9 @@ return array(
      *
      * @type closure
      */
-    'query_filter'=> function($query)
-        {
-            unset($query->wheres[0]);
-        },
+    'query_filter' => function ($query) {
+        unset($query->wheres[0]);
+    },
 
     /**
      * The edit fields array
@@ -118,38 +117,36 @@ return array(
                 'error' => 'There was an error while creating the CSV FIle',
             ),
             //the Eloquent query builder is passed to the closure
-            'action' => function($query)
-                {
-                    $fields = array(
-                        'email' => 'Email address',
-                        'updated_at' => 'Updated',
-                    );
+            'action' => function ($query) {
+                $fields = array(
+                    'email' => 'Email address',
+                    'updated_at' => 'Updated',
+                );
 
-                    //get all the rows for this query
-                    $result = $query->whereNull('deleted_at')->select(array_keys($fields))->get()->toArray();
+                //get all the rows for this query
+                $result = $query->whereNull('deleted_at')->select(array_keys($fields))->get()->toArray();
 
-                    $filePath = storage_path() . DIRECTORY_SEPARATOR . uniqid('signups').'.csv';
+                $filePath = storage_path() . DIRECTORY_SEPARATOR . uniqid('signups') . '.csv';
 
-                    $fp = fopen($filePath, 'w');
+                $fp = fopen($filePath, 'w');
 
-                    fwrite($fp, chr(255) . chr(254));
-                    $fields = '"'.implode("\"\t\"",$fields).'"'."\n";
-                    $fields = mb_convert_encoding($fields, 'UTF-16LE', 'UTF-8');
-                    fwrite($fp, $fields);
+                fwrite($fp, chr(255) . chr(254));
+                $fields = '"' . implode("\"\t\"", $fields) . '"' . "\n";
+                $fields = mb_convert_encoding($fields, 'UTF-16LE', 'UTF-8');
+                fwrite($fp, $fields);
 
-                    foreach ($result as $row)
-                    {
-                        // Add each row, fields enclosed by ", terminated by \t as per M$ Excel
-                        $line = '"'.implode("\"\t\"",$row).'"'."\n";
-                        $line = mb_convert_encoding($line, 'UTF-16LE', 'UTF-8');
-                        fwrite($fp, $line);
-                    }
-
-                    fclose($fp);
-
-                    //return a download response
-                    return Response::download($filePath);
+                foreach ($result as $row) {
+                    // Add each row, fields enclosed by ", terminated by \t as per M$ Excel
+                    $line = '"' . implode("\"\t\"", $row) . '"' . "\n";
+                    $line = mb_convert_encoding($line, 'UTF-16LE', 'UTF-8');
+                    fwrite($fp, $line);
                 }
+
+                fclose($fp);
+
+                //return a download response
+                return Response::download($filePath);
+            }
         ),
         'unsubscribes' => array(
             'title' => 'Download Unsubscribes CSV',
@@ -159,40 +156,38 @@ return array(
                 'error' => 'There was an error while creating the CSV FIle',
             ),
             //the Eloquent query builder is passed to the closure
-            'action' => function($query)
-                {
-                    $fields = array(
-                        'email' => 'Email address',
-                        'deleted_at' => 'Deleted',
-                    );
+            'action' => function ($query) {
+                $fields = array(
+                    'email' => 'Email address',
+                    'deleted_at' => 'Deleted',
+                );
 
-                    unset($query->wheres[0]);
+                unset($query->wheres[0]);
 
-                    //get all the rows for this query
-                    $result = $query->whereNotNull('deleted_at')->select(array_keys($fields))->get()->toArray();
+                //get all the rows for this query
+                $result = $query->whereNotNull('deleted_at')->select(array_keys($fields))->get()->toArray();
 
-                    $filePath = storage_path() . DIRECTORY_SEPARATOR . uniqid('unsubscribes').'.csv';
+                $filePath = storage_path() . DIRECTORY_SEPARATOR . uniqid('unsubscribes') . '.csv';
 
-                    $fp = fopen($filePath, 'w');
+                $fp = fopen($filePath, 'w');
 
-                    fwrite($fp, chr(255) . chr(254));
-                    $fields = '"'.implode("\"\t\"",$fields).'"'."\n";
-                    $fields = mb_convert_encoding($fields, 'UTF-16LE', 'UTF-8');
-                    fwrite($fp, $fields);
+                fwrite($fp, chr(255) . chr(254));
+                $fields = '"' . implode("\"\t\"", $fields) . '"' . "\n";
+                $fields = mb_convert_encoding($fields, 'UTF-16LE', 'UTF-8');
+                fwrite($fp, $fields);
 
-                    foreach ($result as $row)
-                    {
-                        // Add each row, fields enclosed by ", terminated by \t as per M$ Excel
-                        $line = '"'.implode("\"\t\"",$row).'"'."\n";
-                        $line = mb_convert_encoding($line, 'UTF-16LE', 'UTF-8');
-                        fwrite($fp, $line);
-                    }
-
-                    fclose($fp);
-
-                    //return a download response
-                    return Response::download($filePath);
+                foreach ($result as $row) {
+                    // Add each row, fields enclosed by ", terminated by \t as per M$ Excel
+                    $line = '"' . implode("\"\t\"", $row) . '"' . "\n";
+                    $line = mb_convert_encoding($line, 'UTF-16LE', 'UTF-8');
+                    fwrite($fp, $line);
                 }
+
+                fclose($fp);
+
+                //return a download response
+                return Response::download($filePath);
+            }
         ),
     ),
 
@@ -202,15 +197,13 @@ return array(
      *
      * @type array
      */
-    'action_permissions'=> array(
-        'create' => function($model)
-            {
-                return false;
-            },
-        'update' => function($model)
-            {
-                return false;
-            }
+    'action_permissions' => array(
+        'create' => function ($model) {
+            return false;
+        },
+        'update' => function ($model) {
+            return false;
+        }
     ),
 
 );

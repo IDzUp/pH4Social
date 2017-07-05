@@ -1,6 +1,7 @@
 <?php
 
-class OrdersController extends BaseController {
+class OrdersController extends BaseController
+{
 
     /*
     |--------------------------------------------------------------------------
@@ -16,22 +17,18 @@ class OrdersController extends BaseController {
     */
 
 
-
     public $restful = true;
 
-    public $layout='layouts.adminnew';
+    public $layout = 'layouts.adminnew';
 
     public function vieworders()
     {
 
 
-
-
-
-    $view= View::make('orders.vieworders')->with('vieworders', Orders::all())->with('users', User::All());
-    $this->layout->with('colors', Settings::All());
+        $view = View::make('orders.vieworders')->with('vieworders', Orders::all())->with('users', User::All());
+        $this->layout->with('colors', Settings::All());
         $this->layout->with('logo', Logo::find(1));
-    $this->layout->content=$view;
+        $this->layout->content = $view;
 
     }
 
@@ -39,23 +36,21 @@ class OrdersController extends BaseController {
     public function logo()
     {
 
-   if(!Auth::check())
-        {
+        if (!Auth::check()) {
 
             return Redirect::to('la-admin');
         }
 
 
-    $view= View::make('orders.logo')->with('logo', Logo::find(1));
-    $this->layout->with('colors', Settings::All())->with('logo', Logo::find(1));
+        $view = View::make('orders.logo')->with('logo', Logo::find(1));
+        $this->layout->with('colors', Settings::All())->with('logo', Logo::find(1));
 
-    $this->layout->content=$view;
+        $this->layout->content = $view;
 
     }
 
 
-
-   public function logosave()
+    public function logosave()
     {
 
 
@@ -75,64 +70,55 @@ class OrdersController extends BaseController {
         }
 
         // Upload the image in the correct destination
-$upload_success = $img->move($img_dir, $img->getClientOriginalName());
+        $upload_success = $img->move($img_dir, $img->getClientOriginalName());
 
 
-       if ($upload_success) {
+        if ($upload_success) {
 
 
+            $entry = array(
 
-        $entry = array(
+                'path' => $img_dir . '/' . $filename
 
-            'path' => $img_dir .'/'. $filename
-
-        );
+            );
 
             Logo::where('id', 1)->update($entry);
 
 
-Session::flash('success', "Successfully Updated");
-return Redirect::back();
+            Session::flash('success', "Successfully Updated");
+            return Redirect::back();
 
 
         }
 
 
-
-
     }
-
-
-
-
 
 
     public function searchuser()
     {
 
-    $input = Input::all();
+        $input = Input::all();
 
 
+        $term = $input['searchuser'];
+        $city = $input['searchcity'];
+        $searchemail = $input['searchemail'];
+        $searchplan = $input['searchplan'];
+        $sex = $input['sex'];
+
+        $search = DB::table('users')
+            ->where('name', 'LIKE', '%' . $term . '%')
+            ->where('city', 'LIKE', '%' . $city . '%')
+            ->where('email', 'LIKE', '%' . $searchemail . '%')
+            ->where('plan', 'LIKE', '%' . $searchplan . '%')
+            ->where('sex', $sex)
+            ->get();
 
 
-    $term= $input['searchuser'];
-    $city= $input['searchcity'];
-    $searchemail= $input['searchemail'];
-    $searchplan= $input['searchplan'];
-    $sex= $input['sex'];
-
-      $search = DB::table('users')
-                     ->where('name', 'LIKE', '%'. $term .'%')
-                    ->where('city', 'LIKE', '%'. $city .'%')
-                     ->where('email', 'LIKE', '%'. $searchemail .'%')
-                     ->where('plan', 'LIKE', '%'. $searchplan .'%')
-                     ->where('sex', $sex)
-                     ->get();
-
-
-    $view= View::make('users.searchuser')->with('users', $search);
-    $this->layout->with('logo', Logo::find(1));
-    $this->layout->content=$view;
+        $view = View::make('users.searchuser')->with('users', $search);
+        $this->layout->with('logo', Logo::find(1));
+        $this->layout->content = $view;
 
     }
 
@@ -140,63 +126,55 @@ return Redirect::back();
     public function searchevent()
     {
 
-    $input = Input::all();
+        $input = Input::all();
 
 
+        $term = $input['searchuser'];
+        $city = $input['searchcity'];
+        $searchemail = $input['searchemail'];
+        $searchplan = $input['searchplan'];
+        $sex = $input['sex'];
+
+        $search = DB::table('users')
+            ->where('name', 'LIKE', '%' . $term . '%')
+            ->where('city', 'LIKE', '%' . $city . '%')
+            ->where('email', 'LIKE', '%' . $searchemail . '%')
+            ->where('plan', 'LIKE', '%' . $searchplan . '%')
+            ->where('sex', $sex)
+            ->get();
 
 
-
-
-    $term= $input['searchuser'];
-    $city= $input['searchcity'];
-    $searchemail= $input['searchemail'];
-    $searchplan= $input['searchplan'];
-    $sex= $input['sex'];
-
-      $search = DB::table('users')
-                     ->where('name', 'LIKE', '%'. $term .'%')
-                    ->where('city', 'LIKE', '%'. $city .'%')
-                     ->where('email', 'LIKE', '%'. $searchemail .'%')
-                     ->where('plan', 'LIKE', '%'. $searchplan .'%')
-                     ->where('sex', $sex)
-                     ->get();
-
-
-    $view= View::make('orders.searchevent')->with('users', $search);
-    $this->layout->with('logo', Logo::find(1));
-    $this->layout->content=$view;
+        $view = View::make('orders.searchevent')->with('users', $search);
+        $this->layout->with('logo', Logo::find(1));
+        $this->layout->content = $view;
 
     }
-
-
 
 
     public function searchtimeline()
     {
 
-    $input = Input::all();
+        $input = Input::all();
 
 
+        $term = $input['searchuser'];
+        $city = $input['searchcity'];
+        $searchemail = $input['searchemail'];
+        $searchplan = $input['searchplan'];
+        $sex = $input['sex'];
+
+        $search = DB::table('users')
+            ->where('name', 'LIKE', '%' . $term . '%')
+            ->where('city', 'LIKE', '%' . $city . '%')
+            ->where('email', 'LIKE', '%' . $searchemail . '%')
+            ->where('plan', 'LIKE', '%' . $searchplan . '%')
+            ->where('sex', $sex)
+            ->get();
 
 
-    $term= $input['searchuser'];
-    $city= $input['searchcity'];
-    $searchemail= $input['searchemail'];
-    $searchplan= $input['searchplan'];
-    $sex= $input['sex'];
-
-      $search = DB::table('users')
-                     ->where('name', 'LIKE', '%'. $term .'%')
-                    ->where('city', 'LIKE', '%'. $city .'%')
-                     ->where('email', 'LIKE', '%'. $searchemail .'%')
-                     ->where('plan', 'LIKE', '%'. $searchplan .'%')
-                     ->where('sex', $sex)
-                     ->get();
-
-
-    $view= View::make('orders.searchtimeline')->with('users', $search);
-    $this->layout->with('logo', Logo::find(1));
-    $this->layout->content=$view;
+        $view = View::make('orders.searchtimeline')->with('users', $search);
+        $this->layout->with('logo', Logo::find(1));
+        $this->layout->content = $view;
 
     }
 
@@ -204,22 +182,20 @@ return Redirect::back();
     public function searchcontact()
     {
 
-    $input = Input::all();
+        $input = Input::all();
 
 
+        $term = $input['searchuser'];
 
 
-    $term= $input['searchuser'];
+        $search = DB::table('contact')
+            ->where('name', 'LIKE', '%' . $term . '%')
+            ->get();
 
 
-      $search = DB::table('contact')
-                     ->where('name', 'LIKE', '%'. $term .'%')
-                     ->get();
-
-
-    $view= View::make('orders.searchcontact')->with('viewcontact', $search);
-    $this->layout->with('logo', Logo::find(1));
-    $this->layout->content=$view;
+        $view = View::make('orders.searchcontact')->with('viewcontact', $search);
+        $this->layout->with('logo', Logo::find(1));
+        $this->layout->content = $view;
 
     }
 
@@ -227,72 +203,61 @@ return Redirect::back();
     public function searchgallery()
     {
 
-    $input = Input::all();
+        $input = Input::all();
 
 
+        $term = $input['searchuser'];
+        $city = $input['searchcity'];
+        $searchemail = $input['searchemail'];
+        $searchplan = $input['searchplan'];
+        $sex = $input['sex'];
+
+        $search = DB::table('users')
+            ->where('name', 'LIKE', '%' . $term . '%')
+            ->where('city', 'LIKE', '%' . $city . '%')
+            ->where('email', 'LIKE', '%' . $searchemail . '%')
+            ->where('plan', 'LIKE', '%' . $searchplan . '%')
+            ->where('sex', $sex)
+            ->get();
 
 
-    $term= $input['searchuser'];
-    $city= $input['searchcity'];
-    $searchemail= $input['searchemail'];
-    $searchplan= $input['searchplan'];
-    $sex= $input['sex'];
-
-      $search = DB::table('users')
-                     ->where('name', 'LIKE', '%'. $term .'%')
-                    ->where('city', 'LIKE', '%'. $city .'%')
-                     ->where('email', 'LIKE', '%'. $searchemail .'%')
-                     ->where('plan', 'LIKE', '%'. $searchplan .'%')
-                     ->where('sex', $sex)
-                     ->get();
-
-
-    $view= View::make('orders.searchgallery')->with('users', $search);
-    $this->layout->with('logo', Logo::find(1));
-    $this->layout->content=$view;
+        $view = View::make('orders.searchgallery')->with('users', $search);
+        $this->layout->with('logo', Logo::find(1));
+        $this->layout->content = $view;
 
     }
-
-
 
 
     public function timeline()
     {
 
 
-
-
-     if(!Auth::check())
-        {
+        if (!Auth::check()) {
 
             return Redirect::to('/la-admin');
         }
 
 
- $rands = DB::table('users')
-                     ->where('rand', Auth::user()->rand)
-                     ->first();
-    $plan=$rands->plan;
+        $rands = DB::table('users')
+            ->where('rand', Auth::user()->rand)
+            ->first();
+        $plan = $rands->plan;
 
-    $plans = DB::table('membershipplan')
-                     ->where('name', $plan)
-                     ->first();
+        $plans = DB::table('membershipplan')
+            ->where('name', $plan)
+            ->first();
 
-   if($plans->removeadmin=='on' || $plans->removesuperadmin=='on' || $plans->users=='on')
-    {
+        if ($plans->removeadmin == 'on' || $plans->removesuperadmin == 'on' || $plans->users == 'on') {
 
 
-    $view= View::make('orders.timeline')->with('users', User::All());
-    $this->layout->with('logo', Logo::find(1));
-    $this->layout->content=$view;
+            $view = View::make('orders.timeline')->with('users', User::All());
+            $this->layout->with('logo', Logo::find(1));
+            $this->layout->content = $view;
 
-    }
-    else
-    {
+        } else {
 //return Redirect::route('notaccess');
-App::abort(404);
-    }
-
+            App::abort(404);
+        }
 
 
     }
@@ -302,160 +267,128 @@ App::abort(404);
     {
 
 
- if(!Auth::check())
-        {
+        if (!Auth::check()) {
 
             return Redirect::to('/la-admin');
         }
 
 
+        $rands = DB::table('users')
+            ->where('rand', Auth::user()->rand)
+            ->first();
+        $plan = $rands->plan;
 
-     $rands = DB::table('users')
-                     ->where('rand', Auth::user()->rand)
-                     ->first();
-    $plan=$rands->plan;
+        $plans = DB::table('membershipplan')
+            ->where('name', $plan)
+            ->first();
 
-    $plans = DB::table('membershipplan')
-                     ->where('name', $plan)
-                     ->first();
-
-   if($plans->removeadmin=='on' || $plans->removesuperadmin=='on' || $plans->users=='on')
-    {
+        if ($plans->removeadmin == 'on' || $plans->removesuperadmin == 'on' || $plans->users == 'on') {
 
 
+            $view = View::make('orders.galleryadmin')->with('users', User::All());
+            $this->layout->with('logo', Logo::find(1));
+            $this->layout->content = $view;
 
-    $view= View::make('orders.galleryadmin')->with('users', User::All());
-    $this->layout->with('logo', Logo::find(1));
-    $this->layout->content=$view;
-
-    }
-    else
-    {
+        } else {
 //return Redirect::route('notaccess');
-App::abort(404);
+            App::abort(404);
+        }
+
+
     }
-
-
-
-    }
-
-
-
-
-
-
-
 
 
     public function eventadmin()
     {
 
-         if(!Auth::check())
-        {
+        if (!Auth::check()) {
 
             return Redirect::to('/la-admin');
         }
 
 
- $rands = DB::table('users')
-                     ->where('rand', Auth::user()->rand)
-                     ->first();
-    $plan=$rands->plan;
+        $rands = DB::table('users')
+            ->where('rand', Auth::user()->rand)
+            ->first();
+        $plan = $rands->plan;
 
-    $plans = DB::table('membershipplan')
-                     ->where('name', $plan)
-                     ->first();
+        $plans = DB::table('membershipplan')
+            ->where('name', $plan)
+            ->first();
 
-      if($plans->removeadmin=='on' || $plans->removesuperadmin=='on' || $plans->users=='on')
-    {
-
+        if ($plans->removeadmin == 'on' || $plans->removesuperadmin == 'on' || $plans->users == 'on') {
 
 
-    $view= View::make('orders.eventadmin')->with('users', User::All());
-    $this->layout->with('logo', Logo::find(1));
-    $this->layout->content=$view;
+            $view = View::make('orders.eventadmin')->with('users', User::All());
+            $this->layout->with('logo', Logo::find(1));
+            $this->layout->content = $view;
 
-    }
-    else
-    {
+        } else {
 //return Redirect::route('notaccess');
-App::abort(404);
-    }
-
-
+            App::abort(404);
+        }
 
 
     }
-
-
 
 
     public function timelines($id)
     {
 
 
+        $rand = Auth::user()->rand;
+        $idds = Auth::user()->id;
 
-$rand = Auth::user()->rand;
-$idds = Auth::user()->id;
-
-if($id==$idds)
-{
+        if ($id == $idds) {
 
 
-        return Redirect::route('profile');
-}
+            return Redirect::route('profile');
+        }
 
-$profile = User::where('id', '=', $id)->first();
-$rands=$profile->rand;
+        $profile = User::where('id', '=', $id)->first();
+        $rands = $profile->rand;
 
-$value = DB::table('profile')
-                     ->where('user_rand',$rands)
-                     ->first();
-
-
-$add = DB::table('notification')
-                     ->where('friendrequest',$rands)->where('user',$rand)
-                     ->get();
+        $value = DB::table('profile')
+            ->where('user_rand', $rands)
+            ->first();
 
 
-
-$count= count($add);
-
-
-$adds = DB::table('friends')
-                     ->where('mainuser',$rand)->where('otheruser',$rands)
-                     ->get();
-
-$counts= count($adds);
+        $add = DB::table('notification')
+            ->where('friendrequest', $rands)->where('user', $rand)
+            ->get();
 
 
-$addss = DB::table('friends')
-                     ->where('otheruser',$rand)->where('mainuser',$rands)
-                     ->get();
-
-$countss= count($addss);
+        $count = count($add);
 
 
+        $adds = DB::table('friends')
+            ->where('mainuser', $rand)->where('otheruser', $rands)
+            ->get();
+
+        $counts = count($adds);
 
 
- $post = DB::table('post')
-                     ->where('user_rand',$rands)->orderBy('created_at', 'desc')
-                     ->get();
+        $addss = DB::table('friends')
+            ->where('otheruser', $rand)->where('mainuser', $rands)
+            ->get();
+
+        $countss = count($addss);
+
+
+        $post = DB::table('post')
+            ->where('user_rand', $rands)->orderBy('created_at', 'desc')
+            ->get();
 
         $postcomment = DB::table('postcomment')->get();
 
 
-
-$view= View::make('orders.timelines')->with('proinfo', $value)->with('userinfo', $profile)->with('post', $post)->with('add', $count)->with('adds', $counts)->with('addss', $countss)->with('postcomment', $postcomment);
-$this->layout->with('colors', Settings::All());
-    $this->layout->with('logo', Logo::find(1));
-$this->layout->content=$view;
-
-
+        $view = View::make('orders.timelines')->with('proinfo', $value)->with('userinfo', $profile)->with('post', $post)->with('add', $count)->with('adds', $counts)->with('addss', $countss)->with('postcomment', $postcomment);
+        $this->layout->with('colors', Settings::All());
+        $this->layout->with('logo', Logo::find(1));
+        $this->layout->content = $view;
 
 
     }
-
 
 
     public function ordersdelete($id)
@@ -465,15 +398,6 @@ $this->layout->content=$view;
         return Redirect::route('vieworders');
 
     }
-
-
-
-
-
-
-
-
-
 
 
 }

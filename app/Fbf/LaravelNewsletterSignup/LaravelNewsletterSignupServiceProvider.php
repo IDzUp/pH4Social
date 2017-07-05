@@ -2,7 +2,8 @@
 
 use Illuminate\Support\ServiceProvider;
 
-class LaravelNewsletterSignupServiceProvider extends ServiceProvider {
+class LaravelNewsletterSignupServiceProvider extends ServiceProvider
+{
 
     /**
      * Indicates if loading of the provider is deferred.
@@ -20,7 +21,7 @@ class LaravelNewsletterSignupServiceProvider extends ServiceProvider {
     {
         $this->package('fbf/laravel-newsletter-signup');
 
-        include __DIR__.'/../../routes.php';
+        include __DIR__ . '/../../routes.php';
     }
 
     /**

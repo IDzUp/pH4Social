@@ -4,7 +4,7 @@ class ContactController extends BaseController
 {
     public $restful = true;
 
-    public $layout='layouts.adminnew';
+    public $layout = 'layouts.adminnew';
 
     public function contact()
     {
@@ -21,8 +21,8 @@ class ContactController extends BaseController
             ->where('name', $plan)
             ->first();
 
-        if ($plans->removeadmin=='on' || $plans->removesuperadmin=='on' || $plans->users=='on') {
-            $view= View::make('contact.indexs');
+        if ($plans->removeadmin == 'on' || $plans->removesuperadmin == 'on' || $plans->users == 'on') {
+            $view = View::make('contact.indexs');
             $this->layout->with('logo', Logo::find(1));
             $this->layout->content = $view;
         } else {
@@ -47,8 +47,8 @@ class ContactController extends BaseController
             ->where('name', $plan)
             ->first();
 
-         if ($plans->removeadmin=='on' || $plans->removesuperadmin=='on' || $plans->users=='on') {
-            $view= View::make('contact.emails');
+        if ($plans->removeadmin == 'on' || $plans->removesuperadmin == 'on' || $plans->users == 'on') {
+            $view = View::make('contact.emails');
             $this->layout->with('logo', Logo::find(1));
             $this->layout->content = $view;
         } else {
@@ -71,7 +71,7 @@ class ContactController extends BaseController
             ->where('name', $plan)
             ->first();
 
-        if ($plans->removeadmin=='on' || $plans->removesuperadmin=='on' || $plans->users=='on') {
+        if ($plans->removeadmin == 'on' || $plans->removesuperadmin == 'on' || $plans->users == 'on') {
             $confirmmail = DB::table('confirmmail')
                 ->where('id', 1)
                 ->first();
@@ -99,7 +99,7 @@ class ContactController extends BaseController
             ->where('name', $plan)
             ->first();
 
-        if ($plans->removeadmin=='on' || $plans->removesuperadmin=='on' || $plans->users=='on') {
+        if ($plans->removeadmin == 'on' || $plans->removesuperadmin == 'on' || $plans->users == 'on') {
             $contemplate = DB::table('contemplate')
                 ->where('id', 1)
                 ->first();
@@ -127,7 +127,7 @@ class ContactController extends BaseController
             ->where('name', $plan)
             ->first();
 
-        if ($plans->removeadmin=='on' || $plans->removesuperadmin=='on' || $plans->users=='on') {
+        if ($plans->removeadmin == 'on' || $plans->removesuperadmin == 'on' || $plans->users == 'on') {
             $notitemplate = DB::table('notitemplate')
                 ->where('id', 1)
                 ->first();
@@ -144,9 +144,9 @@ class ContactController extends BaseController
     public function savecontact()
     {
         $input = Input::all();
-        $rules = array('email' => 'required|email','name' => 'required|max:25','subject' => 'required|max:25','comment' => 'required');
+        $rules = array('email' => 'required|email', 'name' => 'required|max:25', 'subject' => 'required|max:25', 'comment' => 'required');
 
-        $validator = Validator::make($input,$rules);
+        $validator = Validator::make($input, $rules);
 
         if ($validator->passes()) {
             $user = new Contact();
@@ -158,22 +158,21 @@ class ContactController extends BaseController
             $user->save();
 
             $confirmmail = DB::table('contemplate')
-                ->where('id',1)
+                ->where('id', 1)
                 ->first();
 
             $user->froms = $confirmmail->from;
             $user->subject = $confirmmail->subject;
 
-            $data = array('content' => $confirmmail->comment,'email' => 'sahil_kaushal@esferasoft.com', 'first_name' => $user->name, 'from' => 'sahil_kaushal@esferasoft.com', 'from_name' => 'Meh' );
+            $data = array('content' => $confirmmail->comment, 'email' => 'sahil_kaushal@esferasoft.com', 'first_name' => $user->name, 'from' => 'sahil_kaushal@esferasoft.com', 'from_name' => 'Meh');
 
-            Mail::send('contact.test', $data, function($message) use ($user) {
-                $message->to($user->email, $user->name)->from( $user->froms, $user->froms)
+            Mail::send('contact.test', $data, function ($message) use ($user) {
+                $message->to($user->email, $user->name)->from($user->froms, $user->froms)
                     ->subject($user->subject);
             });
 
             $test = $input['test'];
-            if ($test == 1)
-            {
+            if ($test == 1) {
                 Session::flash('success', "Successfully Sent");
                 return Redirect::back();
 
@@ -206,18 +205,18 @@ class ContactController extends BaseController
             ->where('name', $plan)
             ->first();
 
-        if ($plans->removeadmin=='on' || $plans->removesuperadmin=='on' || $plans->users=='on') {
+        if ($plans->removeadmin == 'on' || $plans->removesuperadmin == 'on' || $plans->users == 'on') {
             $input = Input::all();
 
-            $user= new Emails;
+            $user = new Emails;
             $user->email = $input['email'];
             $user->from = $input['from'];
             $user->subject = strip_tags(Input:: get('subject'));
             $user->comment = Input:: get('comment');
             $user->save();
-            $data = array( 'subject' => $user->subject, 'comment' => $user->comment, 'from' => '', 'from_name' => 'Meh' );
+            $data = array('subject' => $user->subject, 'comment' => $user->comment, 'from' => '', 'from_name' => 'Meh');
 
-            Mail::send('contact.editemail', $data, function($comment) use ($user) {
+            Mail::send('contact.editemail', $data, function ($comment) use ($user) {
                 $comment->to($user->email, $user->subject)->from($user->from, $user->from)->subject($user->subject);
             });
 
@@ -237,14 +236,14 @@ class ContactController extends BaseController
 
         $rands = DB::table('users')
             ->where('rand', Auth::user()->rand)
-             ->first();
+            ->first();
         $plan = $rands->plan;
 
         $plans = DB::table('membershipplan')
             ->where('name', $plan)
             ->first();
 
-        if ($plans->removeadmin=='on' || $plans->removesuperadmin=='on' || $plans->users=='on') {
+        if ($plans->removeadmin == 'on' || $plans->removesuperadmin == 'on' || $plans->users == 'on') {
             $input = Input::all();
 
             $entry = array(
@@ -278,8 +277,8 @@ class ContactController extends BaseController
             ->where('name', $plan)
             ->first();
 
-         if ($plans->removeadmin=='on' || $plans->removesuperadmin=='on' || $plans->users=='on') {
-             $input = Input::all();
+        if ($plans->removeadmin == 'on' || $plans->removesuperadmin == 'on' || $plans->users == 'on') {
+            $input = Input::all();
 
             $entry = array(
                 'comment' => Input:: get('comment'),
@@ -313,7 +312,7 @@ class ContactController extends BaseController
             ->where('name', $plan)
             ->first();
 
-        if ($plans->removeadmin=='on' || $plans->removesuperadmin=='on' || $plans->users=='on') {
+        if ($plans->removeadmin == 'on' || $plans->removesuperadmin == 'on' || $plans->users == 'on') {
             $input = Input::all();
 
             $entry = array(
@@ -348,8 +347,8 @@ class ContactController extends BaseController
             ->where('name', $plan)
             ->first();
 
-        if ($plans->removeadmin=='on' || $plans->removesuperadmin=='on' || $plans->users=='on') {
-            $view= View::make('contact.allemail')->with('allemail', Emails::all());
+        if ($plans->removeadmin == 'on' || $plans->removesuperadmin == 'on' || $plans->users == 'on') {
+            $view = View::make('contact.allemail')->with('allemail', Emails::all());
             $this->layout->with('colors', Settings::All());
             $this->layout->with('logo', Logo::find(1));
             $this->layout->content = $view;
@@ -378,14 +377,14 @@ class ContactController extends BaseController
     {
         Contact::find($id)->delete();
 
-        return Redirect::to('viewcontact')->with('msg','Successfully Deleted');
+        return Redirect::to('viewcontact')->with('msg', 'Successfully Deleted');
     }
 
     public function maildelete($id)
     {
         Emails::find($id)->delete();
 
-        return Redirect::to('allemail')->with('msg','Successfully Deleted');
+        return Redirect::to('allemail')->with('msg', 'Successfully Deleted');
     }
 
     public function mailopen($id)
@@ -404,8 +403,7 @@ class ContactController extends BaseController
             ->where('name', $plan)
             ->first();
 
-        if ($plans->removeadmin=='on' || $plans->removesuperadmin=='on' || $plans->users=='on')
-        {
+        if ($plans->removeadmin == 'on' || $plans->removesuperadmin == 'on' || $plans->users == 'on') {
             $view = View::make('contact.viewemail')->with('viewemail', Emails::find($id));
             $this->layout->with('logo', Logo::find(1));
             $this->layout->content = $view;

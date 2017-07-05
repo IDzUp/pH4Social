@@ -28,7 +28,7 @@ return array(
     'Inbox' => 'Inbox',
     'Settings' => 'pengaturan',
     'Messages' => 'pesan',
-    'Logout' =>  'Keluar',
+    'Logout' => 'Keluar',
     'Friends List' => 'Daftar teman',
     'Gallery' => 'Gallery',
     'Upload a Song' => 'Upload Lagu',
@@ -41,9 +41,6 @@ return array(
     'Upcoming Events' => 'Kegiatan Mendatang',
     'Chat Messenger' => 'Ngobrol Messenger',
     'Reply' => 'Balas'
-
-
-
 
 
 );

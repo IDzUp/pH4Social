@@ -2,8 +2,8 @@
 
 @section('content')
 
-   <div class="grid_9">
-    <h1 class="users">Users</h1>
+    <div class="grid_9">
+        <h1 class="users">Users</h1>
     </div>
     <!--RIGHT TEXT/CALENDAR-->
     <div class="grid_6" id="eventbox"><a href="#" class="inline_calendar">You don't have any events for today! Yay!</a>
@@ -15,37 +15,34 @@
     <!--  TITLE END  -->
     <!-- #PORTLETS START -->
     <div id="portlets">
-    <!-- FIRST SORTABLE COLUMN START -->
+        <!-- FIRST SORTABLE COLUMN START -->
 
 
-
-
-
-<div id="box-table-a" class="CSS_Table_Example" style="width:900px;height:150px;">
-            <table >
+        <div id="box-table-a" class="CSS_Table_Example" style="width:900px;height:150px;">
+            <table>
                 <tr>
                     <td>
                         Id
                     </td>
-                    <td >
+                    <td>
                         Email
                     </td>
                     <!-- <td>
                         Password
                     </td> -->
-                        <td>
+                    <td>
                         Name
                     </td>
-                        <td>
+                    <td>
                         City
                     </td>
-                        <td>
+                    <td>
                         Sex
                     </td>
-                            <td>
+                    <td>
                         Phone
                     </td>
-                        <td>
+                    <td>
                         Country
                     </td>
                     <td>
@@ -53,76 +50,73 @@
                     </td>
                 </tr>
                 @foreach( $users as $hello)
-                <tr>
-                    <td >
+                    <tr>
+                        <td>
 
-                        {{ $hello->id }}
+                            {{ $hello->id }}
 
-                    </td>
-                    <td >
+                        </td>
+                        <td>
 
-                        {{ $hello->email }}
+                            {{ $hello->email }}
 
-                    </td>
+                        </td>
 
                     <!-- <td >
 
                         {{ $hello->password }}
 
-                    </td> -->
-                            <td >
+                            </td> -->
+                        <td>
 
-                        {{ $hello->name }}
+                            {{ $hello->name }}
 
-                    </td>
-                            <td >
+                        </td>
+                        <td>
 
-                        {{ $hello->city }}
+                            {{ $hello->city }}
 
-                    </td>
-                            </td>
-                            <td >
+                        </td>
+                        </td>
+                        <td>
 
-                        {{ $hello->sex }}
+                            {{ $hello->sex }}
 
-                    </td>
-                                <td >
+                        </td>
+                        <td>
 
-                        {{ $hello->phone }}
+                            {{ $hello->phone }}
 
-                    </td>
-                            </td>
-                            <td >
+                        </td>
+                        </td>
+                        <td>
 
-                        {{ $hello->location }}
+                            {{ $hello->location }}
 
-                    </td>
-                    <td >
-
-
-                        {{ HTML::link('edit/' . $hello->id, '',array('class="edit_icon"')) }}
+                        </td>
+                        <td>
 
 
-
-
-                        {{ HTML::link('delete/' . $hello->id, '',array('class="delete_icon"')) }}
-
-                    </td>
-
-
-                </tr>
+                            {{ HTML::link('edit/' . $hello->id, '',array('class="edit_icon"')) }}
 
 
 
-                    @endforeach
+
+                            {{ HTML::link('delete/' . $hello->id, '',array('class="delete_icon"')) }}
+
+                        </td>
+
+
+                    </tr>
+
+
+
+                @endforeach
             </table>
         </div>
 
 
-
-
-
-</div>
+    </div>
 
 
 @endsection

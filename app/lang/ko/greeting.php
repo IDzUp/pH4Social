@@ -28,7 +28,7 @@ return array(
     'Inbox' => '받은 편지함',
     'Settings' => '설정',
     'Messages' => '메시지',
-    'Logout' =>  '로그 아웃',
+    'Logout' => '로그 아웃',
     'Friends List' => '친구 목록',
     'Gallery' => '갤러리',
     'Upload a Song' => '노래를 업로드',
@@ -41,9 +41,6 @@ return array(
     'Upcoming Events' => '다가오는 이벤트',
     'Chat Messenger' => '메신저 채팅',
     'Reply' => '응답'
-
-
-
 
 
 );

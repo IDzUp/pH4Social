@@ -15,6 +15,6 @@ return array(
 
     'previous' => '&laquo; Forrige',
 
-    'next'     => 'Neste &raquo;',
+    'next' => 'Neste &raquo;',
 
 );

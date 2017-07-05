@@ -28,7 +28,7 @@ return array(
     'Inbox' => '收件箱',
     'Settings' => '设置',
     'Messages' => '消息',
-    'Logout' =>  '注销',
+    'Logout' => '注销',
     'Friends List' => '好友列表',
     'Gallery' => '图库',
     'Upload a Song' => '上传歌曲',
@@ -41,9 +41,6 @@ return array(
     'Upcoming Events' => '活动预告',
     'Chat Messenger' => '聊天信使',
     'Reply' => '回复'
-
-
-
 
 
 );

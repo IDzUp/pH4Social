@@ -11,9 +11,9 @@ class AuthController extends BaseController
     {
         $name = Input::get('name');
 
-        if ($name!= '') {
+        if ($name != '') {
             $users = DB::table('users')
-                ->where('name', 'LIKE', $name .'%')
+                ->where('name', 'LIKE', $name . '%')
                 ->orderBy('id', 'asc')
                 ->get();
 

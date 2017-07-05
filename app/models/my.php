@@ -4,8 +4,7 @@ class My extends Eloquent
 {
 
 
-public static $table = 'authors';
-
+    public static $table = 'authors';
 
 
 }

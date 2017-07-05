@@ -4,15 +4,15 @@
 
 
 
-<ul>
+    <ul>
 
-@foreach( $author as $hello)
+        @foreach( $author as $hello)
 
-<li>{{ HTML::linkRoute('author', $hello->name, array($hello->id)) }}   </li>
-
-
+            <li>{{ HTML::linkRoute('author', $hello->name, array($hello->id)) }}   </li>
 
 
-@endforeach
-</ul>
+
+
+        @endforeach
+    </ul>
 @endsection

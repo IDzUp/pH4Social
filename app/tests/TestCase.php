@@ -1,6 +1,7 @@
 <?php
 
-class TestCase extends Illuminate\Foundation\Testing\TestCase {
+class TestCase extends Illuminate\Foundation\Testing\TestCase
+{
 
     /**
      * Creates the application.
@@ -9,27 +10,24 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
      */
 
 
+    /*    public function createApplication()
+        {
+            $unitTesting = true;
 
-/*    public function createApplication()
+            $testEnvironment = 'testing';
+
+            return require __DIR__.'/../../bootstrap/start.php';
+        }*/
+
+
+    public function __call($method, $args)
     {
-        $unitTesting = true;
+        if (in_array($method, ['get', 'post', 'put', 'patch', 'delete'])) {
+            return $this->call($method, $args[0]);
+        }
 
-        $testEnvironment = 'testing';
-
-        return require __DIR__.'/../../bootstrap/start.php';
-    }*/
-
-
-public function __call($method, $args)
-{
-    if (in_array($method, ['get', 'post', 'put', 'patch', 'delete']))
-    {
-        return $this->call($method, $args[0]);
+        throw new BadMethodCallException;
     }
-
-    throw new BadMethodCallException;
-}
-
 
 
 }

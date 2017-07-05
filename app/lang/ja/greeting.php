@@ -28,7 +28,7 @@ return array(
     'Inbox' => '受信トレイ',
     'Settings' => '設定',
     'Messages' => 'メッセージ',
-    'Logout' =>  'ログアウト',
+    'Logout' => 'ログアウト',
     'Friends List' => 'フレンドリスト',
     'Gallery' => 'ギャラリー',
     'Upload a Song' => '歌をアップロードする',
@@ -41,9 +41,6 @@ return array(
     'Upcoming Events' => '今後のイベント',
     'Chat Messenger' => 'メッセンジャーチャット',
     'Reply' => '返事'
-
-
-
 
 
 );

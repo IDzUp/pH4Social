@@ -28,7 +28,7 @@ return array(
     'Inbox' => 'البريد الوارد',
     'Settings' => 'إعدادات',
     'Messages' => 'رسائل',
-    'Logout' =>  'تسجيل الخروج',
+    'Logout' => 'تسجيل الخروج',
     'Friends List' => 'قائمة الأصدقاء',
     'Gallery' => 'رواق',
     'Upload a Song' => 'تحميل أغنية',
@@ -41,9 +41,6 @@ return array(
     'Upcoming Events' => 'الأحداث القادمة',
     'Chat Messenger' => 'دردشة رسول',
     'Reply' => 'الرد'
-
-
-
 
 
 );

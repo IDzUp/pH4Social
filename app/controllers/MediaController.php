@@ -4,7 +4,7 @@ class MediaController extends BaseController
 {
     public $restful = true;
 
-    public $layout='layouts.admin';
+    public $layout = 'layouts.admin';
 
     public function media()
     {
@@ -47,7 +47,7 @@ class MediaController extends BaseController
 
             if ($upload_success) {
                 $doc = new Media;
-                $doc->path = $img_dir .'/'. $filename;
+                $doc->path = $img_dir . '/' . $filename;
                 $doc->save();
                 return Redirect::route('viewmedia');
             }
@@ -92,10 +92,10 @@ class MediaController extends BaseController
 
             if ($upload_success) {
                 $entry = array(
-                    'path' => $img_dir .'/'. $filename,
-                    'path1' => $img_dir .'/'. $filename1,
-                    'path2' => $img_dir .'/'. $filename2,
-                    'path3' => $img_dir .'/'. $filename3
+                    'path' => $img_dir . '/' . $filename,
+                    'path1' => $img_dir . '/' . $filename1,
+                    'path2' => $img_dir . '/' . $filename2,
+                    'path3' => $img_dir . '/' . $filename3
                 );
 
                 Slider::where('id', 1)->update($entry);
@@ -173,7 +173,7 @@ class MediaController extends BaseController
                 $id = Input::get('id');
 
                 $entry = array(
-                    'path' => $img_dir .'/'. $filename
+                    'path' => $img_dir . '/' . $filename
                 );
 
                 Media::where('id', $id)->update($entry);

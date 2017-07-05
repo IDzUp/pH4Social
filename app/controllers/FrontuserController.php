@@ -1,6 +1,7 @@
 <?php
 
-class FrontuserController extends BaseController  {
+class FrontuserController extends BaseController
+{
 
     /*
     |--------------------------------------------------------------------------
@@ -15,211 +16,172 @@ class FrontuserController extends BaseController  {
     |
     */
 
+    public $restful = true;
+    public $layout = 'layouts.login';
+
     public function __construct()
     {
         $this->beforeFilter('csrf', ['on' => 'post']);
     }
 
-
-
-    public $restful = true;
-
-    public $layout='layouts.login';
-
     public function signup()
     {
 
-if(Auth::user())
-{
+        if (Auth::user()) {
 
-$rand = Auth::user()->rand;
+            $rand = Auth::user()->rand;
 
-$query =  DB::table('shopping');
+            $query = DB::table('shopping');
 
-$query->where('rand', $rand);
+            $query->where('rand', $rand);
 
-$rows = $query->get();
+            $rows = $query->get();
 
-}
+        } else {
 
-else
-{
-
-$rows=0;
-}
+            $rows = 0;
+        }
 
 
-$curr = Currency::where('id', '=', '1');
+        $curr = Currency::where('id', '=', '1');
 
-$ms = User::All();
+        $ms = User::All();
 
 
+        $view = View::make('live.signup')->with('signup', $ms)->with('shopping', $rows)->with('currency', $curr);
 
-$view= View::make('live.signup')->with('signup', $ms)->with('shopping', $rows)->with('currency', $curr);
-
-$this->layout->content=$view;
- //echo View::make('live.rightsidebar')->with('shopping', Shopping::find(10));
+        $this->layout->content = $view;
+        //echo View::make('live.rightsidebar')->with('shopping', Shopping::find(10));
     }
-
-
-
 
 
     public function specials()
     {
 
 
-$query =  DB::table('content');
-$query->where('id', 1);
-$rows = $query->get();
+        $query = DB::table('content');
+        $query->where('id', 1);
+        $rows = $query->get();
 
-$view= View::make('live.specials')->with('specials', Content::find(2));
+        $view = View::make('live.specials')->with('specials', Content::find(2));
 
-$this->layout->content=$view;
- //echo View::make('live.rightsidebar')->with('shopping', Shopping::find(10));
+        $this->layout->content = $view;
+        //echo View::make('live.rightsidebar')->with('shopping', Shopping::find(10));
     }
-
-
-
-
 
 
     public function getregisters()
     {
 
 
-$input = Input::all();
-$rules = array('email' => 'required|unique:users|email','password' => 'required|confirmed','name' => 'required','city' => 'required');
+        $input = Input::all();
+        $rules = array('email' => 'required|unique:users|email', 'password' => 'required|confirmed', 'name' => 'required', 'city' => 'required');
 
-$v= Validator::make($input,$rules);
+        $v = Validator::make($input, $rules);
 
-if($v->passes())
-{
+        if ($v->passes()) {
 
-    $pass = $input['password'];
-    $pass = Hash::make($pass);
+            $pass = $input['password'];
+            $pass = Hash::make($pass);
 
-    $user= new User();
-    $user->email = $input['email'];
-    $user->password = $pass;
+            $user = new User();
+            $user->email = $input['email'];
+            $user->password = $pass;
 
-    $user->rand = $input['rand'];
+            $user->rand = $input['rand'];
 
-    $user->name = $input['name'];
-    $user->city = $input['city'];
+            $user->name = $input['name'];
+            $user->city = $input['city'];
 
-    $user->save();
+            $user->save();
 
-    $data = array( 'email' => 'sahil_kaushal@esferasoft.com', 'first_name' => 'Sahil', 'from' => 'sahil_kaushal@esferasoft.com', 'from_name' => 'Meh' );
+            $data = array('email' => 'sahil_kaushal@esferasoft.com', 'first_name' => 'Sahil', 'from' => 'sahil_kaushal@esferasoft.com', 'from_name' => 'Meh');
 
 
-/*
-Mail::send('live.signup', $data, function($message) use ($user)
-{
-  $message->to($user->email, $user->name)
-  ->subject('This is a demo!');
-});
+            /*
+            Mail::send('live.signup', $data, function($message) use ($user)
+            {
+              $message->to($user->email, $user->name)
+              ->subject('This is a demo!');
+            });
 
-*/
- Mail::send('live.signup', $data, function ($message) use ($email) {
+            */
+            Mail::send('live.signup', $data, function ($message) use ($email) {
                 $message->subject('Message Subject');
                 $message->from('sahil_kaushal@esferasoft.com', 'sahil');
                 $message->to($user->email);
 
 
+            });
+            return Redirect::route('signup');
+        } else {
+
+            return Redirect::to('signup')->withInput()->withErrors($v);
+        }
 
 
-});
-return Redirect::route('signup');
-}
-else
-{
-
-        return Redirect::to('signup')->withInput()->withErrors($v);
-}
-
-
-
-
-}
-
-
+    }
 
 
     public function logins()
     {
 
-$view= View::make('live.logins')->with('title', 'sahil');
-/*
-$view->location='india';
-$view['speciality']='PHP';
-return $view;
-*/
-$this->layout->content=$view;
+        $view = View::make('live.logins')->with('title', 'sahil');
+        /*
+        $view->location='india';
+        $view['speciality']='PHP';
+        return $view;
+        */
+        $this->layout->content = $view;
     }
 
 
-
-
-
-public function getlogins()
+    public function getlogins()
     {
 
 
-$input = Input::all();
-$rules = array('email' => 'required|email','password' => 'required');
+        $input = Input::all();
+        $rules = array('email' => 'required|email', 'password' => 'required');
 
-$v= Validator::make($input,$rules);
+        $v = Validator::make($input, $rules);
 
-if($v->fails())
-{
+        if ($v->fails()) {
 
-    return Redirect::to('logins')->withInput()->withErrors($v);
-}
-else
-{
+            return Redirect::to('logins')->withInput()->withErrors($v);
+        } else {
 
 
+            $credentails = array('email' => $input['email'], 'password' => $input['password']);
 
-$credentails= array('email'=> $input['email'], 'password'=>$input['password']);
-
-if(Auth::attempt($credentails)){
-
-
-     //   Auth::login($credentails);
+            if (Auth::attempt($credentails)) {
 
 
-    $input = Input::all();
-
-    $user= new Chat();
-
-    $user->email = $input['email'];
-
-    $user->save();
+                //   Auth::login($credentails);
 
 
+                $input = Input::all();
 
-    return Redirect::to('site')->with('message','I am the best');
-}
-else
-{
+                $user = new Chat();
 
-    return Redirect::to('logins');
-}
+                $user->email = $input['email'];
 
-}
+                $user->save();
 
 
+                return Redirect::to('site')->with('message', 'I am the best');
+            } else {
+
+                return Redirect::to('logins');
+            }
+
+        }
 
 
     }
 
 
-
-
-public function logouts()
+    public function logouts()
     {
-
 
 
         $email = Auth::user()->email;
@@ -230,75 +192,50 @@ public function logouts()
         Auth::logout();
 
 
-
-
-
-
-
-
         return Redirect::route('site');
-    //    return Redirect::to('login');
+        //    return Redirect::to('login');
     }
-
-
 
 
     public function loginfirst()
     {
 
 
+        $view = View::make('live.loginfirst');
 
-
-
-
-$view= View::make('live.loginfirst');
-
-$this->layout->content=$view;
- //echo View::make('live.rightsidebar')->with('shopping', Shopping::find(10));
+        $this->layout->content = $view;
+        //echo View::make('live.rightsidebar')->with('shopping', Shopping::find(10));
     }
-
-
 
 
     public function checkout()
     {
 
 
+        if (!Auth::user()) {
+            return Redirect::route('signup');
 
-if(!Auth::user())
-{
-return Redirect::route('signup');
+        } else {
+            $rand = Auth::user()->rand;
 
-}
-else
-{
-$rand = Auth::user()->rand;
+            $query = DB::table('shopping');
 
-$query =  DB::table('shopping');
+            $query->where('rand', $rand);
 
-$query->where('rand', $rand);
-
-$rows = $query->get();
+            $rows = $query->get();
 
 
+            $view = View::make('live.checkout')->with('checkout', $rows);
+            $this->layout->with('shopping', $rows);
+            $this->layout->content = $view;
 
-$view= View::make('live.checkout')->with('checkout', $rows);
-$this->layout->with('shopping', $rows);
-$this->layout->content=$view;
-
-}
-
+        }
 
 
     }
 
 
-
-
-
 }
-
-
 
 
 ?>

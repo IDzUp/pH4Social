@@ -24,6 +24,6 @@ return array(
 
     'previous' => '&laquo; Öňki',
 
-    'next'     => 'Indiki &raquo;',
+    'next' => 'Indiki &raquo;',
 
 );

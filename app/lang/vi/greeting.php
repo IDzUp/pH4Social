@@ -28,7 +28,7 @@ return array(
     'Inbox' => 'Hộp thư đến',
     'Settings' => 'cài đặt',
     'Messages' => 'bài viết',
-    'Logout' =>  'Thoát',
+    'Logout' => 'Thoát',
     'Friends List' => 'Danh sách bạn bè',
     'Gallery' => 'Gallery',
     'Upload a Song' => 'Upload bản nhạc mới',
@@ -41,9 +41,6 @@ return array(
     'Upcoming Events' => 'Sự kiện sắp tới',
     'Chat Messenger' => 'Messenger',
     'Reply' => 'đáp lại'
-
-
-
 
 
 );

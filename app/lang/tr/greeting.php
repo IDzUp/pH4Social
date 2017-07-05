@@ -28,7 +28,7 @@ return array(
     'Inbox' => 'Gelen Kutusu',
     'Settings' => 'Ayarlar',
     'Messages' => 'Mesajlar',
-    'Logout' =>  'Çıkış',
+    'Logout' => 'Çıkış',
     'Friends List' => 'Arkadaş Listesi',
     'Gallery' => 'galeri',
     'Upload a Song' => 'Şarkı Yükle',
@@ -41,9 +41,6 @@ return array(
     'Upcoming Events' => 'yaklaşan Olaylar',
     'Chat Messenger' => 'Messenger sohbet',
     'Reply' => 'cevap'
-
-
-
 
 
 );

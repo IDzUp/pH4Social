@@ -1,9 +1,9 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddAuthors extends Migration {
+class AddAuthors extends Migration
+{
 
     /**
      * Run the migrations.
@@ -14,18 +14,18 @@ class AddAuthors extends Migration {
     {
         //
         DB::table('authors')->insert(array(
-            'name'=>'sahil kaushal',
-            'bin'=>'hello'
+            'name' => 'sahil kaushal',
+            'bin' => 'hello'
 
 
-            ));
+        ));
 
-            DB::table('authors')->insert(array(
-            'name'=>'test',
-            'bin'=>'hello'
+        DB::table('authors')->insert(array(
+            'name' => 'test',
+            'bin' => 'hello'
 
 
-            ));
+        ));
     }
 
     /**
@@ -37,7 +37,7 @@ class AddAuthors extends Migration {
     {
         //
 
-        DB::table('authors')->where('name','=','sahil kaushal')->delete();
+        DB::table('authors')->where('name', '=', 'sahil kaushal')->delete();
     }
 
 }

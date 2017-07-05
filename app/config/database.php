@@ -47,53 +47,53 @@ return array(
     'connections' => array(
 
         'sqlite' => array(
-            'driver'   => 'sqlite',
-            'database' => __DIR__.'/../database/production.sqlite',
-            'prefix'   => '',
+            'driver' => 'sqlite',
+            'database' => __DIR__ . '/../database/production.sqlite',
+            'prefix' => '',
         ),
-/*
-        'mysql' => array(
-            'driver'    => 'mysql',
-            'host'      => 'localhost',
-            'database'  => 'forge',
-            'username'  => 'forge',
-            'password'  => '',
-            'charset'   => 'utf8',
-            'collation' => 'utf8_unicode_ci',
-            'prefix'    => '',
-        ),
-*/
+        /*
+                'mysql' => array(
+                    'driver'    => 'mysql',
+                    'host'      => 'localhost',
+                    'database'  => 'forge',
+                    'username'  => 'forge',
+                    'password'  => '',
+                    'charset'   => 'utf8',
+                    'collation' => 'utf8_unicode_ci',
+                    'prefix'    => '',
+                ),
+        */
 
         'mysql' => array(
-        'driver'   => 'mysql',
-        'host'     => 'localhost',
-        'database' => '',
-        'username' => '',
-        'password' => '',
-        'charset'  => 'utf8',
-        'collation' => 'utf8_unicode_ci',
-        'prefix'   => '',
-    ),
+            'driver' => 'mysql',
+            'host' => 'localhost',
+            'database' => '',
+            'username' => '',
+            'password' => '',
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => '',
+        ),
 
 
         'pgsql' => array(
-            'driver'   => 'pgsql',
-            'host'     => '192.168.1.10',
+            'driver' => 'pgsql',
+            'host' => '192.168.1.10',
             'database' => '_laravel',
             'username' => 'es3',
             'password' => '86Ny4PP2',
-            'charset'  => 'utf8',
-            'prefix'   => '',
-            'schema'   => 'public',
+            'charset' => 'utf8',
+            'prefix' => '',
+            'schema' => 'public',
         ),
 
         'sqlsrv' => array(
-            'driver'   => 'sqlsrv',
-            'host'     => '192.168.1.10',
+            'driver' => 'sqlsrv',
+            'host' => '192.168.1.10',
             'database' => '_laravel',
             'username' => 'es3',
             'password' => '86Ny4PP2',
-            'prefix'   => '',
+            'prefix' => '',
         ),
 
     ),
@@ -127,8 +127,8 @@ return array(
         'cluster' => false,
 
         'default' => array(
-            'host'     => '192.168.1.10',
-            'port'     => 6379,
+            'host' => '192.168.1.10',
+            'port' => 6379,
             'database' => 0,
         ),
 

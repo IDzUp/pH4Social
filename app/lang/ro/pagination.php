@@ -15,6 +15,6 @@ return array(
 
     'previous' => '&laquo; Înapoi',
 
-    'next'     => 'Înainte &raquo;',
+    'next' => 'Înainte &raquo;',
 
 );

@@ -2,177 +2,155 @@
 
 @section('content')
 
-<div class="container-fluid">
-      <!-- Page Heading -->
-      <div class="row">
-        <div class="col-lg-12">
-          <h1 class="page-header"> Timeline </h1>
-          <ol class="breadcrumb">
-            <li> <i class="fa fa-dashboard"></i> <a href="{{ asset('/index.php') }}/admin">Dashboard</a> </li>
-            <li class="active"> <span class="glyphicon glyphicon-user"></span> Timeline </li>
-          </ol>
-          <div class="pull-right">
+    <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header"> Timeline </h1>
+                <ol class="breadcrumb">
+                    <li><i class="fa fa-dashboard"></i> <a href="{{ asset('/index.php') }}/admin">Dashboard</a></li>
+                    <li class="active"><span class="glyphicon glyphicon-user"></span> Timeline</li>
+                </ol>
+                <div class="pull-right">
 
-          {{ Form:: open(array('url' => 'searchtimeline' , 'method' => 'get','class' => 'navbar-form navbar-left')) }} <!--contact_request is a router from Route class-->
-  @if($errors->any())
+                {{ Form:: open(array('url' => 'searchtimeline' , 'method' => 'get','class' => 'navbar-form navbar-left')) }} <!--contact_request is a router from Route class-->
+                    @if($errors->any())
 
- {{ implode('', $errors->all('<li>:message</li>'))  }}
-@endif
-    {{ Form::token() }}
+                        {{ implode('', $errors->all('<li>:message</li>'))  }}
+                    @endif
+                    {{ Form::token() }}
 
-   <div class="form-group">
-    <input type="text" name="searchuser" placeholder="Name Search" class="form-control" />
-  </div>
-
-
-  <div class="form-group">
-    <input type="text" name="searchemail" placeholder="Email Search" class="form-control" />
-  </div>
+                    <div class="form-group">
+                        <input type="text" name="searchuser" placeholder="Name Search" class="form-control"/>
+                    </div>
 
 
-  <div class="form-group">
-    <input type="text" name="searchcity" placeholder="City Search" class="form-control" />
-  </div>
+                    <div class="form-group">
+                        <input type="text" name="searchemail" placeholder="Email Search" class="form-control"/>
+                    </div>
 
 
+                    <div class="form-group">
+                        <input type="text" name="searchcity" placeholder="City Search" class="form-control"/>
+                    </div>
 
 
+                    <div class="form-group">
+                        <input type="text" name="searchplan" placeholder="Plan Search" class="form-control"/>
+                    </div>
 
-  <div class="form-group">
-    <input type="text" name="searchplan" placeholder="Plan Search" class="form-control" />
-  </div>
+                    <div class="form-group">
 
-  <div class="form-group">
-
-             <label class="checkbox-inline">
-                <input type="radio" name="sex" id="" checked="" value="male">Male
-           </label>
-              <label class="checkbox-inline">
-                <input type="radio" name="sex" id="" value="female">Female
-              </label>
-  </div>
-
+                        <label class="checkbox-inline">
+                            <input type="radio" name="sex" id="" checked="" value="male">Male
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="radio" name="sex" id="" value="female">Female
+                        </label>
+                    </div>
 
 
-
-
-
-
-  <button type="submit" style="float:right" class="register_btn">Search</button>
-            {{ Form:: close() }}
-</div>
-        </div>
-      </div>
-      <!-- /.row -->
-      <div class="row">
-        <div class="col-lg-12">
-        <div class="panel panel-default">
-        <div class="panel-heading">
-              <h3 class="panel-title"><span class="glyphicon glyphicon-user"></span> Timeline</h3>
+                    <button type="submit" style="float:right" class="register_btn">Search</button>
+                    {{ Form:: close() }}
+                </div>
             </div>
-          <div class="table-responsive">
-            <table class="table table-bordered table-hover">
-              <thead>
-                <tr>
-                  <th>Id</th>
-                  <th>Email</th>
-                  <th>Name </th>
-                  <th>City</th>
-                   <th>Sex</th>
-                    <th>Phone</th>
-                    <th>Country</th>
-                    <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-    @foreach( $users as $hello)
-                <tr>
-                    <td >
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-user"></span> Timeline</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Email</th>
+                                <th>Name</th>
+                                <th>City</th>
+                                <th>Sex</th>
+                                <th>Phone</th>
+                                <th>Country</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach( $users as $hello)
+                                <tr>
+                                    <td>
 
-                        {{ $hello->id }}
+                                        {{ $hello->id }}
 
-                    </td>
-                    <td >
+                                    </td>
+                                    <td>
 
-                        {{ $hello->email }}
+                                        {{ $hello->email }}
 
-                    </td>
+                                    </td>
 
-                    <!-- <td >
+                                <!-- <td >
 
                         {{ $hello->password }}
 
-                    </td> -->
-                            <td >
+                                        </td> -->
+                                    <td>
 
-                        {{ $hello->name }}
+                                        {{ $hello->name }}
 
-                    </td>
-                            <td >
+                                    </td>
+                                    <td>
 
-                        {{ $hello->city }}
+                                        {{ $hello->city }}
 
-                    </td>
-                            </td>
-                            <td >
+                                    </td>
+                                    </td>
+                                    <td>
 
-                        {{ $hello->sex }}
+                                        {{ $hello->sex }}
 
-                    </td>
-                                <td >
+                                    </td>
+                                    <td>
 
-                        {{ $hello->phone }}
+                                        {{ $hello->phone }}
 
-                    </td>
-                            </td>
-                            <td >
+                                    </td>
+                                    </td>
+                                    <td>
 
-                        {{ $hello->location }}
+                                        {{ $hello->location }}
 
-                    </td>
-                    <td >
-
-
+                                    </td>
+                                    <td>
 
 
-
-                        <a target="_blank" href="{{ asset('/index.php') }}/profileopen/{{$hello->uname}}" >SHOW TIMELINE</a>
-<!--
+                                        <a target="_blank"
+                                           href="{{ asset('/index.php') }}/profileopen/{{$hello->uname}}">SHOW
+                                            TIMELINE</a>
+                                    <!--
                         {{ HTML::link('delete/' . $hello->id, '',array('class="delete_icon"')) }} -->
 
 
-
-                    </td>
-
-
-                </tr>
+                                    </td>
 
 
-
-            @endforeach
+                                </tr>
 
 
 
+                            @endforeach
 
 
+                            </tbody>
+                        </table>
+                    </div>
 
+                </div>
 
-
-
-
-
-
-
-
-              </tbody>
-            </table>
-          </div>
-
-          </div>
-
+            </div>
         </div>
-      </div>
-      <!-- /.row -->
+        <!-- /.row -->
     </div>
     <!-- /.container-fluid -->
 

@@ -28,7 +28,7 @@ return array(
     'Inbox' => 'Doručená pošta',
     'Settings' => 'Nastavení',
     'Messages' => 'zprávy',
-    'Logout' =>  'Odhlášení',
+    'Logout' => 'Odhlášení',
     'Friends List' => 'Seznam přátelé',
     'Gallery' => 'Galerie',
     'Upload a Song' => 'Nahrát píseň',
@@ -41,9 +41,6 @@ return array(
     'Upcoming Events' => 'nadcházející události',
     'Chat Messenger' => 'Chat Messenger',
     'Reply' => 'Odpovědět'
-
-
-
 
 
 );

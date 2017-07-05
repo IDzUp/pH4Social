@@ -4,8 +4,8 @@
 
 
 
-   <div class="grid_9">
-    <h1 class="newsletter">View Menu</h1>
+    <div class="grid_9">
+        <h1 class="newsletter">View Menu</h1>
     </div>
     <!--RIGHT TEXT/CALENDAR-->
     <div class="grid_6" id="eventbox"><a href="#" class="inline_calendar">You don't have any events for today! Yay!</a>
@@ -17,14 +17,13 @@
     <!--  TITLE END  -->
     <!-- #PORTLETS START -->
     <div id="portlets">
-    <!-- FIRST SORTABLE COLUMN START -->
+        <!-- FIRST SORTABLE COLUMN START -->
 
 
-
-    <div id="box-table-a" class="CSS_Table_Example">
-            <table >
+        <div id="box-table-a" class="CSS_Table_Example">
+            <table>
                 <tr>
-                    <td >
+                    <td>
 
                         Category
 
@@ -33,10 +32,10 @@
                     <td>
                         Id
                     </td>
-                    <td >
+                    <td>
                         Title
                     </td>
-                    <td >
+                    <td>
                         Link
                     </td>
 
@@ -45,118 +44,112 @@
                     </td>
                 </tr>
                 @foreach( $viewmenu as $hello)
-                <tr>
+                    <tr>
 
 
 
                     <tr>
-                        <td >
+                        <td>
 
-                        Main Menu
-
-                    </td>
-
-                    <td >
-
-                        {{ $hello->id }}
-
-                    </td>
-                    <td >
-
-                        {{ $hello->menu }}
-
-                    </td>
-
-                        <td >
-
-                        {{ $hello->link }}
-
-                    </td>
-
-
-                    <td >
-
-
-                        {{ HTML::link('/menu/edit/' . $hello->id, '',array('class="edit_icon"')) }}
-
-
-
-
-                        {{ HTML::link('/menu/delete/' . $hello->id, '',array('class="delete_icon"')) }}
-
-                    </td>
-
-
-
-                    <td >
-
-
-
-                        {{ HTML::link('/menu/submenu/' . $hello->id, 'Add sub menu') }}
-
-                    </td>
-
-                    </tr>
-
-                @foreach( $submenu as $hellos)
-                    <tr>
-
-
-<?php if($hellos->menu==$hello->id)
-{
-?>
-
-
-<td >
-
-                        Sub Menu
+                            Main Menu
 
                         </td>
 
-                        <td >
+                        <td>
 
-                        {{ $hellos->id }}
+                            {{ $hello->id }}
 
-                    </td>
-                    <td >
+                        </td>
+                        <td>
 
-                        {{ $hellos->submenu }}
+                            {{ $hello->menu }}
 
-                    </td>
+                        </td>
 
-                <td >
+                        <td>
 
-                        {{ $hellos->link }}
+                            {{ $hello->link }}
 
-                    </td>
-
-                    <td >
+                        </td>
 
 
-                        {{ HTML::link('/submenu/edit/' . $hellos->id, '',array('class="edit_icon"')) }}
+                        <td>
 
 
-
-
-                        {{ HTML::link('/submenu/delete/' . $hellos->id, '',array('class="delete_icon"')) }}
-
-                    </td>
-
-
-
-<?php
-}
-
-
-    ?>
+                            {{ HTML::link('/menu/edit/' . $hello->id, '',array('class="edit_icon"')) }}
 
 
 
 
+                            {{ HTML::link('/menu/delete/' . $hello->id, '',array('class="delete_icon"')) }}
+
+                        </td>
+
+
+                        <td>
+
+
+                            {{ HTML::link('/menu/submenu/' . $hello->id, 'Add sub menu') }}
+
+                        </td>
 
                     </tr>
-                @endforeach
-                </tr>
+
+                    @foreach( $submenu as $hellos)
+                        <tr>
+
+
+                            <?php if($hellos->menu == $hello->id)
+                            {
+                            ?>
+
+
+                            <td>
+
+                                Sub Menu
+
+                            </td>
+
+                            <td>
+
+                                {{ $hellos->id }}
+
+                            </td>
+                            <td>
+
+                                {{ $hellos->submenu }}
+
+                            </td>
+
+                            <td>
+
+                                {{ $hellos->link }}
+
+                            </td>
+
+                            <td>
+
+
+                                {{ HTML::link('/submenu/edit/' . $hellos->id, '',array('class="edit_icon"')) }}
+
+
+
+
+                                {{ HTML::link('/submenu/delete/' . $hellos->id, '',array('class="delete_icon"')) }}
+
+                            </td>
+
+
+                            <?php
+                            }
+
+
+                            ?>
+
+
+                        </tr>
+                        @endforeach
+                        </tr>
 
 
 
@@ -165,8 +158,7 @@
         </div>
 
 
-
-</div>
+    </div>
 
 
 

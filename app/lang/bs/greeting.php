@@ -28,7 +28,7 @@ return array(
     'Inbox' => 'Inbox',
     'Settings' => 'Postavke',
     'Messages' => 'Poruke',
-    'Logout' =>  'Odjava',
+    'Logout' => 'Odjava',
     'Friends List' => 'Lista prijatelja',
     'Gallery' => 'Galerija',
     'Upload a Song' => 'Postavi Song',
@@ -41,9 +41,6 @@ return array(
     'Upcoming Events' => 'Najave događaja',
     'Chat Messenger' => 'Chatea Mensajero',
     'Reply' => 'Odgovori'
-
-
-
 
 
 );

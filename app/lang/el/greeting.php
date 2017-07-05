@@ -28,7 +28,7 @@ return array(
     'Inbox' => 'Εισερχόμενα',
     'Settings' => 'Ρυθμίσεις',
     'Messages' => 'Μηνύματα',
-    'Logout' =>  'Αποσύνδεση',
+    'Logout' => 'Αποσύνδεση',
     'Friends List' => 'Λίστα Φίλων',
     'Gallery' => 'Gallery',
     'Upload a Song' => 'Ανεβάστε ένα τραγούδι',
@@ -41,9 +41,6 @@ return array(
     'Upcoming Events' => 'Προσεχείς Εκδηλώσεις',
     'Chat Messenger' => 'Chat Messenger',
     'Reply' => 'απάντηση'
-
-
-
 
 
 );

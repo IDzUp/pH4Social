@@ -15,12 +15,12 @@ return array(
 
     "password" => "Lozinke moraju biti naj manje 6 karaktera i da odgovaraju potvrdu.",
 
-    "user"     => "Nismo uspeli pronaći korisnika sa emajl adresom.",
+    "user" => "Nismo uspeli pronaći korisnika sa emajl adresom.",
 
-    "token"    => "Ukucena oznaka za resetovanje lozinke nije važeći.",
+    "token" => "Ukucena oznaka za resetovanje lozinke nije važeći.",
 
-    "sent"     => "Poslali smo oporavak za vašu lozinku!",
+    "sent" => "Poslali smo oporavak za vašu lozinku!",
 
-    "reset"    => "Password has been reset!",
+    "reset" => "Password has been reset!",
 
 );

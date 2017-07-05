@@ -1,56 +1,62 @@
 @layout(layouts.live)
 
 @section('content')
- <div class="features_items">
-   <h2 class="title text-center">Search Results</h2>
-  @foreach( $search as $hello)
+    <div class="features_items">
+        <h2 class="title text-center">Search Results</h2>
+        @foreach( $search as $hello)
 
 
 
-       <div class="col-sm-4">
-              <div class="product-image-wrapper">
-                <div class="single-products">
-                    <div class="productinfo text-center">
-                      <img src="{{ URL::asset('') }}/{{ $hello->path }}" alt="" />
-                      <h2>{{ $currency->currency }}{{ $hello->price }}</h2>
-                      <p>{{ $hello->name }}</p>
-                                 <form action="details/addtocart/{{ $hello->id }}" method="get">
-<input type="hidden" name="name" value="{{ $hello->name }}">
-<input type="hidden" name="price" value="{{ $hello->price }}">
+            <div class="col-sm-4">
+                <div class="product-image-wrapper">
+                    <div class="single-products">
+                        <div class="productinfo text-center">
+                            <img src="{{ URL::asset('') }}/{{ $hello->path }}" alt=""/>
+                            <h2>{{ $currency->currency }}{{ $hello->price }}</h2>
+                            <p>{{ $hello->name }}</p>
+                            <form action="details/addtocart/{{ $hello->id }}" method="get">
+                                <input type="hidden" name="name" value="{{ $hello->name }}">
+                                <input type="hidden" name="price" value="{{ $hello->price }}">
 
-  <input type="hidden" name="rand" value="<?php if(Auth::user()){ echo $rand = Auth::user()->rand;}?>">
-<input type="submit" value="Add to cart" name="submit" border="0" width="20" class="btn btn-default add-to-cart">
+                                <input type="hidden" name="rand" value="<?php if (Auth::user()) {
+                                    echo $rand = Auth::user()->rand;
+                                }?>">
+                                <input type="submit" value="Add to cart" name="submit" border="0" width="20"
+                                       class="btn btn-default add-to-cart">
 
-</form>
-                   <!--   <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>-->
+                            </form>
+                            <!--   <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>-->
+                        </div>
+                        <div class="product-overlay">
+                            <div class="overlay-content">
+                                <h2>{{ $currency->currency }}{{ $hello->price }}</h2>
+                                <p>{{ $hello->name }}</p>
+                                <form action="details/addtocart/{{ $hello->id }}" method="get">
+                                    <input type="hidden" name="name" value="{{ $hello->name }}">
+                                    <input type="hidden" name="price" value="{{ $hello->price }}">
+
+                                    <input type="hidden" name="rand" value="<?php if (Auth::user()) {
+                                        echo $rand = Auth::user()->rand;
+                                    }?>">
+                                    <input type="submit" value="Add to cart" name="submit" border="0" width="20"
+                                           class="btn btn-default add-to-cart">
+
+                                </form>
+                                <!--   <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>-->
+                            </div>
+                        </div>
                     </div>
-                    <div class="product-overlay">
-                      <div class="overlay-content">
-                        <h2>{{ $currency->currency }}{{ $hello->price }}</h2>
-                        <p>{{ $hello->name }}</p>
-           <form action="details/addtocart/{{ $hello->id }}" method="get">
-<input type="hidden" name="name" value="{{ $hello->name }}">
-<input type="hidden" name="price" value="{{ $hello->price }}">
-
-  <input type="hidden" name="rand" value="<?php if(Auth::user()){ echo $rand = Auth::user()->rand;}?>">
-<input type="submit" value="Add to cart" name="submit" border="0" width="20" class="btn btn-default add-to-cart">
-
-</form>
-                     <!--   <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>-->
-                      </div>
+                    <div class="choose">
+                        <ul class="nav nav-pills nav-justified">
+                            <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                            <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
+                        </ul>
                     </div>
                 </div>
-                <div class="choose">
-                  <ul class="nav nav-pills nav-justified">
-                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-                  </ul>
-                </div>
-              </div>
             </div>
 
 
-<!--
+        <!--
   <div class="prod_box">
         <div class="top_prod_box"></div>
         <div class="center_prod_box">
@@ -63,10 +69,10 @@
       </div>
 -->
 
-@endforeach
+        @endforeach
 
 
-</div>
+    </div>
 
 
 

@@ -24,12 +24,12 @@ return array(
 
     "password" => "Açarsöz 6 harpdan ybarat bolup, tassyklamasy bilen deň bolmaly.",
 
-    "user"     => "Bu e-mail adrese degişli ulanyjy tapylmady.",
+    "user" => "Bu e-mail adrese degişli ulanyjy tapylmady.",
 
-    "token"    => "Açarsöz tazeleme söz birligi ýalňyş.",
+    "token" => "Açarsöz tazeleme söz birligi ýalňyş.",
 
-    "sent"     => "Açarsöz ýatlatmasy ugradyldy!",
+    "sent" => "Açarsöz ýatlatmasy ugradyldy!",
 
-    "reset"    => "Açarsöz üýtgedildi!",
+    "reset" => "Açarsöz üýtgedildi!",
 
 );

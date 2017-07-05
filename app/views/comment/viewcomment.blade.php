@@ -4,8 +4,8 @@
 
 
 
-   <div class="grid_9">
-    <h1 class="newsletter">Comments</h1>
+    <div class="grid_9">
+        <h1 class="newsletter">Comments</h1>
     </div>
     <!--RIGHT TEXT/CALENDAR-->
     <div class="grid_6" id="eventbox"><a href="#" class="inline_calendar">You don't have any events for today! Yay!</a>
@@ -17,17 +17,16 @@
     <!--  TITLE END  -->
     <!-- #PORTLETS START -->
     <div id="portlets">
-    <!-- FIRST SORTABLE COLUMN START -->
+        <!-- FIRST SORTABLE COLUMN START -->
 
 
-
-    <div id="box-table-a" class="CSS_Table_Example">
-            <table >
+        <div id="box-table-a" class="CSS_Table_Example">
+            <table>
                 <tr>
                     <td>
                         Id
                     </td>
-                    <td >
+                    <td>
                         Product id
                     </td>
                     <td>
@@ -40,49 +39,48 @@
                     </td>
                 </tr>
                 @foreach( $viewcomment as $hello)
-                <tr>
-                    <td >
+                    <tr>
+                        <td>
 
-                        {{ $hello->id }}
+                            {{ $hello->id }}
 
-                    </td>
-                    <td >
+                        </td>
+                        <td>
 
-                        {{ $hello->product_id }}
+                            {{ $hello->product_id }}
 
-                    </td>
+                        </td>
 
-                    <td >
+                        <td>
 
-                        {{ $hello->comment }}
+                            {{ $hello->comment }}
 
-                    </td>
-
-
-                    <td >
+                        </td>
 
 
-                        {{ HTML::link('/comment/edit/' . $hello->id, '',array('class="edit_icon"')) }}
+                        <td>
 
 
-
-
-                        {{ HTML::link('/comment/delete/' . $hello->id, '',array('class="delete_icon"')) }}
-
-                    </td>
-
-
-                </tr>
+                            {{ HTML::link('/comment/edit/' . $hello->id, '',array('class="edit_icon"')) }}
 
 
 
-                    @endforeach
+
+                            {{ HTML::link('/comment/delete/' . $hello->id, '',array('class="delete_icon"')) }}
+
+                        </td>
+
+
+                    </tr>
+
+
+
+                @endforeach
             </table>
         </div>
 
 
-
-</div>
+    </div>
 
 
 

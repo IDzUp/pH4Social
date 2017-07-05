@@ -28,7 +28,7 @@ return array(
     'Inbox' => 'Posteingang',
     'Settings' => 'Einstellungen',
     'Messages' => 'Nachrichten',
-    'Logout' =>  'Abmelden',
+    'Logout' => 'Abmelden',
     'Friends List' => 'Freunde-Liste',
     'Gallery' => 'Galerie',
     'Upload a Song' => 'Laden Sie einen Song',

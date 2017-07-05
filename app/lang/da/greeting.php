@@ -28,7 +28,7 @@ return array(
     'Inbox' => 'Indbakke',
     'Settings' => 'Indstillinger',
     'Messages' => 'Meddelelser',
-    'Logout' =>  'Log ud',
+    'Logout' => 'Log ud',
     'Friends List' => 'SFriends List',
     'Gallery' => 'Galleri',
     'Upload a Song' => 'Upload et Song',
@@ -41,9 +41,6 @@ return array(
     'Upcoming Events' => 'Kommende arrangementer',
     'Chat Messenger' => 'Chat Messenger',
     'Reply' => 'Svar'
-
-
-
 
 
 );

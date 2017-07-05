@@ -1,11 +1,10 @@
 <?php
 
-use Illuminate\Auth\UserTrait;
-use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableTrait;
-use Illuminate\Auth\Reminders\RemindableInterface;
+use Illuminate\Auth\UserTrait;
 
-class UserEloquent extends Eloquent {
+class UserEloquent extends Eloquent
+{
 
     use UserTrait, RemindableTrait;
 
@@ -23,7 +22,7 @@ class UserEloquent extends Eloquent {
      */
 //    protected $hidden = array('password', 'remember_token');
 
-     public function find($key)
+    public function find($key)
     {
         return UserEloquent::find($key);
     }

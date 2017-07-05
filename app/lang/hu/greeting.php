@@ -28,7 +28,7 @@ return array(
     'Inbox' => 'Inbox',
     'Settings' => 'Beállítások',
     'Messages' => 'Üzenetek',
-    'Logout' =>  'Logout',
+    'Logout' => 'Logout',
     'Friends List' => 'Barátok listája',
     'Gallery' => 'karzat',
     'Upload a Song' => 'Song feltöltése',
@@ -41,9 +41,6 @@ return array(
     'Upcoming Events' => 'Közelgő események',
     'Chat Messenger' => 'Chat Messenger',
     'Reply' => 'Válasz'
-
-
-
 
 
 );

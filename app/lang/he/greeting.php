@@ -28,7 +28,7 @@ return array(
     'Inbox' => 'תיבת הדואר הנכנס של',
     'Settings' => 'הגדרות',
     'Messages' => 'הודעות',
-    'Logout' =>  'התנתקות',
+    'Logout' => 'התנתקות',
     'Friends List' => 'רשימת חברים',
     'Gallery' => 'גלריה',
     'Upload a Song' => 'העלה שיר',
@@ -41,9 +41,6 @@ return array(
     'Upcoming Events' => 'אירועים קרובים',
     'Chat Messenger' => 'צ אט Messenger',
     'Reply' => 'תגובה'
-
-
-
 
 
 );

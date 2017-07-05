@@ -1,14 +1,13 @@
-
 <?php
 
 
 
-$path=URL::to('/').'/profile';
+$path = URL::to('/') . '/profile';
 
-$value='<a href='.$path.'>Friend Request</a>';
+$value = '<a href=' . $path . '>Friend Request</a>';
 
 
-$final=str_replace("LINK", $value, $content);
+$final = str_replace("LINK", $value, $content);
 
 
 

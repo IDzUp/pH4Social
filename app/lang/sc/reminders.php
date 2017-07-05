@@ -15,12 +15,12 @@ return array(
 
     "password" => "Is password depent èssere a su mancu de 6 caràteres e depent èssere uguales.",
 
-    "user"     => "Non s'agatat un'impitadore assotziadu a custu indiritzu email.",
+    "user" => "Non s'agatat un'impitadore assotziadu a custu indiritzu email.",
 
-    "token"    => "Custu token pro torrare a impostare sa password no est bàlidu.",
+    "token" => "Custu token pro torrare a impostare sa password no est bàlidu.",
 
-    "sent"     => "Regordu de sa password imbiadu!",
+    "sent" => "Regordu de sa password imbiadu!",
 
-    "reset"    => "Password has been reset!",
+    "reset" => "Password has been reset!",
 
 );

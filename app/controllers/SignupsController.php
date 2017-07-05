@@ -1,6 +1,7 @@
 <?php
 
-class SignupsController extends BaseController {
+class SignupsController extends BaseController
+{
 
     public function store()
     {
@@ -10,10 +11,8 @@ class SignupsController extends BaseController {
 
         $validator = \Validator::make(\Input::all(), $rules, \Lang::get('laravel-newsletter-signup::copy.signup.validation'));
 
-        if ($validator->fails())
-        {
-            if (\Request::ajax())
-            {
+        if ($validator->fails()) {
+            if (\Request::ajax()) {
                 $messages = $validator->messages();
                 $message = $messages->first('newsletter_signup_email');
                 return \Response::JSON(array('message' => $message), 400);
@@ -21,22 +20,18 @@ class SignupsController extends BaseController {
             return \Redirect::to(\Input::get('from'))->withInput()->withErrors($validator);
         }
 
-        $signup = Signup::onlyTrashed()->where('email','=',\Input::get('newsletter_signup_email'))->first();
-        if ($signup)
-        {
+        $signup = Signup::onlyTrashed()->where('email', '=', \Input::get('newsletter_signup_email'))->first();
+        if ($signup) {
             $signup->restore();
             $message = \Lang::get('laravel-newsletter-signup::copy.signup.success_restored');
-        }
-        else
-        {
+        } else {
             $signup = new Signup();
             $signup->email = \Input::get('newsletter_signup_email');
             $signup->save();
             $message = \Lang::get('laravel-newsletter-signup::copy.signup.success');
         }
 
-        if (\Request::ajax())
-        {
+        if (\Request::ajax()) {
             return \Response::JSON(array('message' => $message));
         }
         return \Redirect::to(\Input::get('from'))->with('newsletter_signup_email_message', $message);
@@ -50,10 +45,8 @@ class SignupsController extends BaseController {
 
         $validator = \Validator::make(\Input::all(), $rules, \Lang::get('laravel-newsletter-signup::copy.unsubscribe.validation'));
 
-        if ($validator->fails())
-        {
-            if (\Request::ajax())
-            {
+        if ($validator->fails()) {
+            if (\Request::ajax()) {
                 $messages = $validator->messages();
                 $message = $messages->first('newsletter_unsubscribe_email');
                 return \Response::JSON(array('message' => $message), 400);
@@ -61,12 +54,10 @@ class SignupsController extends BaseController {
             return \Redirect::to(\Input::get('from'))->withInput()->withErrors($validator);
         }
 
-        $signup = Signup::withTrashed()->where('email','=',\Input::get('newsletter_unsubscribe_email'))->first();
+        $signup = Signup::withTrashed()->where('email', '=', \Input::get('newsletter_unsubscribe_email'))->first();
 
-        if ($signup->trashed())
-        {
-            if (\Request::ajax())
-            {
+        if ($signup->trashed()) {
+            if (\Request::ajax()) {
                 return \Response::JSON(array('message' => \Lang::get('laravel-newsletter-signup::copy.unsubscribe.already_unsubscribed')), 400);
             }
             $message = new MessageBag();
@@ -78,8 +69,7 @@ class SignupsController extends BaseController {
 
         $success = \Lang::get('laravel-newsletter-signup::copy.unsubscribe.success');
 
-        if (\Request::ajax())
-        {
+        if (\Request::ajax()) {
             return \Response::JSON(array('message' => $success));
         }
         return \Redirect::to(\Input::get('from'))->with('newsletter_unsubscribe_email_message', $success);

@@ -1,10 +1,9 @@
 <?php
 
 
-
-$finals=str_replace("NAME", $first_name , $content);
+$finals = str_replace("NAME", $first_name, $content);
 
 ?>
 
 
-<?php echo $finals;?>
+<?php echo $finals; ?>

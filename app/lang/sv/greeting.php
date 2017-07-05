@@ -28,7 +28,7 @@ return array(
     'Inbox' => 'inkorg',
     'Settings' => 'inställningar',
     'Messages' => 'meddelanden',
-    'Logout' =>  'Logga ut',
+    'Logout' => 'Logga ut',
     'Friends List' => 'Friends List',
     'Gallery' => 'Galleri',
     'Upload a Song' => 'Ladda upp en Song',
@@ -41,9 +41,6 @@ return array(
     'Upcoming Events' => 'Kommande händelser',
     'Chat Messenger' => 'chatta Messenger',
     'Reply' => 'Svara'
-
-
-
 
 
 );

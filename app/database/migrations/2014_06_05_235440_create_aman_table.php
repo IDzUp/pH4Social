@@ -1,9 +1,9 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAmanTable extends Migration {
+class CreateAmanTable extends Migration
+{
 
     /**
      * Run the migrations.
@@ -14,8 +14,7 @@ class CreateAmanTable extends Migration {
     {
         //
 
-        Schema::create('aman', function($table)
-        {
+        Schema::create('aman', function ($table) {
 
             $table->increments('id');
             $table->string('name');

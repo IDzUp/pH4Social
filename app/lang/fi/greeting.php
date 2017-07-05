@@ -28,7 +28,7 @@ return array(
     'Inbox' => 'Saapuneet',
     'Settings' => 'asetukset',
     'Messages' => 'viestit',
-    'Logout' =>  'Kirjaudu ulos',
+    'Logout' => 'Kirjaudu ulos',
     'Friends List' => 'Ystävät List',
     'Gallery' => 'galleria',
     'Upload a Song' => 'Lataa Song',
@@ -41,9 +41,6 @@ return array(
     'Upcoming Events' => 'Tulevat tapahtumat',
     'Chat Messenger' => 'Chat Messenger',
     'Reply' => 'vastata'
-
-
-
 
 
 );

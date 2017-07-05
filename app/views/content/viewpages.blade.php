@@ -4,8 +4,8 @@
 
 
 
-   <div class="grid_9">
-    <h1 class="newsletter">Pages</h1>
+    <div class="grid_9">
+        <h1 class="newsletter">Pages</h1>
     </div>
     <!--RIGHT TEXT/CALENDAR-->
     <div class="grid_6" id="eventbox"><a href="#" class="inline_calendar">You don't have any events for today! Yay!</a>
@@ -17,17 +17,16 @@
     <!--  TITLE END  -->
     <!-- #PORTLETS START -->
     <div id="portlets">
-    <!-- FIRST SORTABLE COLUMN START -->
+        <!-- FIRST SORTABLE COLUMN START -->
 
 
-
-    <div id="box-table-a" class="CSS_Table_Example">
-            <table >
+        <div id="box-table-a" class="CSS_Table_Example">
+            <table>
                 <tr>
                     <td>
                         Id
                     </td>
-                    <td >
+                    <td>
                         Title
                     </td>
                     <td>
@@ -39,50 +38,48 @@
                     </td>
                 </tr>
                 @foreach( $viewpages as $hello)
-                <tr>
-                    <td >
+                    <tr>
+                        <td>
 
-                        {{ $hello->id }}
+                            {{ $hello->id }}
 
-                    </td>
-                    <td >
+                        </td>
+                        <td>
 
-                        {{ $hello->title }}
+                            {{ $hello->title }}
 
-                    </td>
+                        </td>
 
-                    <td >
+                        <td>
 
-                        {{ $hello->content }}
+                            {{ $hello->content }}
 
-                    </td>
-
-
-
-                    <td >
+                        </td>
 
 
-                        {{ HTML::link('/content/edit/' . $hello->id, '',array('class="edit_icon"')) }}
+                        <td>
 
+
+                            {{ HTML::link('/content/edit/' . $hello->id, '',array('class="edit_icon"')) }}
 
 
 
-                        {{ HTML::link('/content/delete/' . $hello->id, '',array('class="delete_icon"')) }}
 
-                    </td>
+                            {{ HTML::link('/content/delete/' . $hello->id, '',array('class="delete_icon"')) }}
 
-
-                </tr>
+                        </td>
 
 
+                    </tr>
 
-                    @endforeach
+
+
+                @endforeach
             </table>
         </div>
 
 
-
-</div>
+    </div>
 
 
 

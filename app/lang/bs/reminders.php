@@ -1,16 +1,16 @@
 <?php
 
 return array(
-/*
-|--------------------------------------------------------------------------
-| Password Reminder Language Lines
-|--------------------------------------------------------------------------
-|
-| The following language lines are the default lines which match reasons
-| that are given by the password broker for a password update attempt
-| has failed, such as for an invalid token or invalid new password.
-|
-*/
+    /*
+    |--------------------------------------------------------------------------
+    | Password Reminder Language Lines
+    |--------------------------------------------------------------------------
+    |
+    | The following language lines are the default lines which match reasons
+    | that are given by the password broker for a password update attempt
+    | has failed, such as for an invalid token or invalid new password.
+    |
+    */
 
     "password" => "Lozinke moraju da budu šest karaktera i da se slaže sa potvrdnom lozinkom.",
 
@@ -18,8 +18,8 @@ return array(
 
     "token" => "Ovaj token za resetovanje lozinke nije ispravan.",
 
-    "sent"     => "Poslan vam je e-mail za povrat lozinke!",
+    "sent" => "Poslan vam je e-mail za povrat lozinke!",
 
-    "reset"    => "Password has been reset!",
+    "reset" => "Password has been reset!",
 
 );
