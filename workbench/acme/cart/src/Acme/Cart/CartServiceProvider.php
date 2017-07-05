@@ -2,7 +2,8 @@
 
 use Illuminate\Support\ServiceProvider;
 
-class CartServiceProvider extends ServiceProvider {
+class CartServiceProvider extends ServiceProvider
+{
 
     /**
      * Indicates if loading of the provider is deferred.
