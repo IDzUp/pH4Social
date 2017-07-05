@@ -1,70 +1,55 @@
 <?php
 
 
-
-
 // Route::get('/', function()
 // {
 //     return View::make('index');
 // });
 
 
-
-App::missing(function($exception)
-{
+App::missing(function ($exception) {
     return Response::view('fb.404', array(), 404);
 });
 
 
-
 Route::get('testk', [
-        //'as'     => 'testing',
+    //'as'     => 'testing',
     //'before' => 'csrf',
-        'uses'   => 'HomeController@showWelcome'
-    ]);
+    'uses' => 'HomeController@showWelcome'
+]);
 
 
-Route::get('posts', function()
-{
+Route::get('posts', function () {
     return 'all posts';
 });
 
 
-
-Route::filter('maxUploadFileSize', function()
-{
+Route::filter('maxUploadFileSize', function () {
 // Check if upload has exceeded max size limit
-if (! (Request::isMethod('POST') or Request::isMethod('PUT'))) { return; }
+    if (!(Request::isMethod('POST') or Request::isMethod('PUT'))) {
+        return;
+    }
 // Get the max upload size (in Mb, so convert it to bytes)
-$maxUploadSize = 1024 * 1024 * ini_get('post_max_size');
-$contentSize = 0;
-if (isset($_SERVER['HTTP_CONTENT_LENGTH']))
-{
-$contentSize = $_SERVER['HTTP_CONTENT_LENGTH'];
-}
-elseif (isset($_SERVER['CONTENT_LENGTH']))
-{
-$contentSize = $_SERVER['CONTENT_LENGTH'];
-}
+    $maxUploadSize = 1024 * 1024 * ini_get('post_max_size');
+    $contentSize = 0;
+    if (isset($_SERVER['HTTP_CONTENT_LENGTH'])) {
+        $contentSize = $_SERVER['HTTP_CONTENT_LENGTH'];
+    } elseif (isset($_SERVER['CONTENT_LENGTH'])) {
+        $contentSize = $_SERVER['CONTENT_LENGTH'];
+    }
 // If content exceeds max size, throw an exception
-if ($contentSize > $maxUploadSize)
-{
-throw new GSVnet\Core\Exceptions\MaxUploadSizeException;
-}
-});
-
-
-
-Route::filter('csrf', function()
-{
-    if (Session::getToken() != Input::get('_token'))
-    {
-        //throw new Illuminate\Session\TokenMismatchException;
-         return Redirect::to('home');
+    if ($contentSize > $maxUploadSize) {
+        throw new GSVnet\Core\Exceptions\MaxUploadSizeException;
     }
 });
 
 
+Route::filter('csrf', function () {
+    if (Session::getToken() != Input::get('_token')) {
+        //throw new Illuminate\Session\TokenMismatchException;
+        return Redirect::to('home');
+    }
+});
 
 
 /*
@@ -74,8 +59,6 @@ Route::get('/mys', array('as'=>'authors','uses'=>'AuthorsController@showWelcome'
 Route::get('/my', array('as'=>'author','uses'=>'MyController@extraWork'));*/
 
 
-
-
 // Route::get('testing', [
 //         'as'     => 'testing',
 //     //'before' => 'csrf',
@@ -83,505 +66,448 @@ Route::get('/my', array('as'=>'author','uses'=>'MyController@extraWork'));*/
 //     ]);
 
 
-
-
 Route::get('/my/form', [
-        'as'     => 'authork',
+    'as' => 'authork',
     //'before' => 'csrf',
-        'uses'   => 'MyController@form'
-    ]);
+    'uses' => 'MyController@form'
+]);
 
 Route::get('/la-admin', [
-        'as'     => 'la-admin',
+    'as' => 'la-admin',
     //'before' => 'csrf',
-        'uses'   => 'MyController@login'
-    ]);
+    'uses' => 'MyController@login'
+]);
 
 
 Route::get('/', [
-        'as'     => 'home',
+    'as' => 'home',
     //'before' => 'csrf',
-        'uses'   => 'FrontfbController@home'
-    ]);
+    'uses' => 'FrontfbController@home'
+]);
 
 
-Route::get('home', function()
-{
+Route::get('home', function () {
     return Redirect::to('/');
 });
 
 
-
-
-
 Route::get('template', [
-        'as'     => 'template',
+    'as' => 'template',
     //'before' => 'csrf',
-        'uses'   => 'ContentController@setting'
-    ]);
+    'uses' => 'ContentController@setting'
+]);
 
 Route::get('setting', [
-        'as'     => 'setting',
+    'as' => 'setting',
     //'before' => 'csrf',
-        'uses'   => 'ContentController@setting'
-    ]);
+    'uses' => 'ContentController@setting'
+]);
 
 
 Route::get('removetemp/{id}', [
-        'as'     => 'removetemp',
+    'as' => 'removetemp',
     //'before' => 'csrf',
-        'uses'   => 'ContentController@removetemp'
-    ]);
-
+    'uses' => 'ContentController@removetemp'
+]);
 
 
 Route::get('newsetting', [
-        'as'     => 'newsetting',
+    'as' => 'newsetting',
     //'before' => 'csrf',
-        'uses'   => 'ContentController@newsetting'
-    ]);
-
-
+    'uses' => 'ContentController@newsetting'
+]);
 
 
 Route::get('updatesetting', [
-        'as'     => 'updatesetting',
+    'as' => 'updatesetting',
     //'before' => 'csrf',
-        'uses'   => 'ContentController@updatesetting'
-    ]);
-
+    'uses' => 'ContentController@updatesetting'
+]);
 
 
 Route::get('addtemplate', [
-        'as'     => 'addtemplate',
+    'as' => 'addtemplate',
     //'before' => 'csrf',
-        'uses'   => 'ContentController@addtemplate'
-    ]);
-
+    'uses' => 'ContentController@addtemplate'
+]);
 
 
 Route::get('register', [
-        'as'     => 'register',
+    'as' => 'register',
     //'before' => 'csrf',
-        'uses'   => 'MyController@register'
-    ]);
+    'uses' => 'MyController@register'
+]);
 
 Route::get('getregister', [
-        'as'     => 'getregister',
+    'as' => 'getregister',
     //'before' => 'csrf',
-        'uses'   => 'MyController@getregister'
-    ]);
+    'uses' => 'MyController@getregister'
+]);
 
 
 Route::get('getlogin', [
-        'as'     => 'getlogin',
+    'as' => 'getlogin',
     //'before' => 'csrf',
-        'uses'   => 'MyController@getlogin'
-    ]);
+    'uses' => 'MyController@getlogin'
+]);
 
 
 Route::get('cancel', [
-        'as'     => 'cancel',
+    'as' => 'cancel',
     //'before' => 'csrf',
-        'uses'   => 'MyController@form'
-    ]);
+    'uses' => 'MyController@form'
+]);
 
 
 Route::get('logout', [
-        'as'     => 'logout',
+    'as' => 'logout',
     //'before' => 'csrf',
-        'uses'   => 'MyController@logout'
-    ]);
+    'uses' => 'MyController@logout'
+]);
 Route::get('fblogout', [
-        'as'     => 'fblogout',
+    'as' => 'fblogout',
     //'before' => 'csrf',
-        'uses'   => 'FrontfbController@fblogout'
-    ]);
+    'uses' => 'FrontfbController@fblogout'
+]);
 
 
-Route::post('/my/create', array('as'=>'authorm','uses'=>'MyController@create'));
+Route::post('/my/create', array('as' => 'authorm', 'uses' => 'MyController@create'));
 
 
-Route::get('/my/edit/{name}', array('as'=>'authoredit','uses'=>'MyController@edit'));
+Route::get('/my/edit/{name}', array('as' => 'authoredit', 'uses' => 'MyController@edit'));
 
 
-Route::put('/my/update', array('as'=>'authorupdate','uses'=>'MyController@update'));
+Route::put('/my/update', array('as' => 'authorupdate', 'uses' => 'MyController@update'));
 
-Route::delete('/my/delete', array('as'=>'authordelete','uses'=>'MyController@delete'));
+Route::delete('/my/delete', array('as' => 'authordelete', 'uses' => 'MyController@delete'));
 
 //Route::post('/my/login',  'AuthController@postLogin');
 
 
-
-Route::get('/my/login', array('as' => 'logina', 'before' => 'guest', function()
-{
+Route::get('/my/login', array('as' => 'logina', 'before' => 'guest', function () {
     return View::make('authors.form');
 }));
 
 
-
 Route::get('/activate/{id}', [
-        'as'     => 'activate',
+    'as' => 'activate',
     //'before' => 'csrf',
-        'uses'   => 'FrontfbController@activate'
-    ]);
-
-
-
+    'uses' => 'FrontfbController@activate'
+]);
 
 
 Route::get('users', [
-        'as'     => 'users',
+    'as' => 'users',
     //'before' => 'csrf',
-        'uses'   => 'UsersController@users'
-    ]);
+    'uses' => 'UsersController@users'
+]);
 
 
 Route::get('dashboard', [
-        'as'     => 'dashboard',
+    'as' => 'dashboard',
     //'before' => 'csrf',
-        'uses'   => 'UsersController@dashboard'
-    ]);
-
+    'uses' => 'UsersController@dashboard'
+]);
 
 
 Route::get('category', [
-        'as'     => 'category',
+    'as' => 'category',
     //'before' => 'csrf',
-        'uses'   => 'UsersController@category'
-    ]);
-
+    'uses' => 'UsersController@category'
+]);
 
 
 Route::get('menu', [
-        'as'     => 'menu',
+    'as' => 'menu',
     //'before' => 'csrf',
-        'uses'   => 'UsersController@menu'
-    ]);
-
-
+    'uses' => 'UsersController@menu'
+]);
 
 
 Route::get('/delete/{id}', [
-        'as'     => 'delete',
+    'as' => 'delete',
     //'before' => 'csrf',
-        'uses'   => 'UsersController@delete'
-    ]);
+    'uses' => 'UsersController@delete'
+]);
 
 Route::get('/contact/delete/{id}', [
-        'as'     => 'contactdelete',
+    'as' => 'contactdelete',
     //'before' => 'csrf',
-        'uses'   => 'ContactController@contactdelete'
-    ]);
+    'uses' => 'ContactController@contactdelete'
+]);
 
 
 Route::get('/emails', [
-        'as'     => 'emails',
+    'as' => 'emails',
     //'before' => 'csrf',
-        'uses'   => 'ContactController@emails'
-    ]);
+    'uses' => 'ContactController@emails'
+]);
 
 
 Route::get('/confirmmail', [
-        'as'     => 'confirmmail',
+    'as' => 'confirmmail',
     //'before' => 'csrf',
-        'uses'   => 'ContactController@confirmmail'
-    ]);
+    'uses' => 'ContactController@confirmmail'
+]);
 
 
 Route::get('/contemplate', [
-        'as'     => 'contemplate',
+    'as' => 'contemplate',
     //'before' => 'csrf',
-        'uses'   => 'ContactController@contemplate'
-    ]);
+    'uses' => 'ContactController@contemplate'
+]);
 
 
 Route::get('/notitemplate', [
-        'as'     => 'notitemplate',
+    'as' => 'notitemplate',
     //'before' => 'csrf',
-        'uses'   => 'ContactController@notitemplate'
-    ]);
-
-
-
-
+    'uses' => 'ContactController@notitemplate'
+]);
 
 
 Route::get('/allemail', [
-        'as'     => 'allemail',
+    'as' => 'allemail',
     //'before' => 'csrf',
-        'uses'   => 'ContactController@allemail'
-    ]);
-
-
+    'uses' => 'ContactController@allemail'
+]);
 
 
 Route::get('/mail/delete/{id}', [
-        'as'     => 'maildelete',
+    'as' => 'maildelete',
     //'before' => 'csrf',
-        'uses'   => 'ContactController@maildelete'
-    ]);
+    'uses' => 'ContactController@maildelete'
+]);
 
 Route::get('/mail/open/{id}', [
-        'as'     => 'mailopen',
+    'as' => 'mailopen',
     //'before' => 'csrf',
-        'uses'   => 'ContactController@mailopen'
-    ]);
-
-
+    'uses' => 'ContactController@mailopen'
+]);
 
 
 Route::get('/emails/send', [
-        'as'     => 'emailsend',
+    'as' => 'emailsend',
     //'before' => 'csrf',
-        'uses'   => 'ContactController@emailsend'
-    ]);
-
+    'uses' => 'ContactController@emailsend'
+]);
 
 
 Route::get('/confirmmail/send', [
-        'as'     => 'confirmmailsend',
+    'as' => 'confirmmailsend',
     //'before' => 'csrf',
-        'uses'   => 'ContactController@confirmmailsend'
-    ]);
-
+    'uses' => 'ContactController@confirmmailsend'
+]);
 
 
 Route::get('/notitemplate/send', [
-        'as'     => 'notitemplatesend',
+    'as' => 'notitemplatesend',
     //'before' => 'csrf',
-        'uses'   => 'ContactController@notitemplatesend'
-    ]);
+    'uses' => 'ContactController@notitemplatesend'
+]);
 
 
 Route::get('/contemplate/send', [
-        'as'     => 'contemplatesend',
+    'as' => 'contemplatesend',
     //'before' => 'csrf',
-        'uses'   => 'ContactController@contemplatesend'
-    ]);
-
-
-
+    'uses' => 'ContactController@contemplatesend'
+]);
 
 
 Route::get('/comment/delete/{id}', [
-        'as'     => 'commentdelete',
+    'as' => 'commentdelete',
     //'before' => 'csrf',
-        'uses'   => 'UsersController@commentdelete'
-    ]);
+    'uses' => 'UsersController@commentdelete'
+]);
 
 
 Route::get('/category/delete/{id}', [
-        'as'     => 'categorydelete',
+    'as' => 'categorydelete',
     //'before' => 'csrf',
-        'uses'   => 'UsersController@categorydelete'
-    ]);
+    'uses' => 'UsersController@categorydelete'
+]);
 
 Route::get('/menu/delete/{id}', [
-        'as'     => 'menudelete',
+    'as' => 'menudelete',
     //'before' => 'csrf',
-        'uses'   => 'UsersController@menudelete'
-    ]);
+    'uses' => 'UsersController@menudelete'
+]);
 
 
 Route::get('/subcategory/delete/{id}', [
-        'as'     => 'subcategorydelete',
+    'as' => 'subcategorydelete',
     //'before' => 'csrf',
-        'uses'   => 'UsersController@subcategorydelete'
-    ]);
+    'uses' => 'UsersController@subcategorydelete'
+]);
 
 
 Route::get('/submenu/delete/{id}', [
-        'as'     => 'submenudelete',
+    'as' => 'submenudelete',
     //'before' => 'csrf',
-        'uses'   => 'UsersController@submenudelete'
-    ]);
+    'uses' => 'UsersController@submenudelete'
+]);
 
 Route::get('/content/delete/{id}', [
-        'as'     => 'contentdelete',
+    'as' => 'contentdelete',
     //'before' => 'csrf',
-        'uses'   => 'UsersController@contentdelete'
-    ]);
-
-
-
-
+    'uses' => 'UsersController@contentdelete'
+]);
 
 
 Route::get('/edit/{id}', [
-        'as'     => 'edit',
+    'as' => 'edit',
     //'before' => 'csrf',
-        'uses'   => 'UsersController@edit'
-    ]);
-
-
-
+    'uses' => 'UsersController@edit'
+]);
 
 
 Route::get('/contact/edit/{id}', [
-        'as'     => 'contactedit',
+    'as' => 'contactedit',
     //'before' => 'csrf',
-        'uses'   => 'UsersController@contactedit'
-    ]);
+    'uses' => 'UsersController@contactedit'
+]);
 
 Route::get('/comment/edit/{id}', [
-        'as'     => 'commentedit',
+    'as' => 'commentedit',
     //'before' => 'csrf',
-        'uses'   => 'UsersController@commentedit'
-    ]);
-
+    'uses' => 'UsersController@commentedit'
+]);
 
 
 Route::get('adduser', [
-        'as'     => 'adduser',
+    'as' => 'adduser',
     //'before' => 'csrf',
-        'uses'   => 'UsersController@adduser'
-    ]);
+    'uses' => 'UsersController@adduser'
+]);
 
 Route::get('getregisterss', [
-        'as'     => 'getregisters',
+    'as' => 'getregisters',
     //'before' => 'csrf',
-        'uses'   => 'UsersController@getregisterss'
-    ]);
+    'uses' => 'UsersController@getregisterss'
+]);
 
 
 Route::get('getmembers', [
-        'as'     => 'getmembers',
+    'as' => 'getmembers',
     //'before' => 'csrf',
-        'uses'   => 'UsersController@getmembers'
-    ]);
+    'uses' => 'UsersController@getmembers'
+]);
 
 
+Route::get('/updatereg', array('as' => 'updatereg', 'uses' => 'UsersController@updatereg'));
 
-Route::get('/updatereg', array('as'=>'updatereg','uses'=>'UsersController@updatereg'));
 
+Route::put('/updatecon', array('as' => 'updatecon', 'uses' => 'ContactController@updatecon'));
 
-Route::put('/updatecon', array('as'=>'updatecon','uses'=>'ContactController@updatecon'));
-
-Route::put('/updatecomment', array('as'=>'updatecomment','uses'=>'UsersController@updatecomment'));
+Route::put('/updatecomment', array('as' => 'updatecomment', 'uses' => 'UsersController@updatecomment'));
 
 Route::get('cancels', [
-        'as'     => 'cancels',
+    'as' => 'cancels',
     //'before' => 'csrf',
-        'uses'   => 'UsersController@users'
-    ]);
+    'uses' => 'UsersController@users'
+]);
 
 
 Route::get('contact', [
-        'as'     => 'contact',
+    'as' => 'contact',
     //'before' => 'csrf',
-        'uses'   => 'ContactController@contact'
-    ]);
+    'uses' => 'ContactController@contact'
+]);
 
 Route::get('contactform', [
-        'as'     => 'contactform',
+    'as' => 'contactform',
     //'before' => 'csrf',
-        'uses'   => 'FrontfbController@contactform'
-    ]);
-
+    'uses' => 'FrontfbController@contactform'
+]);
 
 
 Route::get('forgetpass', [
-        'as'     => 'forgetpass',
+    'as' => 'forgetpass',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@forgetpass'
-    ]);
+    'uses' => 'FrontprofileController@forgetpass'
+]);
 
 Route::get('accountupdate', [
-        'as'     => 'accountupdate',
+    'as' => 'accountupdate',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@accountupdate'
-    ]);
+    'uses' => 'FrontprofileController@accountupdate'
+]);
 
 
 Route::get('deleteaccount', [
-        'as'     => 'deleteaccount',
+    'as' => 'deleteaccount',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@deleteaccount'
-    ]);
-
+    'uses' => 'FrontprofileController@deleteaccount'
+]);
 
 
 Route::get('delaccount', [
-        'as'     => 'delaccount',
+    'as' => 'delaccount',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@delaccount'
-    ]);
-
-
+    'uses' => 'FrontprofileController@delaccount'
+]);
 
 
 Route::get('provisiter', [
-        'as'     => 'provisiter',
+    'as' => 'provisiter',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@provisiter'
-    ]);
-
+    'uses' => 'FrontprofileController@provisiter'
+]);
 
 
 Route::get('mm', [
-        'as'     => 'mm',
+    'as' => 'mm',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@mm'
-    ]);
-
-
-
-
+    'uses' => 'FrontprofileController@mm'
+]);
 
 
 Route::get('about/{id}', [
-        'as'     => 'about',
+    'as' => 'about',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@about'
-    ]);
-
+    'uses' => 'FrontprofileController@about'
+]);
 
 
 Route::get('block/{id}', [
-        'as'     => 'block',
+    'as' => 'block',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@block'
-    ]);
+    'uses' => 'FrontprofileController@block'
+]);
 
 
 Route::get('unblock/{id}', [
-        'as'     => 'unblock',
+    'as' => 'unblock',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@unblock'
-    ]);
+    'uses' => 'FrontprofileController@unblock'
+]);
 
 
 Route::get('fbsetting', [
-        'as'     => 'fbsetting',
+    'as' => 'fbsetting',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@fbsetting'
-    ]);
+    'uses' => 'FrontprofileController@fbsetting'
+]);
 
 
 Route::post('/ajaxreq/{id}', [
-        'as'     => 'ajaxreq',
+    'as' => 'ajaxreq',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@ajaxreq'
-    ]);
+    'uses' => 'FrontprofileController@ajaxreq'
+]);
 
 
 Route::post('delete/con', [
-        'as'     => 'deletecon',
+    'as' => 'deletecon',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@deletecon'
-    ]);
-
-
+    'uses' => 'FrontprofileController@deletecon'
+]);
 
 
 Route::post('language', [
-        'as'     => 'language',
+    'as' => 'language',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@chooser'
-    ]);
-
-
+    'uses' => 'FrontprofileController@chooser'
+]);
 
 
 // Route::get('language/{id}', [
@@ -591,8 +517,7 @@ Route::post('language', [
 //     ]);
 
 
-Route::get('language/{id}', function($id)
-{
+Route::get('language/{id}', function ($id) {
     App::setLocale($id);
     Session::put('locale', $id);
     return Redirect::back();
@@ -601,433 +526,390 @@ Route::get('language/{id}', function($id)
 });
 
 
-
-
-
 Route::get('test', [
-        'as'     => 'test',
+    'as' => 'test',
     //'before' => 'csrf',
-        'uses'   => 'FrontfbController@test'
-    ]);
+    'uses' => 'FrontfbController@test'
+]);
 
 
 Route::get('updateforget', [
-        'as'     => 'updateforget',
+    'as' => 'updateforget',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@updateforget'
-    ]);
-
+    'uses' => 'FrontprofileController@updateforget'
+]);
 
 
 Route::get('createevent', [
-        'as'     => 'createevent',
+    'as' => 'createevent',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@createevent'
-    ]);
+    'uses' => 'FrontprofileController@createevent'
+]);
 
 Route::get('allevent/{id}', [
-        'as'     => 'allevent',
+    'as' => 'allevent',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@allevent'
-    ]);
-
+    'uses' => 'FrontprofileController@allevent'
+]);
 
 
 Route::get('/opnnchat/{id}', [
-        'as'     => 'opnnchat',
+    'as' => 'opnnchat',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@opnnchat'
-    ]);
-
+    'uses' => 'FrontprofileController@opnnchat'
+]);
 
 
 Route::get('chatupdate', [
-        'as'     => 'chatupdate',
+    'as' => 'chatupdate',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@chatupdate'
-    ]);
-
-
+    'uses' => 'FrontprofileController@chatupdate'
+]);
 
 
 Route::get('/eventsdelete/{id}', [
-        'as'     => 'eventsdelete',
+    'as' => 'eventsdelete',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@eventsdelete'
-    ]);
+    'uses' => 'FrontprofileController@eventsdelete'
+]);
 
 
 Route::get('resetpass/{id}', [
-        'as'     => 'resetpass',
+    'as' => 'resetpass',
     //'before' => 'csrf',
-        'uses'   => 'FrontfbController@resetpass'
-    ]);
-
+    'uses' => 'FrontfbController@resetpass'
+]);
 
 
 Route::get('contact/savecontact', [
-        'as'     => 'savecontact',
+    'as' => 'savecontact',
     //'before' => 'csrf',
-        'uses'   => 'ContactController@savecontact'
-    ]);
+    'uses' => 'ContactController@savecontact'
+]);
 
 
 Route::get('viewcontact', [
-        'as'     => 'viewcontact',
+    'as' => 'viewcontact',
     //'before' => 'csrf',
-        'uses'   => 'UsersController@viewcontact'
-    ]);
+    'uses' => 'UsersController@viewcontact'
+]);
 
 
 Route::get('media', [
-        'as'     => 'media',
+    'as' => 'media',
     //'before' => 'csrf',
-        'uses'   => 'MediaController@media'
-    ]);
+    'uses' => 'MediaController@media'
+]);
 
 Route::post('media/save', [
-        'as'     => 'mediasave',
+    'as' => 'mediasave',
     //'before' => 'csrf',
-        'uses'   => 'MediaController@mediasave'
-    ]);
+    'uses' => 'MediaController@mediasave'
+]);
 
 Route::post('fbmedia/save', [
-        'as'     => 'mediasave',
+    'as' => 'mediasave',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@mediasave'
-    ]);
+    'uses' => 'FrontprofileController@mediasave'
+]);
 
 
 Route::get('gallery', [
-        'as'     => 'gallery',
+    'as' => 'gallery',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@gallery'
-    ]);
+    'uses' => 'FrontprofileController@gallery'
+]);
 
 
 Route::get('news', [
-        'as'     => 'news',
+    'as' => 'news',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@news'
-    ]);
+    'uses' => 'FrontprofileController@news'
+]);
 
 Route::get('nextload', [
-        'as'     => 'nextload',
+    'as' => 'nextload',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@nextload'
-    ]);
-
-
+    'uses' => 'FrontprofileController@nextload'
+]);
 
 
 Route::get('gallery/{id}', [
-        'as'     => 'othergallery',
+    'as' => 'othergallery',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@othergallery'
-    ]);
+    'uses' => 'FrontprofileController@othergallery'
+]);
 
 Route::post('gallery/save', [
-        'as'     => 'gallerysave',
+    'as' => 'gallerysave',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@gallerysave'
-    ]);
+    'uses' => 'FrontprofileController@gallerysave'
+]);
 
 Route::post('galleryvideo/save', [
-        'as'     => 'galleryvideo',
+    'as' => 'galleryvideo',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@galleryvideo'
-    ]);
+    'uses' => 'FrontprofileController@galleryvideo'
+]);
 
 
 Route::get('postcomdelete/{id}', [
-        'as'     => 'postcomdelete',
+    'as' => 'postcomdelete',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@postcomdelete'
-    ]);
+    'uses' => 'FrontprofileController@postcomdelete'
+]);
 
 Route::get('postdelete/{id}', [
-        'as'     => 'postdelete',
+    'as' => 'postdelete',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@postdelete'
-    ]);
-
-
-
+    'uses' => 'FrontprofileController@postdelete'
+]);
 
 
 Route::get('gallerydelete/{id}', [
-        'as'     => 'gallerydelete',
+    'as' => 'gallerydelete',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@gallerydelete'
-    ]);
+    'uses' => 'FrontprofileController@gallerydelete'
+]);
 
 Route::get('/commentpost/{id}', [
-        'as'     => 'commentpost',
+    'as' => 'commentpost',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@commentpost'
-    ]);
-
-
+    'uses' => 'FrontprofileController@commentpost'
+]);
 
 
 Route::post('fbcovermedia/save', [
-        'as'     => 'covermediasave',
+    'as' => 'covermediasave',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@covermediasave'
-    ]);
+    'uses' => 'FrontprofileController@covermediasave'
+]);
 
 
 Route::get('changedefault/{id}', [
-        'as'     => 'changedefault',
+    'as' => 'changedefault',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@changedefault'
-    ]);
+    'uses' => 'FrontprofileController@changedefault'
+]);
 
 
 Route::get('changedefaults/{id}', [
-        'as'     => 'changedefaults',
+    'as' => 'changedefaults',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@changedefaults'
-    ]);
-
-
+    'uses' => 'FrontprofileController@changedefaults'
+]);
 
 
 Route::post('fbpost/save', [
-        'as'     => 'fbpost',
+    'as' => 'fbpost',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@fbpost'
-    ]);
-
+    'uses' => 'FrontprofileController@fbpost'
+]);
 
 
 Route::get('viewmedia', [
-        'as'     => 'viewmedia',
+    'as' => 'viewmedia',
     //'before' => 'csrf',
-        'uses'   => 'MediaController@viewmedia'
-    ]);
+    'uses' => 'MediaController@viewmedia'
+]);
 
 Route::get('/viewmedia/delete/{id}', [
-        'as'     => 'deletemedia',
+    'as' => 'deletemedia',
     //'before' => 'csrf',
-        'uses'   => 'MediaController@deletemedia'
-    ]);
+    'uses' => 'MediaController@deletemedia'
+]);
 
 Route::get('/viewmedia/editmedia/{id}', [
-        'as'     => 'editmedia',
+    'as' => 'editmedia',
     //'before' => 'csrf',
-        'uses'   => 'MediaController@editmedia'
-    ]);
+    'uses' => 'MediaController@editmedia'
+]);
 
 Route::post('viewmedia/updatemedia', [
-        'as'     => 'updatemedia',
+    'as' => 'updatemedia',
     //'before' => 'csrf',
-        'uses'   => 'MediaController@updatemedia'
-    ]);
+    'uses' => 'MediaController@updatemedia'
+]);
 
 
 Route::get('eventadd', [
-        'as'     => 'eventadd',
+    'as' => 'eventadd',
     //'before' => 'csrf',
-        'uses'   => 'EventController@eventadd'
-    ]);
+    'uses' => 'EventController@eventadd'
+]);
 
 
 Route::get('blogadd', [
-        'as'     => 'blogadd',
+    'as' => 'blogadd',
     //'before' => 'csrf',
-        'uses'   => 'EventController@blogadd'
-    ]);
+    'uses' => 'EventController@blogadd'
+]);
 
 
 Route::post('/eventadd/save', [
-        'as'     => 'eventaddsave',
+    'as' => 'eventaddsave',
     //'before' => 'csrf',
-        'uses'   => 'EventController@eventaddsave'
-    ]);
+    'uses' => 'EventController@eventaddsave'
+]);
 
 Route::post('/blogadd/save', [
-        'as'     => 'blogaddsave',
+    'as' => 'blogaddsave',
     //'before' => 'csrf',
-        'uses'   => 'EventController@blogaddsave'
-    ]);
+    'uses' => 'EventController@blogaddsave'
+]);
 
 Route::get('/viewevent', [
-        'as'     => 'viewevent',
+    'as' => 'viewevent',
     //'before' => 'csrf',
-        'uses'   => 'EventController@viewevent'
-    ]);
+    'uses' => 'EventController@viewevent'
+]);
 
 
 Route::get('/viewblog', [
-        'as'     => 'viewblog',
+    'as' => 'viewblog',
     //'before' => 'csrf',
-        'uses'   => 'EventController@viewblog'
-    ]);
+    'uses' => 'EventController@viewblog'
+]);
 
 Route::get('/viewevent/delete/{id}', [
-        'as'     => 'deleteevent',
+    'as' => 'deleteevent',
     //'before' => 'csrf',
-        'uses'   => 'EventController@deleteevent'
-    ]);
+    'uses' => 'EventController@deleteevent'
+]);
 
 Route::get('/viewblog/delete/{id}', [
-        'as'     => 'deleteblog',
+    'as' => 'deleteblog',
     //'before' => 'csrf',
-        'uses'   => 'EventController@deleteblog'
-    ]);
+    'uses' => 'EventController@deleteblog'
+]);
 
 
 Route::get('/viewevent/editevent/{id}', [
-        'as'     => 'editevent',
+    'as' => 'editevent',
     //'before' => 'csrf',
-        'uses'   => 'EventController@editevent'
-    ]);
+    'uses' => 'EventController@editevent'
+]);
 
 Route::post('viewevent/updateevent', [
-        'as'     => 'updatemedia',
+    'as' => 'updatemedia',
     //'before' => 'csrf',
-        'uses'   => 'EventController@updatemedia'
-    ]);
+    'uses' => 'EventController@updatemedia'
+]);
 
 Route::get('contentadd', [
-        'as'     => 'contentadd',
+    'as' => 'contentadd',
     //'before' => 'csrf',
-        'uses'   => 'ContentController@contentadd'
-    ]);
+    'uses' => 'ContentController@contentadd'
+]);
 Route::get('alllanguage', [
-        'as'     => 'alllanguage',
+    'as' => 'alllanguage',
     //'before' => 'csrf',
-        'uses'   => 'ContentController@alllanguage'
-    ]);
-
-
-
+    'uses' => 'ContentController@alllanguage'
+]);
 
 
 Route::get('activated/{id}', [
-        'as'     => 'activated',
+    'as' => 'activated',
     //'before' => 'csrf',
-        'uses'   => 'ContentController@activated'
-    ]);
+    'uses' => 'ContentController@activated'
+]);
 
 Route::get('addlanguage/{id}', [
-        'as'     => 'addlanguage',
+    'as' => 'addlanguage',
     //'before' => 'csrf',
-        'uses'   => 'ContentController@addlanguage'
-    ]);
-
-
+    'uses' => 'ContentController@addlanguage'
+]);
 
 
 Route::post('savetemplate', [
-        'as'     => 'savetemplate',
+    'as' => 'savetemplate',
     //'before' => 'csrf',
-        'uses'   => 'ContentController@savetemplate'
-    ]);
+    'uses' => 'ContentController@savetemplate'
+]);
 
 
 Route::get('savetemplate', [
-        'as'     => 'savetemplates',
+    'as' => 'savetemplates',
     //'before' => 'csrf',
-        'uses'   => 'AccessController@notaccess'
-    ]);
+    'uses' => 'AccessController@notaccess'
+]);
 
 
 Route::get('notaccesspage', [
-        'as'     => 'notaccesspage',
+    'as' => 'notaccesspage',
     //'before' => 'csrf',
-        'uses'   => 'PermissionController@notaccesspage'
-    ]);
-
-
-
+    'uses' => 'PermissionController@notaccesspage'
+]);
 
 
 Route::get('/deletemem/{id}', [
-        'as'     => 'deletemem',
+    'as' => 'deletemem',
     //'before' => 'csrf',
-        'uses'   => 'ContentController@deletemem'
-    ]);
+    'uses' => 'ContentController@deletemem'
+]);
 
 
 Route::get('addplan', [
-        'as'     => 'addplan',
+    'as' => 'addplan',
     //'before' => 'csrf',
-        'uses'   => 'ContentController@addplan'
-    ]);
+    'uses' => 'ContentController@addplan'
+]);
 
-Route::get('/updatemem', array('as'=>'updatemem','uses'=>'ContentController@updatemem'));
+Route::get('/updatemem', array('as' => 'updatemem', 'uses' => 'ContentController@updatemem'));
 
 
 Route::get('pagedelete/{id}', [
-        'as'     => 'pagedelete',
+    'as' => 'pagedelete',
     //'before' => 'csrf',
-        'uses'   => 'ContentController@pagedelete'
-    ]);
+    'uses' => 'ContentController@pagedelete'
+]);
 
 Route::get('/editmem/{id}', [
-        'as'     => 'editmem',
+    'as' => 'editmem',
     //'before' => 'csrf',
-        'uses'   => 'ContentController@editmem'
-    ]);
-
-
-
-
+    'uses' => 'ContentController@editmem'
+]);
 
 
 Route::get('pageedit/{id}', [
-        'as'     => 'pageedit',
+    'as' => 'pageedit',
     //'before' => 'csrf',
-        'uses'   => 'ContentController@pageedit'
-    ]);
+    'uses' => 'ContentController@pageedit'
+]);
 
 Route::get('pageupdate', [
-        'as'     => 'pageupdate',
+    'as' => 'pageupdate',
     //'before' => 'csrf',
-        'uses'   => 'ContentController@pageupdate'
-    ]);
-
-
-
-
+    'uses' => 'ContentController@pageupdate'
+]);
 
 
 Route::get('/category/subcategory/{id}', [
-        'as'     => 'subcategory',
+    'as' => 'subcategory',
     //'before' => 'csrf',
-        'uses'   => 'UsersController@subcategory'
-    ]);
+    'uses' => 'UsersController@subcategory'
+]);
 
 
 Route::get('/menu/submenu/{id}', [
-        'as'     => 'submenu',
+    'as' => 'submenu',
     //'before' => 'csrf',
-        'uses'   => 'UsersController@submenu'
-    ]);
-
-
+    'uses' => 'UsersController@submenu'
+]);
 
 
 Route::get('viewcontent', [
-        'as'     => 'viewcontent',
+    'as' => 'viewcontent',
     //'before' => 'csrf',
-        'uses'   => 'ContentController@viewcontent'
-    ]);
+    'uses' => 'ContentController@viewcontent'
+]);
 
 
 Route::get('viewcomment', [
-        'as'     => 'viewcomment',
+    'as' => 'viewcomment',
     //'before' => 'csrf',
-        'uses'   => 'UsersController@viewcomment'
-    ]);
-
-
-
-
-
-
+    'uses' => 'UsersController@viewcomment'
+]);
 
 
 // LIVE--------------------------------------------->
@@ -1041,122 +923,104 @@ Route::get('viewcomment', [
 
 
 Route::get('sites', [
-        'as'     => 'sites',
+    'as' => 'sites',
     //'before' => 'csrf',
-        'uses'   => 'FrontfbController@sites'
-    ]);
+    'uses' => 'FrontfbController@sites'
+]);
 
 Route::get('page/{id}', [
-        'as'     => 'page',
+    'as' => 'page',
     //'before' => 'csrf',
-        'uses'   => 'FrontfbController@page'
-    ]);
-
-
-
+    'uses' => 'FrontfbController@page'
+]);
 
 
 Route::get('profile', [
-        'as'     => 'profile',
+    'as' => 'profile',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@profile'
-    ]);
+    'uses' => 'FrontprofileController@profile'
+]);
 
 
 Route::get('profiledetails', [
-        'as'     => 'profiledetails',
+    'as' => 'profiledetails',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@profiledetails'
-    ]);
+    'uses' => 'FrontprofileController@profiledetails'
+]);
 
 
 Route::get('postupdate/{id}', [
-        'as'     => 'postupdate',
+    'as' => 'postupdate',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@postupdate'
-    ]);
-
+    'uses' => 'FrontprofileController@postupdate'
+]);
 
 
 Route::get('comupdate/{id}', [
-        'as'     => 'comupdate',
+    'as' => 'comupdate',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@comupdate'
-    ]);
-
+    'uses' => 'FrontprofileController@comupdate'
+]);
 
 
 Route::get('profileupdated', [
-        'as'     => 'profileupdated',
+    'as' => 'profileupdated',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@profileupdated'
-    ]);
-
-
+    'uses' => 'FrontprofileController@profileupdated'
+]);
 
 
 Route::GET('/notification/{id}', [
-        'as'     => 'notification',
+    'as' => 'notification',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@notification'
-    ]);
+    'uses' => 'FrontprofileController@notification'
+]);
 
 Route::GET('/notaccess', [
-        'as'     => 'notaccess',
+    'as' => 'notaccess',
     //'before' => 'csrf',
-        'uses'   => 'AccessController@notaccess'
-    ]);
-
-
-
+    'uses' => 'AccessController@notaccess'
+]);
 
 
 Route::GET('notifications', [
-        'as'     => 'notifications',
+    'as' => 'notifications',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@notifications'
-    ]);
+    'uses' => 'FrontprofileController@notifications'
+]);
 
 Route::GET('/notificationlikes/{id}', [
-        'as'     => 'notificationlikes',
+    'as' => 'notificationlikes',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@notificationlikes'
-    ]);
+    'uses' => 'FrontprofileController@notificationlikes'
+]);
 
 Route::GET('/notiread/{id}', [
-        'as'     => 'notiread',
+    'as' => 'notiread',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@notiread'
-    ]);
-
-
-
-
+    'uses' => 'FrontprofileController@notiread'
+]);
 
 
 Route::GET('/rating/{id}', [
-        'as'     => 'rating',
+    'as' => 'rating',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@rating'
-    ]);
+    'uses' => 'FrontprofileController@rating'
+]);
 
 
 Route::get('profileopen/{id}', [
-        'as'     => 'profileopen',
+    'as' => 'profileopen',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@profileopen'
-    ]);
+    'uses' => 'FrontprofileController@profileopen'
+]);
 
 
 Route::get('details/{id}', [
-        'as'     => 'details',
+    'as' => 'details',
     //'before' => 'csrf',
-        'uses'   => 'FrontController@details'
-    ]);
-
-
-
-
+    'uses' => 'FrontController@details'
+]);
 
 
 //------------------------------------------------------------
@@ -1165,10 +1029,10 @@ Route::get('details/{id}', [
 
 
 Route::get('details/addtocart/{id}', [
-        'as'     => 'addtocart',
+    'as' => 'addtocart',
     //'before' => 'csrf',
-        'uses'   => 'FrontController@addtocart'
-    ]);
+    'uses' => 'FrontController@addtocart'
+]);
 
 /*
 Route::get('find', function(){
@@ -1181,226 +1045,205 @@ Route::get('find', function(){
 
 */
 Route::get('/find', [
-        'as'     => 'find',
+    'as' => 'find',
     //'before' => 'csrf',
-        'uses'   => 'FrontController@find'
-    ]);
-
+    'uses' => 'FrontController@find'
+]);
 
 
 Route::get('/search', [
-        'as'     => 'search',
+    'as' => 'search',
     //'before' => 'csrf',
-        'uses'   => 'FrontController@search'
-    ]);
+    'uses' => 'FrontController@search'
+]);
 
 Route::post('searching', [
-        'as'     => 'searching',
+    'as' => 'searching',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@searching'
-    ]);
+    'uses' => 'FrontprofileController@searching'
+]);
 
 Route::get('advsearch', [
-        'as'     => 'advsearch',
+    'as' => 'advsearch',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@advsearch'
-    ]);
-
-
+    'uses' => 'FrontprofileController@advsearch'
+]);
 
 
 Route::get('searching', [
-        'as'     => 'searching',
+    'as' => 'searching',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@searchingget'
-    ]);
-
-
+    'uses' => 'FrontprofileController@searchingget'
+]);
 
 
 Route::get('allfriendrequest', [
-        'as'     => 'allfriendrequest',
+    'as' => 'allfriendrequest',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@allfriendrequest'
-    ]);
+    'uses' => 'FrontprofileController@allfriendrequest'
+]);
 
 
 Route::get('onlineuser/{id}', [
-        'as'     => 'onlineuser',
+    'as' => 'onlineuser',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@onlineuser'
-    ]);
+    'uses' => 'FrontprofileController@onlineuser'
+]);
 
 
 Route::get('messages/{id}', [
-        'as'     => 'messages',
+    'as' => 'messages',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@messages'
-    ]);
+    'uses' => 'FrontprofileController@messages'
+]);
 
 
 Route::get('messagestore/{id}', [
-        'as'     => 'messagestore',
+    'as' => 'messagestore',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@messagestore'
-    ]);
+    'uses' => 'FrontprofileController@messagestore'
+]);
 
 Route::get('messagesonline', [
-        'as'     => 'messagesonline',
+    'as' => 'messagesonline',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@messagesonline'
-    ]);
-
-
+    'uses' => 'FrontprofileController@messagesonline'
+]);
 
 
 Route::get('messnotification/{id}', [
-        'as'     => 'messnotification',
+    'as' => 'messnotification',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@messnotification'
-    ]);
+    'uses' => 'FrontprofileController@messnotification'
+]);
 
 Route::get('messtext/{id}', [
-        'as'     => 'messtext',
+    'as' => 'messtext',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@messtext'
-    ]);
+    'uses' => 'FrontprofileController@messtext'
+]);
 
 Route::get('readable/{id}', [
-        'as'     => 'readable',
+    'as' => 'readable',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@readable'
-    ]);
-
-
-
+    'uses' => 'FrontprofileController@readable'
+]);
 
 
 Route::get('inbox', [
-        'as'     => 'inbox',
+    'as' => 'inbox',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@inbox'
-    ]);
+    'uses' => 'FrontprofileController@inbox'
+]);
 
 
 Route::get('acceptfriend', [
-        'as'     => 'acceptfriend',
+    'as' => 'acceptfriend',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@acceptfriend'
-    ]);
+    'uses' => 'FrontprofileController@acceptfriend'
+]);
 
 
 Route::get('pendingcancel/{id}', [
-        'as'     => 'pendingcancel',
+    'as' => 'pendingcancel',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@pendingcancel'
-    ]);
-
-
-
+    'uses' => 'FrontprofileController@pendingcancel'
+]);
 
 
 Route::get('friendlist', [
-        'as'     => 'friendlist',
+    'as' => 'friendlist',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@friendlist'
-    ]);
+    'uses' => 'FrontprofileController@friendlist'
+]);
 
 Route::post('friendrequest', [
-        'as'     => 'friendrequest',
+    'as' => 'friendrequest',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@friendrequest'
-    ]);
+    'uses' => 'FrontprofileController@friendrequest'
+]);
 
 
 Route::post('unfriendrequest', [
-        'as'     => 'unfriendrequest',
+    'as' => 'unfriendrequest',
     //'before' => 'csrf',
-        'uses'   => 'FrontprofileController@unfriendrequest'
-    ]);
+    'uses' => 'FrontprofileController@unfriendrequest'
+]);
 
 
 Route::get('/brand/{id}', [
-        'as'     => 'brand',
+    'as' => 'brand',
     //'before' => 'csrf',
-        'uses'   => 'FrontController@brand'
-    ]);
-
-
+    'uses' => 'FrontController@brand'
+]);
 
 
 Route::get('/pricerange', [
-        'as'     => 'pricerange',
+    'as' => 'pricerange',
     //'before' => 'csrf',
-        'uses'   => 'FrontController@pricerange'
-    ]);
-
-
+    'uses' => 'FrontController@pricerange'
+]);
 
 
 Route::get('slider', [
-        'as'     => 'slider',
+    'as' => 'slider',
     //'before' => 'csrf',
-        'uses'   => 'MediaController@slider'
-    ]);
+    'uses' => 'MediaController@slider'
+]);
 
 Route::post('slider/save', [
-        'as'     => 'slidersave',
+    'as' => 'slidersave',
     //'before' => 'csrf',
-        'uses'   => 'MediaController@slidersave'
-    ]);
+    'uses' => 'MediaController@slidersave'
+]);
 
 
 Route::post('logo/save', [
-        'as'     => 'logosave',
+    'as' => 'logosave',
     //'before' => 'csrf',
-        'uses'   => 'OrdersController@logosave'
-    ]);
-
-
-
-
+    'uses' => 'OrdersController@logosave'
+]);
 
 
 Route::get('viewslider', [
-        'as'     => 'viewslider',
+    'as' => 'viewslider',
     //'before' => 'csrf',
-        'uses'   => 'MediaController@viewslider'
-    ]);
+    'uses' => 'MediaController@viewslider'
+]);
 
 
 Route::get('content/contentsave', [
-        'as'     => 'contentsave',
+    'as' => 'contentsave',
     //'before' => 'csrf',
-        'uses'   => 'ContentController@contentsave'
-    ]);
+    'uses' => 'ContentController@contentsave'
+]);
 
 
 Route::get('category/categorysave', [
-        'as'     => 'categorysave',
+    'as' => 'categorysave',
     //'before' => 'csrf',
-        'uses'   => 'UsersController@categorysave'
-    ]);
+    'uses' => 'UsersController@categorysave'
+]);
 
 
 Route::get('menu/menusave', [
-        'as'     => 'menusave',
+    'as' => 'menusave',
     //'before' => 'csrf',
-        'uses'   => 'UsersController@menusave'
-    ]);
+    'uses' => 'UsersController@menusave'
+]);
 
 
 Route::get('category/subcategorysave', [
-        'as'     => 'subcategorysave',
+    'as' => 'subcategorysave',
     //'before' => 'csrf',
-        'uses'   => 'UsersController@subcategorysave'
-    ]);
+    'uses' => 'UsersController@subcategorysave'
+]);
 
 Route::get('menu/submenusave', [
-        'as'     => 'submenusave',
+    'as' => 'submenusave',
     //'before' => 'csrf',
-        'uses'   => 'UsersController@submenusave'
-    ]);
+    'uses' => 'UsersController@submenusave'
+]);
 
 
 Route::get('payment', 'PaymentController@Index');
@@ -1408,292 +1251,261 @@ Route::get('payment/execute', 'PaymentController@ExecutePaymentSuccess');
 Route::get('payment/cancel', 'PaymentController@ExecutePaymentCancel');
 
 
-
-
-
 Route::get('checkout', [
-        'as'     => 'checkout',
+    'as' => 'checkout',
     //'before' => 'csrf',
-        'uses'   => 'FrontuserController@checkout'
-    ]);
-
-
+    'uses' => 'FrontuserController@checkout'
+]);
 
 
 Route::get('/shopping/delete/{id}', [
-        'as'     => 'shoppingdelete',
+    'as' => 'shoppingdelete',
     //'before' => 'csrf',
-        'uses'   => 'FrontController@shoppingdelete'
-    ]);
-
+    'uses' => 'FrontController@shoppingdelete'
+]);
 
 
 Route::get('/paypal/delete/{id}', [
-        'as'     => 'paypaldelete',
+    'as' => 'paypaldelete',
     //'before' => 'csrf',
-        'uses'   => 'FrontController@paypaldelete'
-    ]);
-
+    'uses' => 'FrontController@paypaldelete'
+]);
 
 
 Route::get('details/comment/{id}', [
-        'as'     => 'comment',
+    'as' => 'comment',
     //'before' => 'csrf',
-        'uses'   => 'FrontController@comment'
-    ]);
+    'uses' => 'FrontController@comment'
+]);
 
 
 Route::get('comment/save', [
-        'as'     => 'commentsave',
+    'as' => 'commentsave',
     //'before' => 'csrf',
-        'uses'   => 'FrontController@commentsave'
-    ]);
-
+    'uses' => 'FrontController@commentsave'
+]);
 
 
 Route::get('/signup', [
-        'as'     => 'signup',
+    'as' => 'signup',
     //'before' => 'csrf',
-        'uses'   => 'FrontuserController@signup'
-    ]);
-
+    'uses' => 'FrontuserController@signup'
+]);
 
 
 Route::get('getregisters', [
-        'as'     => 'getregisters',
+    'as' => 'getregisters',
     //'before' => 'csrf',
-        'uses'   => 'FrontuserController@getregisters'
-    ]);
+    'uses' => 'FrontuserController@getregisters'
+]);
 
 
 Route::get('getregistersfb', [
-        'as'     => 'getregistersfb',
+    'as' => 'getregistersfb',
     //'before' => 'csrf',
-        'uses'   => 'FrontfbController@getregistersfb'
-    ]);
-
+    'uses' => 'FrontfbController@getregistersfb'
+]);
 
 
 Route::get('logins', [
-        'as'     => 'logins',
+    'as' => 'logins',
     //'before' => 'csrf',
-        'uses'   => 'FrontuserController@logins'
-    ]);
-
-
+    'uses' => 'FrontuserController@logins'
+]);
 
 
 Route::get('getlogins', [
-        'as'     => 'getlogins',
+    'as' => 'getlogins',
     //'before' => 'csrf',
-        'uses'   => 'FrontuserController@getlogins'
-    ]);
+    'uses' => 'FrontuserController@getlogins'
+]);
 
 Route::get('getloginsfb', [
-        'as'     => 'getloginsfb',
+    'as' => 'getloginsfb',
     //'before' => 'csrf',
-        'uses'   => 'FrontfbController@getloginsfb',
-        'https' => true
-    ]);
-
+    'uses' => 'FrontfbController@getloginsfb',
+    'https' => true
+]);
 
 
 Route::get('logouts', [
-        'as'     => 'logouts',
+    'as' => 'logouts',
     //'before' => 'csrf',
-        'uses'   => 'FrontuserController@logouts'
-    ]);
-
+    'uses' => 'FrontuserController@logouts'
+]);
 
 
 Route::get('logoutsfb', [
-        'as'     => 'logoutsfb',
+    'as' => 'logoutsfb',
     //'before' => 'csrf',
-        'uses'   => 'FrontfbController@logoutsfb'
-    ]);
-
+    'uses' => 'FrontfbController@logoutsfb'
+]);
 
 
 Route::get('loginfirst', [
-        'as'     => 'loginfirst',
+    'as' => 'loginfirst',
     //'before' => 'csrf',
-        'uses'   => 'FrontuserController@loginfirst'
-    ]);
-
-
+    'uses' => 'FrontuserController@loginfirst'
+]);
 
 
 Route::get('vieworders', [
-        'as'     => 'vieworders',
+    'as' => 'vieworders',
     //'before' => 'csrf',
-        'uses'   => 'OrdersController@vieworders'
-    ]);
+    'uses' => 'OrdersController@vieworders'
+]);
 
 Route::get('searchuser', [
-        'as'     => 'searchuser',
+    'as' => 'searchuser',
     //'before' => 'csrf',
-        'uses'   => 'OrdersController@searchuser'
-    ]);
+    'uses' => 'OrdersController@searchuser'
+]);
 
 Route::get('timeline', [
-        'as'     => 'timeline',
+    'as' => 'timeline',
     //'before' => 'csrf',
-        'uses'   => 'OrdersController@timeline'
-    ]);
+    'uses' => 'OrdersController@timeline'
+]);
 
 
 Route::get('logo', [
-        'as'     => 'logo',
+    'as' => 'logo',
     //'before' => 'csrf',
-        'uses'   => 'OrdersController@logo'
-    ]);
-
-
-
+    'uses' => 'OrdersController@logo'
+]);
 
 
 Route::get('galleryadmin', [
-        'as'     => 'galleryadmin',
+    'as' => 'galleryadmin',
     //'before' => 'csrf',
-        'uses'   => 'OrdersController@galleryadmin'
-    ]);
+    'uses' => 'OrdersController@galleryadmin'
+]);
 
 Route::get('searchgallery', [
-        'as'     => 'searchgallery',
+    'as' => 'searchgallery',
     //'before' => 'csrf',
-        'uses'   => 'OrdersController@searchgallery'
-    ]);
+    'uses' => 'OrdersController@searchgallery'
+]);
 
 Route::get('searchevent', [
-        'as'     => 'searchevent',
+    'as' => 'searchevent',
     //'before' => 'csrf',
-        'uses'   => 'OrdersController@searchevent'
-    ]);
-
+    'uses' => 'OrdersController@searchevent'
+]);
 
 
 Route::get('searchtimeline', [
-        'as'     => 'searchtimeline',
+    'as' => 'searchtimeline',
     //'before' => 'csrf',
-        'uses'   => 'OrdersController@searchtimeline'
-    ]);
+    'uses' => 'OrdersController@searchtimeline'
+]);
 
 Route::get('searchcontact', [
-        'as'     => 'searchcontact',
+    'as' => 'searchcontact',
     //'before' => 'csrf',
-        'uses'   => 'OrdersController@searchcontact'
-    ]);
-
+    'uses' => 'OrdersController@searchcontact'
+]);
 
 
 Route::get('eventadmin', [
-        'as'     => 'eventadmin',
+    'as' => 'eventadmin',
     //'before' => 'csrf',
-        'uses'   => 'OrdersController@eventadmin'
-    ]);
-
-
-
+    'uses' => 'OrdersController@eventadmin'
+]);
 
 
 Route::get('admin', [
-        'as'     => 'admin',
+    'as' => 'admin',
     //'before' => 'csrf',
-        'uses'   => 'UsersController@admin'
-    ]);
-
-
+    'uses' => 'UsersController@admin'
+]);
 
 
 Route::get('timelines/{id}', [
-        'as'     => 'timelines',
+    'as' => 'timelines',
     //'before' => 'csrf',
-        'uses'   => 'OrdersController@timelines'
-    ]);
-
+    'uses' => 'OrdersController@timelines'
+]);
 
 
 Route::get('/orders/delete/{id}', [
-        'as'     => 'ordersdelete',
+    'as' => 'ordersdelete',
     //'before' => 'csrf',
-        'uses'   => 'OrdersController@ordersdelete'
-    ]);
-
+    'uses' => 'OrdersController@ordersdelete'
+]);
 
 
 Route::get('settings', [
-        'as'     => 'settings',
+    'as' => 'settings',
     //'before' => 'csrf',
-        'uses'   => 'UsersController@settings'
-    ]);
+    'uses' => 'UsersController@settings'
+]);
 
 
 Route::get('settings/change', [
-        'as'     => 'settingschange',
+    'as' => 'settingschange',
     //'before' => 'csrf',
-        'uses'   => 'UsersController@settingschange'
-    ]);
+    'uses' => 'UsersController@settingschange'
+]);
 
 
 Route::get('myaccount', [
-        'as'     => 'myaccount',
+    'as' => 'myaccount',
     //'before' => 'csrf',
-        'uses'   => 'MyaccountController@myaccount'
-    ]);
+    'uses' => 'MyaccountController@myaccount'
+]);
 
 
 Route::get('myaccount/save', [
-        'as'     => 'myaccountsave',
+    'as' => 'myaccountsave',
     //'before' => 'csrf',
-        'uses'   => 'MyaccountController@myaccountsave'
-    ]);
+    'uses' => 'MyaccountController@myaccountsave'
+]);
 
 Route::get('viewpages', [
-        'as'     => 'viewpages',
+    'as' => 'viewpages',
     //'before' => 'csrf',
-        'uses'   => 'ContentController@viewpages'
-    ]);
+    'uses' => 'ContentController@viewpages'
+]);
 
 Route::get('pages', [
-        'as'     => 'pages',
+    'as' => 'pages',
     //'before' => 'csrf',
-        'uses'   => 'ContentController@pages'
-    ]);
+    'uses' => 'ContentController@pages'
+]);
 
 Route::get('membership', [
-        'as'     => 'membership',
+    'as' => 'membership',
     //'before' => 'csrf',
-        'uses'   => 'ContentController@membership'
-    ]);
+    'uses' => 'ContentController@membership'
+]);
 
 Route::get('createmember', [
-        'as'     => 'createmember',
+    'as' => 'createmember',
     //'before' => 'csrf',
-        'uses'   => 'ContentController@createmember'
-    ]);
+    'uses' => 'ContentController@createmember'
+]);
 
 
 Route::get('creatememberplan', [
-        'as'     => 'creatememberplan',
+    'as' => 'creatememberplan',
     //'before' => 'csrf',
-        'uses'   => 'ContentController@creatememberplan'
-    ]);
-
-
+    'uses' => 'ContentController@creatememberplan'
+]);
 
 
 Route::get('createpage', [
-        'as'     => 'createpage',
+    'as' => 'createpage',
     //'before' => 'csrf',
-        'uses'   => 'ContentController@createpage'
-    ]);
+    'uses' => 'ContentController@createpage'
+]);
 
 
 Route::get('pagessave', [
-        'as'     => 'pagessave',
+    'as' => 'pagessave',
     //'before' => 'csrf',
-        'uses'   => 'ContentController@pagessave'
-    ]);
+    'uses' => 'ContentController@pagessave'
+]);
 
 
 
@@ -1707,7 +1519,6 @@ Route::get('pagessave', [
 
 
 */
-
 
 
 /*
@@ -1814,12 +1625,6 @@ Route::get('chatrecord', [
 //     //'before' => 'csrf',
 //         'uses'   => 'FrontController@getallrecords'
 //     ]);
-
-
-
-
-
-
 
 
 // Route::get('blog', [
