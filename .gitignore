@@ -20,3 +20,6 @@ Thumbs.db
 # Mac OS
 .DS_Store*
 ._*
+
+# PHPStorm IDE folder.
+/.idea
