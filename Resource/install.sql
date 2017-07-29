@@ -264,63 +264,6 @@ CREATE TABLE IF NOT EXISTS `contact` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=121 ;
 
---
--- Dumping data for table `contact`
---
-
-INSERT INTO `contact` (`id`, `name`, `email`, `subject`, `message`, `updated_at`, `created_at`) VALUES
-(47, 'tester esfera', 'testeresfera@gmail.com', 'hello 2 testing', 'byee', '2014-11-05 15:37:22', '2014-10-01 12:05:58'),
-(63, 'test0', 'testdemotest0@gmail.com', 'permmissions issue', 'testing', '2014-11-05 11:41:17', '2014-11-05 11:41:17'),
-(67, 'test', 'test@gmail.com', 'test', 'test', '2014-11-11 06:34:16', '2014-11-11 06:34:16'),
-(68, 'tset', 'sahil_kaushal@esferasoft.com', 'hi', 'hello', '2014-11-11 06:35:57', '2014-11-11 06:35:57'),
-(69, 'Sahil', 'sahil_kaushal@esferasoft.com', 'hello', 'hi', '2014-12-18 05:15:00', '2014-11-11 06:38:27'),
-(70, 'test', 'sahil_kaushal@esferasoft.com', 'hi', 'hello', '2014-11-11 06:44:03', '2014-11-11 06:44:03'),
-(71, 'sahil', 'sahil_kaushal@esferasoft.com', 'sa', 'sa', '2014-11-11 07:05:26', '2014-11-11 07:05:26'),
-(72, 'test', 'manoj_singh@esferasoft.com', 'testing', 'Hello ', '2014-11-11 07:16:21', '2014-11-11 07:16:21'),
-(73, 'test', 'manoj_singh@esferasoft.com', 'testing', 'Hello ', '2014-11-11 07:18:26', '2014-11-11 07:18:26'),
-(74, 'test', 'manoj_singh@esferasoft.com', 'testing', 'Hello ', '2014-11-11 07:19:29', '2014-11-11 07:19:29'),
-(75, 'sahil', 'sahil_kaushal@esferasoft.com', 's', 'sa', '2014-11-11 07:19:48', '2014-11-11 07:19:48'),
-(76, 'sahil', 'sahil_kaushal@esferasoft.com', 's', 'sa', '2014-11-11 07:21:27', '2014-11-11 07:21:27'),
-(78, 'sahil', 'sahil_kaushal@esferasoft.com', 's', 'sa', '2014-11-11 07:24:59', '2014-11-11 07:24:59'),
-(79, 'sahil', 'sahil_kaushal@esferasoft.com', 's', 'sa', '2014-11-11 07:26:00', '2014-11-11 07:26:00'),
-(80, 'sahil', 'sahil_kaushal@esferasoft.com', 's', 'sa', '2014-11-11 07:26:52', '2014-11-11 07:26:52'),
-(81, 'sahil', 'sahil_kaushal@esferasoft.com', 'sa', 'sa', '2014-11-11 07:27:21', '2014-11-11 07:27:21'),
-(82, 'Sahil', 'Sahil_kaushal@esferasoft.com', 'Hi', 'Dhyfhtf', '2014-11-14 06:31:58', '2014-11-14 06:31:58'),
-(84, 'sahil', 'sahil_kaushal@esferasoft.com', 'test', 'test', '2014-12-15 06:55:17', '2014-12-15 06:55:17'),
-(85, 'admin', 'sahil_kaushal@esferasoft.com', 'sass', 'sssass', '2014-12-15 09:08:19', '2014-12-15 06:57:19'),
-(86, 'sahil', 'sahil_kaushal@esferasoft.com', 'sasa', 'sa', '2014-12-15 09:08:41', '2014-12-15 09:08:41'),
-(87, 'sahils', 'sahil_kaushal@esferasoft.com', 'hello', 'heizzzzzzzzzzzzz', '2014-12-17 08:47:20', '2014-12-17 08:47:20'),
-(88, 'sahiltest', 'sahil_kaushal@esferasoft.com', 'sa', 'sa', '2014-12-17 10:11:20', '2014-12-17 10:11:20'),
-(90, 'Akhil', 'akhil_sharma@esferasoft.com', 'test', 'test', '2014-12-17 10:31:21', '2014-12-17 10:31:21'),
-(91, 'jittu', 'jatinder_kumar@esferasoft.com', 'Test', 'hello  test', '2014-12-18 05:17:50', '2014-12-17 10:41:33'),
-(94, 'Kapil', 'kapil_dev@esferasoft.com', 'ghrs', 'rtshndgb', '2014-12-17 10:51:47', '2014-12-17 10:51:47'),
-(95, 'chander', 'chander_shekhar@esferasoft.com', 'ghrs', 'hekjfb', '2014-12-17 10:55:00', '2014-12-17 10:55:00'),
-(97, 'test', 'sahil_kaushal@esferasoft.com', 'test', 'test', '2014-12-18 05:11:47', '2014-12-18 05:11:47'),
-(98, 'Akhil', 'akhil_sharma@esferasoft.com', 'test', 'hello test test', '2014-12-19 05:02:10', '2014-12-19 05:02:10'),
-(99, 'test new', 'chander_shekhar@esferasoft.com', 'testing', 'testeresfera', '2014-12-22 09:58:50', '2014-12-22 09:58:50'),
-(100, 'dkddk', 'dsk@ggk.com', 'kamekmaekm', 's;s,:qklsqkl', '2015-01-03 17:47:54', '2015-01-03 17:47:54'),
-(101, 'teast', 'testdemotest11@gmail.com', 'test', 'test11111111', '2015-01-06 04:27:53', '2015-01-06 04:27:53'),
-(102, 'MORIO', 'myisthetest@gmail.com', 'TEST', 'ksllllllllllllllllllll\r\n\r\nTe test\r\nfkjg\r\ndfkdk fj', '2015-01-11 18:12:58', '2015-01-11 18:12:58'),
-(103, 'MONIOOO', 'tedj@gmaillll.com', 'TESTETST', 'kslkdsljk\r\njkjsjsj\r\nkdkdkd', '2015-01-11 18:14:22', '2015-01-11 18:14:22'),
-(104, 'kkd', 'testtt@gmail.com', 'MM', 'dksjkd\r\njdjdjd\r\n\r\nsksksdkdkd\r\nlerrlk', '2015-01-11 18:15:57', '2015-01-11 18:15:57'),
-(105, 'test', 'test@test.com', '  ', '      ', '2015-01-12 07:02:09', '2015-01-12 07:02:09'),
-(106, '  ', 'sahil_kaushal@esferasoft.com', '  ', '   ', '2015-01-12 07:27:08', '2015-01-12 07:27:08'),
-(107, 'sahil', 'sahil_kaushal@esferasoft.com', 'sa', '  ', '2015-01-12 08:38:03', '2015-01-12 08:38:03'),
-(108, 'sahilkaushal', 'sahil_kaushal@esferasoft.com', 's', '  ', '2015-01-12 08:39:21', '2015-01-12 08:39:21'),
-(109, 'sahil', 'sahil_kaushal@esferasoft.com', 'sa', '   ', '2015-01-12 08:40:36', '2015-01-12 08:40:36'),
-(110, 'sa', 'sahil_kaushal@esferasoft.com', 'Contact Form ', '  ', '2015-01-12 08:42:52', '2015-01-12 08:42:52'),
-(111, 'sahil', 'sahil_kaushal@esferasoft.com', 'sa', ' ', '2015-01-12 08:43:24', '2015-01-12 08:43:24'),
-(112, 'sahil', 'sahil_kaushal@esferasoft.com', 'sa', '   ', '2015-01-12 08:56:15', '2015-01-12 08:56:15'),
-(113, 'sa', 'sahil_kaushal@esferasoft.com', 'test', '  ', '2015-01-12 09:13:07', '2015-01-12 09:13:07'),
-(114, 'sa', 'sahil_kaushal@esferasoft.com', 'sa', '  ', '2015-01-12 09:17:56', '2015-01-12 09:17:56'),
-(115, 'sa', 'sahil_kaushal@esferasoft.com', 'sa', '      ', '2015-01-12 09:18:24', '2015-01-12 09:18:24'),
-(116, 'sa', 'sahil_kaushal@esferasoft.com', 'sa', '   ', '2015-01-12 09:19:14', '2015-01-12 09:19:14'),
-(117, 'sa', 'sahil_kaushal@esferasoft.com', ' sa', ' ', '2015-01-12 09:20:20', '2015-01-12 09:20:20'),
-(118, 'sa', 'sahil_kaushal@esferasoft.com', 'sa', '    ', '2015-01-12 09:22:31', '2015-01-12 09:22:31'),
-(119, 'sa', 'sahil_kaushal@esferasoft.com', 'sa', 'sa', '2015-01-12 09:23:39', '2015-01-12 09:23:39'),
-(120, 'test1', 'testjgjgjgt@gmail.com', 'testhome', 'skfjfsjf\r\nsfkffsk\r\nspalce\r\ndfkfdjldjdffd\r\nfdkgjklgld', '2015-01-12 17:25:20', '2015-01-12 17:25:20');
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `contemplate`
@@ -419,34 +362,6 @@ CREATE TABLE IF NOT EXISTS `emails` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
 
---
--- Dumping data for table `emails`
---
-
-INSERT INTO `emails` (`id`, `created_at`, `updated_at`, `email`, `subject`, `comment`, `from`) VALUES
-(7, '2014-11-22 05:43:58', '2014-11-22 05:43:58', 'sahil_kaushal@esferasoft.com', 'Laravel', '<p>How are you!!</p>', 'test@gmail.com'),
-(8, '2014-11-22 05:52:02', '2014-11-22 05:52:02', 'sahil_kaushal@esferasoft.com', 'hello', '<p>hiez</p>', 'sahil_kaushal@esferasoft.com'),
-(9, '2014-11-22 05:54:07', '2014-11-22 05:54:07', 'sahil_kaushal@esferasoft.com', 'sa', '<p>sasasa</p>', 'sahil_kaushal@esferasoft.com'),
-(10, '2014-11-22 05:55:49', '2014-11-22 05:55:49', 'sahil_kaushal@esferasoft.com', 'sa', '<p>gf</p>', 'sahil_kaushal@esferasoft.com'),
-(11, '2014-11-22 05:59:22', '2014-11-22 05:59:22', 'sahil_kaushal@esferasoft.com', 'test', '<p>test</p>', 'sahil_kaushal@esferasoft.com'),
-(12, '2014-11-22 05:59:39', '2014-11-22 05:59:39', 'sahil_kaushal@esferasoft.com', 'sa', '<p>sa</p>', 'sahil_kaushal@esferasoft.com'),
-(13, '2014-11-22 12:04:50', '2014-11-22 12:04:50', 'sahil_kaushal@esferasoft.com', 'Laravel', '<p>Now laravel is working.</p>', 'sahil_kaushal@esferasoft.com'),
-(14, '2014-12-15 04:58:20', '2014-12-15 04:58:20', 'testdemotest11@gmail.com', 'test', '<p>hdfxgb</p>', 'test@test.com'),
-(15, '2014-12-15 09:02:24', '2014-12-15 09:02:24', 'sahil_kaushal@esferasoft.com', 'test', '<p>test</p>', 'sahil_kaushal@esferasoft.com'),
-(16, '2014-12-15 09:06:15', '2014-12-15 09:06:15', 'sahil_kaushal@esferasoft.com', 'sa', '<p>ssss</p>', 'sahil_kaushal@esferasoft.com'),
-(17, '2014-12-15 09:08:44', '2014-12-15 09:08:44', 'akhil_sharma@esferasoft.com', 'test', '<p>Hello sir</p>\r\n<p>gud afternooooooonnnnnnn......</p>', 'test@test.com'),
-(18, '2014-12-15 11:16:06', '2014-12-15 11:16:06', 'testdemotest11@gmail.com', 'sass', '<p>dsfvc dfsvc</p>', 'test@test.com'),
-(19, '2014-12-15 11:40:22', '2014-12-15 11:40:22', 'testdemotest11@gmail.com', 'sass', '<p>ehtsdnfgbv</p>', 'test@test.com'),
-(20, '2014-12-15 11:41:24', '2014-12-15 11:41:24', 'akhil_sharma@esferasoft.com', 'test', '<p>Hello Sir ,,.</p>\r\n<p>Thanks for register with us</p>', 'test@test.com'),
-(21, '2014-12-17 05:27:20', '2014-12-17 05:27:20', 'sahil_kaushal@esferasoft.com', 'test', '<p>test</p>', 'sahil_kaushal@esferasoft.com'),
-(22, '2014-12-17 05:27:55', '2014-12-17 05:27:55', 'sahil_kaushal@esferasoft.com', 'tst', '<p>hgfhgfh</p>', 'noreply@mysite.com'),
-(23, '2014-12-17 05:37:24', '2014-12-17 05:37:24', 'sahil_kaushal@esferasoft.com', 'd', '', 'sahil_kaushal@esferasoft.com'),
-(24, '2014-12-17 06:08:21', '2014-12-17 06:08:21', 'sahil_kaushal@esferasoft.com', 'sa', '<p>sa</p>', 'sahil_kaushal@esferasoft.com'),
-(25, '2014-12-18 06:12:20', '2014-12-18 06:12:20', 'akhil_sharma@esferasoft.com', 'test', '<p><img src="..//uploads/images/122014/47Ha6FREDashutterstock_199725161.jpg" alt="test" width="997" height="997" /></p>', 'test@test.com'),
-(26, '2015-01-06 05:38:14', '2015-01-06 05:38:14', 'akhil_sharma@esferasoft.com', 'test', '<ul style="list-style-type: disc;">\r\n<li style="text-align: left;">jjiuh jg8iuher</li>\r\n<li style="text-align: left;">jdhfviueofkbv</li>\r\n<li style="text-align: left;">jfdihea d</li>\r\n<li title="Dating Site">lrkdvofiuheodfv</li>\r\n<li style="text-align: left;">]kjgdviuch</li>\r\n<li style="text-align: left;"><a title="Dating Site" href="emails" target="_blank">Street Date</a></li>\r\n</ul>', 'no_reply@reply.com'),
-(27, '2015-01-06 05:39:48', '2015-01-06 05:39:48', 'akhil_sharma@esferasoft.com', 'test', '<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p><a title="http://148.130.4.174/~laravel/laravelfb/laravel-master/public/index.php/profile" href="profile" target="_blank">http://148.130.4.174/~laravel/laravelfb/laravel-master/public/index.php/profile</a></p>', 'no_reply@reply.com');
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `event`
@@ -925,20 +840,6 @@ CREATE TABLE IF NOT EXISTS `rating` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
 
---
--- Dumping data for table `rating`
---
-
-INSERT INTO `rating` (`id`, `created_at`, `updated_at`, `user`, `product_id`, `rating`) VALUES
-(12, '2013-07-04 09:23:42', '2013-07-04 09:28:36', 'sahil_kaushal@gmail.com', '13', '5'),
-(13, '2013-07-04 09:33:01', '2013-07-04 09:33:09', 'sahil_kaushal@gmail.com', '14', '2'),
-(14, '2013-07-04 09:33:28', '2013-07-04 09:45:31', 'sahil_kaushal@gmail.com', '15', '3'),
-(15, '2013-07-04 09:40:54', '2013-07-04 09:45:31', 'sahil_kaushal@esferasoft.com', '15', '3'),
-(16, '2013-07-07 09:11:59', '2013-07-07 09:11:59', 'sahil_kaushal@esferasoft.com', '13', '2'),
-(17, '2013-07-07 09:12:15', '2013-07-07 09:12:15', 'sahil_kaushal@esferasoft.com', '17', '5'),
-(18, '2014-10-21 05:56:02', '2014-10-21 05:56:02', 'hitesh_ranaut@esferasoft.com', '14', '5');
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `set`
