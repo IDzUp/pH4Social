@@ -1,12 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 3.4.10.1deb1
--- http://www.phpmyadmin.net
---
--- Host: localhost
--- Generation Time: Jan 27, 2015 at 02:29 PM
--- Server version: 5.5.40
--- PHP Version: 5.5.19-1+deb.sury.org~precise+1
-
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
@@ -16,9 +7,6 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
 
---
--- Database: `laravel_laravelfbs`
---
 
 -- --------------------------------------------------------
 
@@ -240,14 +228,6 @@ CREATE TABLE IF NOT EXISTS `confirmmail` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
---
--- Dumping data for table `confirmmail`
---
-
-INSERT INTO `confirmmail` (`id`, `created_at`, `updated_at`, `comment`, `from`, `subject`) VALUES
-(1, NULL, '2014-12-22 06:04:49', '<p>Hello &lt; NAME &gt;</p>\r\n<p>Please click the link given below for activation.</p>\r\n<p>&lt; LINK &gt;</p>\r\n<p>Thanks &amp; Regards</p>\r\n<p>Street Date</p>', 'sahil_kaushal@esferasoft.com', 'Confirmation Mail');
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `contact`
@@ -449,12 +429,6 @@ CREATE TABLE IF NOT EXISTS `like` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
---
--- Dumping data for table `like`
---
-
-INSERT INTO `like` (`id`, `updated_at`, `created_at`, `user_rand`, `other_rand`, `count`, `postid`, `timess`, `email`) VALUES
-(1, '2015-01-27 14:23:35', '2015-01-27 14:23:35', 'lNZR1dClmQ', 'lNZR1dClmQ', 1, 6, '02:23:35pm', 'sahil_kaushal@esferasoft.com');
 
 -- --------------------------------------------------------
 
@@ -634,15 +608,6 @@ CREATE TABLE IF NOT EXISTS `notilike` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
---
--- Dumping data for table `notilike`
---
-
-INSERT INTO `notilike` (`id`, `user`, `postlike`, `updated_at`, `created_at`, `otheruser`, `timess`, `comment`, `commentid`, `read`, `email`, `friendaccept`) VALUES
-(1, 'lNZR1dClmQ', '3', '2015-01-13 15:39:26', '2015-01-13 15:39:26', 'lNZR1dClmQ', '03:39:26pm', 'tjdykmuhjnb', '1', NULL, 'sahil_kaushal@esferasoft.com', NULL),
-(2, 'lNZR1dClmQ', '3', '2015-01-13 15:39:31', '2015-01-13 15:39:31', 'lNZR1dClmQ', '03:39:31pm', 'yjhmgn', '2', NULL, 'sahil_kaushal@esferasoft.com', NULL),
-(3, 'lNZR1dClmQ', '3', '2015-01-13 15:39:43', '2015-01-13 15:39:43', 'lNZR1dClmQ', '03:39:43pm', 'tjhn', '3', NULL, 'sahil_kaushal@esferasoft.com', NULL),
-(4, 'lNZR1dClmQ', '6', '2015-01-27 14:23:35', '2015-01-27 14:23:35', 'lNZR1dClmQ', '02:23:35pm', NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
