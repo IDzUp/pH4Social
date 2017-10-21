@@ -1,3 +1,8 @@
+# Laravel Storages
+app/storage/meta/*
+app/storage/sessions/*
+app/storage/views/*
+
 *.log
 *.tmp
 

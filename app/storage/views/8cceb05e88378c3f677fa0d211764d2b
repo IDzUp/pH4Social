@@ -1,7 +1,0 @@
-@layout(layouts.default)
-
-<?php $__env->startSection('content'); ?>
-
-<h3> Login first then we use this service</h3>
-
-<?php $__env->stopSection(); ?>
