@@ -3,8 +3,6 @@
 
 class FrontfbController extends BaseController
 {
-
-
     public $restful = true;
     //public $layout='layouts.fb';
     public $layout = 'layouts.fbhome';
@@ -468,9 +466,4 @@ class FrontfbController extends BaseController
         return Redirect::route('home');
 
     }
-
-
 }
-
-
-?>

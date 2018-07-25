@@ -2,21 +2,6 @@
 
 class UsersController extends BaseController
 {
-
-    /*
-    |--------------------------------------------------------------------------
-    | Default Home Controller
-    |--------------------------------------------------------------------------
-    |
-    | You may wish to use controllers instead of, or in addition to, Closure
-    | based routes. That's great! Here is an example controller method to
-    | get you started. To route to this controller, just add the route:
-    |
-    |    Route::get('/', 'HomeController@showWelcome');
-    |
-    */
-
-
     public $restful = true;
 
     //public $layout='layouts.admin';
@@ -25,8 +10,6 @@ class UsersController extends BaseController
 
     public function users()
     {
-
-
         if (!Auth::check()) {
 
             return Redirect::to('/la-admin');
@@ -58,14 +41,10 @@ class UsersController extends BaseController
             //$this->layout->with('colors', Settings::All());
             $this->layout->with('logo', Logo::find(1));
             $this->layout->content = $view;
-
         } else {
-
-//return Redirect::route('notaccess');
+            //return Redirect::route('notaccess');
             App::abort(404);
         }
-
-
     }
 
     public function admin()
@@ -275,8 +254,6 @@ class UsersController extends BaseController
 
     public function updatecategory()
     {
-
-
         //$id=Input::get($id);
 
 
@@ -855,9 +832,7 @@ class UsersController extends BaseController
 
 
         } else {
-
-            $username = Null;
-
+            $username = null;
         }
 
 
@@ -892,24 +867,16 @@ class UsersController extends BaseController
         User::where('id', $id)->update($entry);
 
         //Author::update
-
-
         Session::flash('success', "Successfully Updated");
         return Redirect::back();
 
+        //return Redirect::to('users')->with('msg','Successfully Updated');
 
-//return Redirect::to('users')->with('msg','Successfully Updated');
-
-        //     return Redirect::route('users')
-
-
+        //return Redirect::route('users')
     }
-
 
     public function updatecomment()
     {
-
-
         //$id=Input::get($id);
 
 
@@ -930,12 +897,5 @@ class UsersController extends BaseController
 
 
         return Redirect::route('viewcomment');
-
-
     }
-
-
 }
-
-
-?>

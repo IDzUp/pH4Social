@@ -2,7 +2,6 @@
 
 class SignupsController extends BaseController
 {
-
     public function store()
     {
         $rules = array(
@@ -74,5 +73,4 @@ class SignupsController extends BaseController
         }
         return \Redirect::to(\Input::get('from'))->with('newsletter_unsubscribe_email_message', $success);
     }
-
 }

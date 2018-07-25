@@ -2,21 +2,6 @@
 
 class ContentController extends BaseController
 {
-
-    /*
-    |--------------------------------------------------------------------------
-    | Default Home Controller
-    |--------------------------------------------------------------------------
-    |
-    | You may wish to use controllers instead of, or in addition to, Closure
-    | based routes. That's great! Here is an example controller method to
-    | get you started. To route to this controller, just add the route:
-    |
-    |    Route::get('/', 'HomeController@showWelcome');
-    |
-    */
-
-
     public $restful = true;
 
     public $layout = 'layouts.adminnew';
@@ -582,7 +567,6 @@ class ContentController extends BaseController
 
     }
 
-
     public function editmem($id)
     {
 
@@ -1014,21 +998,16 @@ class ContentController extends BaseController
             $view = View::make('content.pageedit')->with('pageedit', Pages::find($id));
             $this->layout->with('logo', Logo::find(1));
             $this->layout->content = $view;
-
-
         } else {
-//return Redirect::route('notaccess');
+            //return Redirect::route('notaccess');
             App::abort(404);
         }
 
 
     }
 
-
     public function updatecontent()
     {
-
-
         //$id=Input::get($id);
 
 
@@ -1052,9 +1031,4 @@ class ContentController extends BaseController
 
 
     }
-
-
 }
-
-
-?>

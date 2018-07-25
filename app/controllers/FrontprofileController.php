@@ -3,8 +3,6 @@
 
 class FrontprofileController extends BaseController
 {
-
-
     public $restful = true;
     //public $layout='layouts.fb';
     public $layout = 'layouts.fbprofile';
@@ -2410,7 +2408,7 @@ class FrontprofileController extends BaseController
             if ($value == 1) {
                 $entry = array(
 
-                    'read' => Null);
+                    'read' => null);
 
                 $idss = 'null';
 
@@ -3098,7 +3096,7 @@ class FrontprofileController extends BaseController
 //imagedestroy($rotate);
 
 
-                    } else if ($types == "image/png") {
+                    } elseif ($types == "image/png") {
 
                         $uploadedfile = $_FILES['image']['tmp_name'];
                         $src = imagecreatefrompng($uploadedfile);
@@ -3141,7 +3139,7 @@ class FrontprofileController extends BaseController
 //imagedestroy($rotate);
 
 
-                    } else if ($types == "image/gif") {
+                    } elseif ($types == "image/gif") {
                         $src = imagecreatefromgif($uploadedfile);
 
 //$rotate = imagerotate($src, $degrees, 0);
@@ -4554,7 +4552,7 @@ class FrontprofileController extends BaseController
                     ->where('sex', $gender)
                     ->get();
 
-            } else if ($bodytype != 'null' && $height == 'null' && $haircolor == 'null') {
+            } elseif ($bodytype != 'null' && $height == 'null' && $haircolor == 'null') {
 
 
                 $results = DB::table('users')
@@ -4565,7 +4563,7 @@ class FrontprofileController extends BaseController
                     ->get();
 
 
-            } else if ($bodytype == 'null' && $height != 'null' && $haircolor == 'null') {
+            } elseif ($bodytype == 'null' && $height != 'null' && $haircolor == 'null') {
 
                 $results = DB::table('users')
                     ->where('name', 'LIKE', '%' . $term . '%')
@@ -4575,7 +4573,7 @@ class FrontprofileController extends BaseController
                     ->get();
 
 
-            } else if ($bodytype == 'null' && $height == 'null' && $haircolor != 'null') {
+            } elseif ($bodytype == 'null' && $height == 'null' && $haircolor != 'null') {
 
                 $results = DB::table('users')
                     ->where('name', 'LIKE', '%' . $term . '%')
@@ -4585,7 +4583,7 @@ class FrontprofileController extends BaseController
                     ->get();
 
 
-            } else if ($bodytype != 'null' && $height != 'null' && $haircolor == 'null') {
+            } elseif ($bodytype != 'null' && $height != 'null' && $haircolor == 'null') {
 
                 $results = DB::table('users')
                     ->where('name', 'LIKE', '%' . $term . '%')
@@ -4596,7 +4594,7 @@ class FrontprofileController extends BaseController
                     ->get();
 
 
-            } else if ($bodytype == 'null' && $height != 'null' && $haircolor != 'null') {
+            } elseif ($bodytype == 'null' && $height != 'null' && $haircolor != 'null') {
 
                 $results = DB::table('users')
                     ->where('name', 'LIKE', '%' . $term . '%')
@@ -4607,7 +4605,7 @@ class FrontprofileController extends BaseController
                     ->get();
 
 
-            } else if ($bodytype != 'null' && $height == 'null' && $haircolor != 'null') {
+            } elseif ($bodytype != 'null' && $height == 'null' && $haircolor != 'null') {
 
                 $results = DB::table('users')
                     ->where('name', 'LIKE', '%' . $term . '%')
@@ -4642,7 +4640,7 @@ class FrontprofileController extends BaseController
                     ->where('city', 'LIKE', '%' . $location . '%')
                     ->get();
 
-            } else if ($bodytype != 'null' && $height == 'null' && $haircolor == 'null') {
+            } elseif ($bodytype != 'null' && $height == 'null' && $haircolor == 'null') {
 
 
                 $results = DB::table('users')
@@ -4652,7 +4650,7 @@ class FrontprofileController extends BaseController
                     ->get();
 
 
-            } else if ($bodytype == 'null' && $height != 'null' && $haircolor == 'null') {
+            } elseif ($bodytype == 'null' && $height != 'null' && $haircolor == 'null') {
 
                 $results = DB::table('users')
                     ->where('name', 'LIKE', '%' . $term . '%')
@@ -4661,7 +4659,7 @@ class FrontprofileController extends BaseController
                     ->get();
 
 
-            } else if ($bodytype == 'null' && $height == 'null' && $haircolor != 'null') {
+            } elseif ($bodytype == 'null' && $height == 'null' && $haircolor != 'null') {
 
                 $results = DB::table('users')
                     ->where('name', 'LIKE', '%' . $term . '%')
@@ -4670,7 +4668,7 @@ class FrontprofileController extends BaseController
                     ->get();
 
 
-            } else if ($bodytype != 'null' && $height != 'null' && $haircolor == 'null') {
+            } elseif ($bodytype != 'null' && $height != 'null' && $haircolor == 'null') {
 
                 $results = DB::table('users')
                     ->where('name', 'LIKE', '%' . $term . '%')
@@ -4680,7 +4678,7 @@ class FrontprofileController extends BaseController
                     ->get();
 
 
-            } else if ($bodytype == 'null' && $height != 'null' && $haircolor != 'null') {
+            } elseif ($bodytype == 'null' && $height != 'null' && $haircolor != 'null') {
 
                 $results = DB::table('users')
                     ->where('name', 'LIKE', '%' . $term . '%')
@@ -4690,7 +4688,7 @@ class FrontprofileController extends BaseController
                     ->get();
 
 
-            } else if ($bodytype != 'null' && $height == 'null' && $haircolor != 'null') {
+            } elseif ($bodytype != 'null' && $height == 'null' && $haircolor != 'null') {
 
                 $results = DB::table('users')
                     ->where('name', 'LIKE', '%' . $term . '%')
@@ -7193,9 +7191,4 @@ class FrontprofileController extends BaseController
 
 
     }
-
-
 }
-
-
-?>

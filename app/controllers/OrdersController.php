@@ -2,29 +2,12 @@
 
 class OrdersController extends BaseController
 {
-
-    /*
-    |--------------------------------------------------------------------------
-    | Default Home Controller
-    |--------------------------------------------------------------------------
-    |
-    | You may wish to use controllers instead of, or in addition to, Closure
-    | based routes. That's great! Here is an example controller method to
-    | get you started. To route to this controller, just add the route:
-    |
-    |    Route::get('/', 'HomeController@showWelcome');
-    |
-    */
-
-
     public $restful = true;
 
     public $layout = 'layouts.adminnew';
 
     public function vieworders()
     {
-
-
         $view = View::make('orders.vieworders')->with('vieworders', Orders::all())->with('users', User::All());
         $this->layout->with('colors', Settings::All());
         $this->layout->with('logo', Logo::find(1));
@@ -35,7 +18,6 @@ class OrdersController extends BaseController
 
     public function logo()
     {
-
         if (!Auth::check()) {
 
             return Redirect::to('la-admin');
@@ -46,14 +28,11 @@ class OrdersController extends BaseController
         $this->layout->with('colors', Settings::All())->with('logo', Logo::find(1));
 
         $this->layout->content = $view;
-
     }
 
 
     public function logosave()
     {
-
-
         $img = Input::file('image');
 
 
@@ -230,8 +209,6 @@ class OrdersController extends BaseController
 
     public function timeline()
     {
-
-
         if (!Auth::check()) {
 
             return Redirect::to('/la-admin');
@@ -248,20 +225,16 @@ class OrdersController extends BaseController
             ->first();
 
         if ($plans->removeadmin == 'on' || $plans->removesuperadmin == 'on' || $plans->users == 'on') {
-
-
             $view = View::make('orders.timeline')->with('users', User::All());
             $this->layout->with('logo', Logo::find(1));
             $this->layout->content = $view;
-
         } else {
-//return Redirect::route('notaccess');
+            //return Redirect::route('notaccess');
             App::abort(404);
         }
 
 
     }
-
 
     public function galleryadmin()
     {
@@ -390,17 +363,10 @@ class OrdersController extends BaseController
 
     }
 
-
     public function ordersdelete($id)
     {
-
         Orders::find($id)->delete();
         return Redirect::route('vieworders');
 
     }
-
-
 }
-
-
-?>
