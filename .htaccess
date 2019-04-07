@@ -1,16 +1,18 @@
 <IfModule mod_rewrite.c>
-        RewriteEngine On
-        RewriteBase /
+    RewriteEngine On
 
-        # Removes index.php from ExpressionEngine URLs
-        RewriteCond %{THE_REQUEST} ^GET.*index\.php [NC]
-        RewriteCond %{REQUEST_URI} !/system/.* [NC]
-        RewriteRule (.*?)index\.php/*(.*) /$1$2 [R=301,NE,L]
+    ## Uncomment the below "#RewriteBase /" (remove "#") if pH4Social is installed in a folder, and add the folder name after the slash "/"
+    ## Example: If pH4Social is installed in "/public_html/ph4social/", then it should be "RewriteBase /ph4social/", however it may depends of your Apache configuration.
+    ## If you need, please ask your hosting company or check the Apache doc: http://httpd.apache.org/docs/current/mod/mod_rewrite.html
+    # RewriteBase /
 
-        # Directs all EE web requests through the site index file
-        RewriteCond %{REQUEST_FILENAME} !-f
-        RewriteCond %{REQUEST_FILENAME} !-d
-        RewriteRule ^(.*)$ /index.php/$1 [L]
+    # Removes index.php from ExpressionEngine URLs
+    RewriteCond %{THE_REQUEST} ^GET.*index\.php [NC]
+    RewriteCond %{REQUEST_URI} !/system/.* [NC]
+    RewriteRule (.*?)index\.php/*(.*) /$1$2 [R=301,NE,L]
+
+    # Directs all EE web requests through the site index file
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ /index.php/$1 [L]
 </IfModule>
-
-
